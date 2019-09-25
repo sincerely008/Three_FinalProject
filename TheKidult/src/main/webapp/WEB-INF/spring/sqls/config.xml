@@ -2,7 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.three.kidult.dto.ProductboardDto" alias="productboardDto"/>
+		<typeAlias type="com.three.kidult.dto.ProductDto" alias="productDto"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="/sqls/board_mapper.xml"/>

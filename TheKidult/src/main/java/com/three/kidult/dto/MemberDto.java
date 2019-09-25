@@ -19,8 +19,7 @@ public class MemberDto {
 	
 	
 	public MemberDto() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 
