@@ -9,6 +9,7 @@
 <body>
 
 	<h1>시작</h1>
+	<a href=product.do>게시판</a>
 
 </body>
 </html>
