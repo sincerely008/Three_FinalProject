@@ -38,5 +38,10 @@
 	 		AND ${searchFiled} LIKE '%' || #{searchValue} || '%'
 	 	</if>
  	</select>
+ 	
+ 	<select id="selectOne" resultType="productDto">
+ 		SELECT CATEGORY_NO, PRODUCT_NO, PRODUCT_NAME, PRODUCT_STOCK, PRODUCT_DETAILS, PRODUCT_PRICE
+ 		FROM PRODUCT
+ 	</select>
 	
 </mapper>

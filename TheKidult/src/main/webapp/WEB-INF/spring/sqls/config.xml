@@ -3,8 +3,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.three.kidult.dto.ProductDto" alias="productDto"/>
+		<typeAlias type="com.three.kidult.dto.UsedproductDto" alias="usedproductDto"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="/sqls/board_mapper.xml"/>
+		<mapper resource="/sqls/usedboard_mapper.xml"/>
 	</mappers>
 </configuration>
