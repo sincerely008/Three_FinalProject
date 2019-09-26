@@ -33,10 +33,7 @@
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
-		<tr>
-			<td><input type="button" value="글쓰기" onclick="location.href=''">
-			</td>
-		</tr>
+		
 	</table>
 
 	<jsp:include page="crudpaging.jsp" flush="false">
@@ -61,7 +58,12 @@
 		</select> <input type="text" name="searchValue" placeholder="내용을 입력하시오"
 			style="width: 200px;" /> <input type="submit" value="검색">
 	</form>
-
+	
+	<table>
+		<tr>
+			<td><input type="button" value="글쓰기" onclick="location.href='crudinsert.do'"></td>
+		</tr>
+	</table>
 
 </body>
 </html>

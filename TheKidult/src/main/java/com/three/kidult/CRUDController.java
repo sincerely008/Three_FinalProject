@@ -86,4 +86,10 @@ public class CRUDController {
 		return "crudlist";
 	}
 	
+	@RequestMapping("/crudinsert.do")
+	public String crudInsert(Model model, HttpServletRequest request) {
+		
+		return "crudinsert";
+	}
+	
 }
