@@ -5,35 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.three.kidult.dto.ProductDto;
-import com.three.kidult.model.dao.ProductDao;
+import com.three.kidult.dto.UsedproductDto;
+import com.three.kidult.model.dao.UsedproductDao;
 
 @Service
-public class ProductBizImpl implements ProductBiz {
+public class UsedproductBizImpl implements UsedproductBiz {
 	
 	@Autowired
-	private ProductDao dao;
+	private UsedproductDao dao;
 
 	@Override
-	public List<ProductDto> boardList(int offset, int noOfRecords) {
+	public List<UsedproductDto> boardList(int offset, int noOfRecords) {
 		
 		return dao.boardList(offset, noOfRecords);
 	}
 
 	@Override
-	public ProductDto selectBoard() {
+	public UsedproductDto selectBoard() {
 		
 		return dao.selectBoard();
 	}
 
 	@Override
-	public int insertBoard(ProductDto dto) {
+	public int insertBoard(UsedproductDto dto) {
 		
 		return dao.insertBoard(dto);
 	}
 
 	@Override
-	public int updateBoard(ProductDto dto) {
+	public int updateBoard(UsedproductDto dto) {
 		
 		return dao.updateBoard(dto);
 	}
@@ -51,9 +51,15 @@ public class ProductBizImpl implements ProductBiz {
 	}
 
 	@Override
-	public List<ProductDto> searchFiled(int offset, int noOfRecords, String searchFiled, String searchValue) {
+	public List<UsedproductDto> searchFiled(int offset, int noOfRecords, String searchFiled, String searchValue) {
 		
 		return dao.searchFiled(offset, noOfRecords, searchFiled, searchValue);
+	}
+
+	@Override
+	public int updateViews(int usedproduct_views) {
+		
+		return dao.updateViews(usedproduct_views);
 	}
 
 }

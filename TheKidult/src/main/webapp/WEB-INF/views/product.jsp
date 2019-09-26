@@ -12,7 +12,6 @@
 	<table>
 		<tr>
 			<th>이름</th>
-			<th>정보</th>
 			<th>가격</th>
 		</tr>
 		
@@ -23,8 +22,7 @@
 			<c:otherwise>
 				<c:forEach items="${list}" var="dto">
 					<tr>
-						<td>${dto.product_name }</td>
-						<td>${dto.product_details }</td>
+						<td><a href="selectpage.do">${dto.product_name }</a></td>
 						<td>${dto.product_price }</td>
 					</tr>
 				</c:forEach>
@@ -44,15 +42,17 @@
 				<jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
 				<jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
 			</jsp:include>
+			
+		 
 			<form action="paging.do" method="post">
 				<input type="hidden"/> 
 				<select name="searchFiled">
-					<option value="RECIPEBOARD_TITLE" selected="selected">제목</option>
-					<option value="ID">작성자</option>
+					<option value="PRODUCT_NAME" selected="selected">제목</option>
+					<!-- <option value="ID">작성자</option>  -->
 				</select> <input type="text" name="searchValue" placeholder="내용을 입력하시오" style="width: 200px;"/> <input
 					type="submit" value="검색">
 			</form>
-	
+			 
 
 </body>
 </html>

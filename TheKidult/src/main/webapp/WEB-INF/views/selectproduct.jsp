@@ -8,9 +8,7 @@
 </head>
 <body>
 
-	<h1>시작</h1>
-	<a href=product.do>게시판</a><br>
-	<a href=crud.do>crud</a><br>
+	<a>${dto.product_details }</a>
 
 </body>
 </html>

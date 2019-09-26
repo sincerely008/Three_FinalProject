@@ -10,7 +10,7 @@ public interface ProductBiz {
 	public ProductDto selectBoard();
 	public int insertBoard(ProductDto dto);
 	public int updateBoard(ProductDto dto);
-	public int deleteBoard(String id);
+	public int deleteBoard(int product_no);
 	public int getNoOfRecords();
 	public List<ProductDto> searchFiled(int offset, int noOfRecords, String searchFiled, String searchValue);
 

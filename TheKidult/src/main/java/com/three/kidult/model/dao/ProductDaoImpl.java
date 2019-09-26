@@ -39,8 +39,15 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public ProductDto selectBoard() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ProductDto dto = new ProductDto();
+		
+		try {
+			dto = sqlSession.selectOne(namespace + "selectOne");
+		} catch (Exception e) {
+			System.out.println("selectOne error");
+		}
+		return dto;
 	}
 
 	@Override
@@ -56,7 +63,7 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public int deleteBoard(String id) {
+	public int deleteBoard(int product_no) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
