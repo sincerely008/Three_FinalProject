@@ -22,6 +22,10 @@ CREATE TABLE MEMBER(
 SELECT * FROM MEMBER
 
 INSERT INTO MEMBER VALUES('user', '0000', 'user', SYSDATE, '경기도', '0000000000', 'email@email.com', 'Y', 'Man', 'user', SYSDATE, SYSDATE)
+
+SELECT MEMBER_ID
+FROM MEMBER
+WHERE (SYSDATE - MEMBER_PWEVENT) > 10/24/60/60 /*(10초)*/
 -----------------------------------------------------------------------------------------
 
 DROP TABLE CATEGORY;

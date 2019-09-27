@@ -61,7 +61,7 @@
 	
 	<table>
 		<tr>
-			<td><input type="button" value="글쓰기" onclick="location.href='crudinsert.do'"></td>
+			<td><input type="button" value="글쓰기" onclick="location.href=''"></td>
 		</tr>
 	</table>
 

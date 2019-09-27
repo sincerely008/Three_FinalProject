@@ -9,8 +9,9 @@
 <body>
 
 	<h1>시작</h1>
-	<a href=product.do>게시판</a><br>
-	<a href=crud.do>crud</a><br>
+	<a href="product.do">게시판</a><br>
+	<a href="crud.do">crud</a><br>
+	<a href="logintest.do">회원가입</a>
 
 </body>
 </html>
