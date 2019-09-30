@@ -21,7 +21,8 @@ CREATE TABLE MEMBER(
 
 SELECT * FROM MEMBER
 
-INSERT INTO MEMBER VALUES('user', '0000', 'user', SYSDATE, '경기도', '0000000000', 'email@email.com', 'Y', 'Man', 'user', SYSDATE, SYSDATE)
+
+INSERT INTO MEMBER VALUES('user', '0000', 'user', SYSDATE, '경기도', '010-1234-5678', 'email@email.com', 'Y', 'Man', 'user', SYSDATE, SYSDATE)
 
 SELECT MEMBER_ID
 FROM MEMBER
