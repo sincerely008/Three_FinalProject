@@ -10,8 +10,8 @@
 
 	<h1>시작</h1>
 	<a href="product.do">게시판</a><br>
-	<a href="crud.do">crud</a><br>
-	<a href="login.do">회원가입</a><br>
+	<a href="crud.do">중고게시판 쓸 예정</a><br>
+	<a href="signup.do">회원가입</a><br>
 
 </body>
 </html>

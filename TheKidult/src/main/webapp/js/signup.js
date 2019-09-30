@@ -18,14 +18,14 @@ $(document).ready(function(){
 $(function() {
 	var idText = $("input[name=id]");
 	var idSpan = $("#idchkSapn");
-	var pwText = $("input[name=pw]");
+	var pwText = $("input[name=password]");
 	var pwConfirm = $("input[name=pwConfirm]");
 
 	idText.blur(function() {
 		var id = idText.val();
 		$.ajax({
 			type : "POST",
-			url : "login.do?command=idchk&id=" + id,
+			url : "idchk.do?id=" + id,
 			dataType : "text",
 			success : function(data) {
 				var trm = $.trim(data);
@@ -46,9 +46,9 @@ $(function() {
 		var pwC = pwConfirm.val();
 
 		if (pw != pwC) {
-			$("#pwSpan").html("비밀번호가 일치하지 않습니다.");
+			$("#pwSapn").html("비밀번호가 일치하지 않습니다.");
 		} else {
-			$("#pwSpan").html("비밀번호 일치!");
+			$("#pwSapn").html("비밀번호 일치!");
 		}
 	});
 
@@ -77,12 +77,14 @@ $(function() {
 var ran = null;
 
 function emailChk() {
-	var email = $("input[name=email]").val() + $("#emailback").val();
+	var email = $("input[name=emailFront]").val() + "@" +$("input[name=emailBack]").val();
 	var emailSpan = $("#emailSpan");
+	
+	alert(email)
 
 	$.ajax({
 		type : "POST",
-		url : "login.do?command=emailchk&email=" + email,
+		url : "emailchk.do?email=" + email,
 		dataType : "text",
 		success : function(data) {
 			var trm = $.trim(data);
@@ -93,7 +95,7 @@ function emailChk() {
 				} else {
 					$.ajax({
 						type : "POST",
-						url : "login.do?command=sendemail&email=" + email,
+						url : "sendemail.do?email=" + email,
 						dataType : "text",
 						success : function(data) {
 							ran = $.trim(data);
