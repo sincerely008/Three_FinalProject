@@ -1,7 +1,5 @@
 package com.three.kidult;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -22,8 +20,9 @@ public class login {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/logintest.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		
 		
 		
 		return "signup";

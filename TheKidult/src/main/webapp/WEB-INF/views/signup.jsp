@@ -1,24 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+	response.setHeader("Pragma", "no-cache");
+	response.setHeader("Cache-control", "no-store");
+	response.setHeader("Expires", "0");
+%>    
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	$(function(){
-		$(document).ready(function(){
-			$('select[name=emailselect]').change(function(){
-				if($(this).val()=="1"){
-					$('.emailBack').val("");
-				}else{
-					$('.emailBack').val($(this).val());
-					$(".emailBack").attr("readonly", true);
-				}
-			});
-		});
-	});
-</script>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/signup.js"></script>
+
 </head>
 <body>
 
@@ -76,10 +72,10 @@
 			<tr>
 				<th>이메일</th>
 				<td>
-					<input type="text" name="emailFront"> @
-					<input type="text" name="emailBack" class="emailBack">
+					<input type="text" name="emailFront" > @
+					<input type="text" name="emailBack" id="emailBack">
 					<select id="emailselect" name="emailselect">
-						<option selected="selected" value="1">직접 입력</option>
+						<option selected="selected" value="self">직접 입력</option>
 						<option value="naver.com">naver.com</option>
 						<option value="hanmail.net">hanmail.net</option>
 						<option value="nate.com">nate.com</option>
