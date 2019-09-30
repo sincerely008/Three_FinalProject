@@ -70,4 +70,13 @@ public class login {
 		
 	}
 	
+	@RequestMapping("/sendemail.do")
+	@ResponseBody
+	public String sendemail(HttpServletRequest request) {
+		
+		String email = request.getParameter("email");
+		
+		return "";
+	}
+	
 }

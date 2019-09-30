@@ -95,7 +95,7 @@ function emailChk() {
 				} else {
 					$.ajax({
 						type : "POST",
-						url : "login.do?command=sendemail&email=" + email,
+						url : "sendemail.do?email=" + email,
 						dataType : "text",
 						success : function(data) {
 							ran = $.trim(data);
