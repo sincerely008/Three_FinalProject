@@ -3,13 +3,13 @@ $(document).ready(function(){
 			$("#emailselect option:selected").each(function(){
 				if($(this).val()=='self'){
 					$("#emailBack").val('');
-					$("#emailBack").attr("disabled", false);
+					$("#emailBack").attr("readonly", false);
 				}else if($(this).val()=='select'){
 					$("#emailBack").val('');
-					$("#emailBack").attr("disabled", false);
+					$("#emailBack").attr("readonly", false);
 				}else{
 					$("#emailBack").val($(this).text());
-					$("#emailBack").attr("disabled", true);
+					$("#emailBack").attr("readonly", true);
 				}
 			});
 		});
@@ -31,7 +31,7 @@ $(function() {
 				var trm = $.trim(data);
 				if (trm == id) {
 					idSpan.html("이미 존재하는 아이디 입니다.");
-				} else {
+				}else {
 					idSpan.html("가입 가능한 아이디 입니다.");
 				}
 			},
@@ -44,8 +44,11 @@ $(function() {
 	pwConfirm.blur(function() {
 		var pw = pwText.val();
 		var pwC = pwConfirm.val();
-
-		if (pw != pwC) {
+		
+		
+		if(pw == null || pw == ""){
+			$("#pwSapn").html("비밀번호를 입력해 주세요.");
+		}else if (pw != pwC) {
 			$("#pwSapn").html("비밀번호가 일치하지 않습니다.");
 		} else {
 			$("#pwSapn").html("비밀번호 일치!");
@@ -88,7 +91,10 @@ function emailChk() {
 		success : function(data) {
 			var trm = $.trim(data);
 			if (email.length != 0) {
-				if (trm == email) {
+				if($("input[name=emailFront]").val() == null || $("input[name=emailFront]").val() == "" || $("input[name=emailBack]").val() == null || $("input[name=emailBack]").val() == ""){
+					emailSpan.html("이메일을 입력해주세요.")
+				}
+				else if (trm == email) {
 					emailSpan.html("이미 존재하는 이메일 입니다.");
 
 				} else {
@@ -124,6 +130,7 @@ function emailCon() {
 	if (ran == eran) {
 		command.val("signupres");
 		eSpan.html("인증완료!");
+		$("#insertsign").css("display", "inline");
 	} else {
 		eSpan.html("다시 확인해주세요!");
 	}
@@ -175,3 +182,4 @@ function searchAddr(){
         }).open();
     });
 }
+

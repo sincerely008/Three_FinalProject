@@ -89,9 +89,6 @@ public class login {
 		String setfrom = "threekidultproject@gmail.com";
 		String email = request.getParameter("email");
 		
-		
-
-		
 		try {
 			MimeMessage message = mailSender.createMimeMessage();	
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
@@ -111,8 +108,11 @@ public class login {
 		return ran;
 	}
 	
-	@RequestMapping("/signupres.do")
+	@RequestMapping(value="/signupres.do", method = RequestMethod.POST)
 	public String signupres(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		PrintWriter out = response.getWriter();
 		
@@ -126,6 +126,8 @@ public class login {
 		String member_phone = request.getParameter("phone1") + "-" + request.getParameter("phone2") + "-" + request.getParameter("phone3");
 		String member_email = request.getParameter("emailFront") + "@" + request.getParameter("emailBack");
 		String member_gender = request.getParameter("gender");
+		
+		
 		
 		MemberDto dto = new MemberDto();
 		dto.setMember_id(member_id);
@@ -150,7 +152,7 @@ public class login {
 			out.print("</script>");
 			return "signup";
 		}
-		
+	
 		
 	}
 	

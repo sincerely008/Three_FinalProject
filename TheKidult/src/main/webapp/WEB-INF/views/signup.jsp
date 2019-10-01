@@ -15,12 +15,14 @@
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/signup.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+
+
 </head>
 <body>
 
 	<h1>회원가입</h1>
 	
-	<form action="signupres.do">
+	<form action="signupres.do" method="post">
 		<table>
 			<tr>
 				<th>아이디</th>
@@ -111,7 +113,7 @@
 		<table>
 			<tr>
 				<td>
-					<input type="submit" value="가입하기">
+					<input type="submit" value="가입하기" id="insertsign" style="display: none">
 					<input type="button" value="취소" onclick="location.href=''"> <!-- 로그인 페이지 완성되면 추가할 것 -->
 				</td>
 			</tr>
