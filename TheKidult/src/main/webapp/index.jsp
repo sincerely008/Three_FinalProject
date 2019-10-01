@@ -11,7 +11,7 @@
 	<h1>시작</h1>
 	<a href="product.do">게시판</a><br>
 	<a href="crud.do">crud</a><br>
-	<a href="logintest.do">회원가입</a>
+	<a href="signup.do">회원가입</a><br>
 	<a href="home.do">ㅇ</a>
 
 

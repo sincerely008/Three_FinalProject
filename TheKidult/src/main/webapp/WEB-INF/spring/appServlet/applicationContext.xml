@@ -34,8 +34,7 @@
       <property name="port" value="587" />
       <property name="username" value="threekidultproject@gmail.com" />
       <property name="password" value="1q2w3e4r$" />
-    
-
+      <property name="defaultEncoding" value="UTF-8"></property>
       <!-- email 요청시는 SMTP -->
       <property name="javaMailProperties">
          <props>

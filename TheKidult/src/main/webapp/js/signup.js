@@ -80,7 +80,6 @@ function emailChk() {
 	var email = $("input[name=emailFront]").val() + "@" +$("input[name=emailBack]").val();
 	var emailSpan = $("#emailSpan");
 	
-	alert(email)
 
 	$.ajax({
 		type : "POST",
@@ -102,17 +101,17 @@ function emailChk() {
 							emailSpan.html("인증번호가 발송되었습니다.");
 						},
 						error : function() {
-							alert("통신실패")
+							alert("메일발송 실패")
 						}
 					});
 				}
 
 			} else {
-				emailSpan.html("이메일을 입력해 주세요.");
+				emailSpan.html("이메일을 확인해 주세요.");
 			}
 		},
 		error : function() {
-			alert("통신실패")
+			alert("email chk 실패")
 		}
 	});
 }

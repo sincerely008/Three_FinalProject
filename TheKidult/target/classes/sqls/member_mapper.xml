@@ -14,4 +14,8 @@
   	WHERE MEMBER_EMAIL=#{email}
   </select>
   
+  <insert id="signup">
+  	INSERT INTO MEMBER VALUES(#{member_id}, #{member_pw}, #{member_name}, #{member_birth}, #{member_addr}, #{member_phone}, #{member_email}, 'Y', #{member_gender}, 'USER', SYSDATE, SYSDATE)
+  </insert>
+  
 </mapper>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	response.setHeader("Pragma", "no-cache");
 	response.setHeader("Cache-control", "no-store");
@@ -14,13 +14,13 @@
 <title>Insert title here</title>
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/signup.js"></script>
-
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 </head>
 <body>
 
 	<h1>회원가입</h1>
 	
-	<form action="">
+	<form action="signupres.do">
 		<table>
 			<tr>
 				<th>아이디</th>
@@ -104,6 +104,15 @@
 						<option value="man" selected="selected">남성</option>
 						<option value="woman">여성</option>
 					</select>
+				</td>
+			</tr>
+			
+		</table>
+		<table>
+			<tr>
+				<td>
+					<input type="submit" value="가입하기">
+					<input type="button" value="취소" onclick="location.href=''"> <!-- 로그인 페이지 완성되면 추가할 것 -->
 				</td>
 			</tr>
 		</table>
