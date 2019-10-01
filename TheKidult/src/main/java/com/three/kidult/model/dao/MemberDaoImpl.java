@@ -45,8 +45,15 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public int signup(MemberDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(namespace + "signup", dto);
+		} catch (Exception e) {
+			System.out.println("signup error");
+		}
+		return res;
 	}
 
 	@Override

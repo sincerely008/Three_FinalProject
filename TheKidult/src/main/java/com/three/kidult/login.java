@@ -3,12 +3,16 @@ package com.three.kidult;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +30,9 @@ public class login {
 	
 	@Autowired
 	private MemberBiz biz;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	private static final Logger logger = LoggerFactory.getLogger(login.class);
 	
@@ -74,9 +81,77 @@ public class login {
 	@ResponseBody
 	public String sendemail(HttpServletRequest request) {
 		
+		String ran = "";
+		for(int i = 0; i < 6; i++) {
+			ran += (int)(Math.random()*10);
+		}
+		
+		String setfrom = "threekidultproject@gmail.com";
 		String email = request.getParameter("email");
 		
-		return "";
+		
+
+		
+		try {
+			MimeMessage message = mailSender.createMimeMessage();	
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+			messageHelper.setFrom(setfrom);
+			messageHelper.setTo(email);
+			messageHelper.setSubject("kidult 인증 메일입니다.");
+			messageHelper.setText("인증 번호 : " + ran);
+			
+			mailSender.send(message);
+		} catch (MessagingException e) {
+			System.out.println("smtp error");
+			e.printStackTrace();
+		}
+		
+		
+		return ran;
+	}
+	
+	@RequestMapping("/signupres.do")
+	public String signupres(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		PrintWriter out = response.getWriter();
+		
+		int res = 0;
+		
+		String member_id = request.getParameter("id");
+		String member_pw = request.getParameter("password");
+		String member_name = request.getParameter("name");
+		String member_birth = request.getParameter("birth");
+		String member_addr = request.getParameter("addr1") + " " + request.getParameter("addr2");
+		String member_phone = request.getParameter("phone1") + "-" + request.getParameter("phone2") + "-" + request.getParameter("phone3");
+		String member_email = request.getParameter("emailFront") + "@" + request.getParameter("emailBack");
+		String member_gender = request.getParameter("gender");
+		
+		MemberDto dto = new MemberDto();
+		dto.setMember_id(member_id);
+		dto.setMember_pw(member_pw);
+		dto.setMember_name(member_name);
+		dto.setMember_birth(member_birth);
+		dto.setMember_addr(member_addr);
+		dto.setMember_phone(member_phone);
+		dto.setMember_email(member_email);
+		dto.setMember_gender(member_gender);
+		
+		res = biz.signup(dto);
+		
+		if(res>0) {
+			out.print("<script>");
+			out.print("alert('회원가입 성공')");
+			out.print("</script>");
+			return "signend";
+		}else {
+			out.print("<script>");
+			out.print("alert('회원가입 실패')");
+			out.print("</script>");
+			return "signup";
+		}
+		
+		
 	}
 	
 }
