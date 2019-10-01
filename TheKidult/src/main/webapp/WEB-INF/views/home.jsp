@@ -53,6 +53,11 @@
 	border-top: solid 2px;
 	border-top-color: rgba(200, 200, 200, 0.5);
 	background: rgb(100, 100, 100);
+		background: #46B8DF;
+	background-image: -webkit-radial-gradient(center, circle cover, #049CCE, #0085B3);
+	background-image: -moz-radial-gradient(center, circle cover, #049CCE, #0085B3);
+	background-image: -o-radial-gradient(center, circle cover, #049CCE, #0085B3);
+	background-image: radial-gradient(center, circle cover, #049CCE, #0085B3);
 }
 
 .headerdivwrapa {
@@ -60,6 +65,7 @@
 	width: 20%;
 	height: 100px;
 	text-align: center;
+	
 }
 
 .headerdiv1div {
@@ -111,7 +117,7 @@
 	line-height: 50px;
 	text-decoration: none;
 	font-weight: bold;
-	color: #cccccc;
+	color: white;
 }
 
 .headerdiv2divulli:hover {
@@ -285,7 +291,7 @@
 .section2div2div1 {
 	width: 100%;
 	height: 50px;
-	color: black;
+	color: red;
 	font-size: 30px;
 	text-align: center;
 	padding-top: 10px;
@@ -302,7 +308,7 @@
 
 .section2div2div2 {
 	width: 100%;
-	height: 600px;
+	height: 500px;
 	margin: 20px auto;
 }
 
@@ -317,25 +323,33 @@
 }
 
 .section2div2div2div1divdiv1 {
-	width: 95%;
-	height: 190px;
+	width: 100%;
+	height: 300px;
 	margin: 0 auto;
 	border: solid 1px;
 }
 
 .section2div2div2div1divdiv2 {
-	width: 95%;
-	height: 30px;
+	width: 100%;
+	height: 100px;
 	text-align: center;
 	magin-top: 5px;
+	background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+	background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);	
+	border: solid 1px;
 }
 
 .section2div2div2div1divdiv3 {
-	width: 95%;
+	width: 100%;
 	height: 160px;
 	margin: 0 auto;
 	text-align: center;
 	overflow: hidden;
+}
+.section2{
+   background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+	background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+
 }
 </style>
 </head>
@@ -380,7 +394,7 @@
 				</div>
 			</div>
 
-		
+			
 			<div class="headerdiv2">
 				<div class="headerdiv2div">
 					<ul class="headerdiv2divul">
@@ -392,20 +406,8 @@
 								<li><a href="pagemoving.do?command=musicgenre"> 미니블럭 </a></li>
 								<li><a href="pagemoving.do?command=musicalbumpopular">
 										나노블럭</a></li>
-										</li>
-						<li class="headerdiv2divulli"
-							onclick="location.href='pagemoving.do?command=concerthallmain'">
-							<a class="headerdiv2divullia"
-							href="pagemoving.do?command=concerthallmain"> RC-드론/헬리콥터 </a>
-							<ul class="headerdiv2divulliul">
-								<li><a href="pagemoving.do?command=concerthallmain">
-										입문용/고급용/실내용 </a></li>
-								<li><a href="pagemoving.do?command=concerthallreservation">
-										동영상촬영 </a></li>
 							</ul>
-						</li>
-							</ul>
-						</li>
+						</li>						
 						<li class="headerdiv2divulli"
 							onclick="location.href='pagemoving.do?command=broadcstingtop'">
 							<a class="headerdiv2divullia"
@@ -419,6 +421,7 @@
 										피규어</a></li>
 							</ul>
 						</li>
+						
 						<li class="headerdiv2divulli"
 							onclick="location.href='pagemoving.do?command=concerthallmain'">
 							<a class="headerdiv2divullia"
@@ -459,84 +462,84 @@
 				<div class="section2div2div2div1">
 					<div class="section2div2div2div1div">
 						<div class="section2div2div2div1divdiv1">
-							<img src="" alt="HOT1" />
+							<img src="resources/images/hot1.jpg" alt="HOT1" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>11</span>
+							<span>이름 / 가격</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
 						<div class="section2div2div2div1divdiv1">
-							<img src="" alt="HOT2" />
+							<img src="resources/images/hot2.jpg" alt="HOT2" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>12</span>
+							<span>이름 / 가격</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
 						<div class="section2div2div2div1divdiv1">
-							<img src="" alt="HOT3" />
+							<img src="resources/images/hot3.jpg" alt="HOT3" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>13</span>
+							<span>이름 / 가격</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
 						<div class="section2div2div2div1divdiv1">
-							<img src="" alt="HOT4" />
+							<img src="resources/images/hot4.jpg" alt="HOT4" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>14</span>
+							<span>이름 / 가격</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
 						<div class="section2div2div2div1divdiv1">
-							<img src="" alt="HOT5" />
+							<img src="resources/images/hot5.jpg" alt="HOT5" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>15</span>
+							<span>이름 / 가격</span>
 						</div>
 					</div>
 				</div>
 				<div class="section2div2div2div1">
 					<div class="section2div2div2div1div">
 						<div class="section2div2div2div1divdiv1">
-							<img src="" alt="HOT6" />
+							<img src="resources/images/hot6.jpg" alt="HOT6" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>16</span>
+							<span>이름 / 가격</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
 						<div class="section2div2div2div1divdiv1">
-							<img src="" alt="HOT7" />
+							<img src="resources/images/hot7.jpg" alt="HOT7" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>17</span>
+							<span>이름 / 가격</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
 						<div class="section2div2div2div1divdiv1">
-							<img src="" alt="HOT8" />
+							<img src="resources/images/hot8.jpg" alt="HOT8" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>18</span>
+							<span>이름 / 가격</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
 						<div class="section2div2div2div1divdiv1">
-							<img src="" alt="HOT9" />
+							<img src="resources/images/hot9.jpg" alt="HOT9" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>19</span>
+							<span>이름 / 가격</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
 						<div class="section2div2div2div1divdiv1">
-							<img src="" alt="HOT10" />
+							<img src="resources/images/hot10.jpg" alt="HOT10" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>10</span>
+							<span>이름 / 가격</span>
 						</div>
 					</div>
 				</div>
@@ -544,6 +547,7 @@
 		</div>
 	</section>
 	<input id="throwmusic" type="hidden" value="123" />
+	<%@ include file="/form/footer.jsp"%>
 </body>
 </html>
 </body>
