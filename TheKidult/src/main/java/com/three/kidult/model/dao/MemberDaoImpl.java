@@ -87,14 +87,35 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public MemberDto forgotPw(String id, String name, String email) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		MemberDto dto = new MemberDto();
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", id);
+		param.put("name", name);
+		param.put("email", email);
+		
+		try {
+			dto = sqlSession.selectOne(namespace + "forgotpw", param);
+		} catch (Exception e) {
+			System.out.println("비밀번호 찾기 error");
+		}
+		return dto;
 	}
 
 	@Override
 	public int updatePw(String id, String pw) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int res = 0;
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", id);
+		param.put("pw", pw);
+		
+		try {
+			res = sqlSession.update(namespace + "changepw", param);
+		} catch (Exception e) {
+			System.out.println("비밀번호 변경 error");
+		}
+		return res;
 	}
 
 	@Override
