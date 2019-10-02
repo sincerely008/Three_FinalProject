@@ -2,12 +2,12 @@ package com.three.kidult;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -159,9 +159,75 @@ public class login {
 	}
 	
 	@RequestMapping("/forgotid.do")
-	public String goforgotID() {
+	public String forgotID() {
 		
 		return "forgotid";
+	}
+	
+	@RequestMapping(value="/goforgotid.do", method = RequestMethod.POST)
+	public String goforgotId(HttpServletRequest request, Model model, HttpServletResponse response) throws UnsupportedEncodingException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		
+		MemberDto dto = biz.forgotId(name, email);
+		
+		model.addAttribute("dto", dto);
+		
+		return "goforgotid";
+	}
+	
+	@RequestMapping("/forgotpw.do")
+	public String forgotPw() {
+		
+		return "forgotpw";
+	}
+	
+	@RequestMapping(value="/goforgotpw.do", method = RequestMethod.POST)
+	public String goforgotPw(Model model, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		
+		MemberDto dto = biz.forgotPw(id, name, email);
+		
+		model.addAttribute("dto", dto);
+		
+		return "goforgotpw";
+	}
+	
+	@RequestMapping(value="changeforgotpw.do", method = RequestMethod.POST)
+	public String changePw(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("password");
+		
+		int res = biz.updatePw(id, pw);
+		if(res>0) {
+			out.print("<script>");
+			out.print("alert('변경 완료!')");
+			out.print("</script>");
+			return "changeforgotpw";
+		}else {
+			out.print("<script>");
+			out.print("alert('변경 실패!')");
+			out.print("</script>");
+			return "forgotpw";
+		}
+		
+		
 	}
 	
 	

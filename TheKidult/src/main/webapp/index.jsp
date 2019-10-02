@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <style type="text/css">
 #data{
 border: 1px solid gray;
@@ -46,6 +47,19 @@ height: 300px;
 
 	function onClose(evt) {
 		$("#data").append("서버가 닫혀 있습니다.");
+=======
+<script type="text/javascript">
+	function forgotId(){
+		var url = "forgotid.do";
+		var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+		window.open(url,"",popOption);
+	}
+	
+	function forgotPw(){
+		var url = "forgotpw.do";
+		var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+		window.open(url,"",popOption);
+>>>>>>> refs/heads/master
 	}
 </script>
 </head>
@@ -55,12 +69,19 @@ height: 300px;
 	<a href="product.do">게시판</a><br>
 	<a href="crud.do">crud</a><br>
 	<a href="signup.do">회원가입</a><br>
+<<<<<<< HEAD
 	<a href="home.do">ㅇ</a></br>
 	
 	<input type="text" id="message" />
 	<input type="button" id="sendBtn" value="전송" />
 	<div id="data" style="overflow:auto;"></div>
 	
+=======
+	<a href="javascript:forgotId()">아이디 찾기</a><br>
+	<a href="javascript:forgotPw()">비밀번호 찾기</a><br>
+	<a href="home.do">ㅇ</a>
+
+>>>>>>> refs/heads/master
 
 </body>
 </html>

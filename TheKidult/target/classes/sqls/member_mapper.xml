@@ -24,4 +24,15 @@
   	WHERE MEMBER_NAME=#{name} AND MEMBER_EMAIL=#{email}
   </select>
   
+  <select id="forgotpw" resultType="memberDto">
+  	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_GENDER, MEMBER_ROLE, MEMBER_REGDATE, MEMBER_PWEVENT
+  	FROM MEMBER
+  	WHERE MEMBER_ID=#{id} AND MEMBER_NAME=#{name} AND MEMBER_EMAIL=#{email}
+  </select>
+  
+  <update id="changepw">
+  	UPDATE MEMBER SET MEMBER_PW=#{pw}, MEMBER_PWEVENT=SYSDATE 
+  	WHERE MEMBER_ID=#{id}
+  </update>
+  
 </mapper>
