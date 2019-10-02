@@ -17,13 +17,31 @@
 	function forgotid(){
 		location.href="forgotid.do";
 	}
+	
+	function check(){
+		if(chk.id.value == null || chk.id.value == ""){
+			alert("아이디를 입력해주세요.");
+			chk.id.focus();
+			return false;
+		}else if(chk.name.value == null || chk.name.value == ""){
+			alert("이름을 입력해주세요.");
+			chk.name.focus();
+			return false;
+		}else if(chk.email.value == null || chk.email.value == ""){
+			alert("이메일을 입력해주세요.");
+			chk.email.focus();
+			return false;
+		}else{
+			return true;
+		}
+	}
 </script>
 </head>
 <body>
 
 	<h1>비밀번호 찾기</h1>
 	
-	<form action="goforgotpw.do" method="POST">
+	<form action="goforgotpw.do" method="POST" name="chk" onsubmit="return check()">
 		<table>
 			<tr>
 				<th>아이디</th>
