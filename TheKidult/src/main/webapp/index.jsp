@@ -26,10 +26,7 @@
 	<a href="product.do">게시판</a><br>
 	<a href="crud.do">crud</a><br>
 	<a href="signup.do">회원가입</a><br>
-	<a href="chat.do">임시채팅방</a></br>
-
-	<a href="home.do">ㅇ</a></br>
-
+	<a href="chat.do">임시채팅방</a><br>
 	<a href="javascript:forgotId()">아이디 찾기</a><br>
 	<a href="javascript:forgotPw()">비밀번호 찾기</a><br>
 	<a href="home.do">ㅇ</a>
