@@ -18,4 +18,10 @@
   	INSERT INTO MEMBER VALUES(#{member_id}, #{member_pw}, #{member_name}, #{member_birth}, #{member_addr}, #{member_phone}, #{member_email}, 'Y', #{member_gender}, 'USER', SYSDATE, SYSDATE)
   </insert>
   
+  <select id="forgotid" resultType="memberDto">
+  	SELECT MEMBER_ID
+  	FROM MEMBER
+  	WHERE MEMBER_NAME=#{name} AND MEMBER_EMAIL=#{email}
+  </select>
+  
 </mapper>

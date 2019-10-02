@@ -1,5 +1,6 @@
 package com.three.kidult.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -70,8 +71,18 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public MemberDto forgotId(String name, String email) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		MemberDto dto = new MemberDto();
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("name", name);
+		param.put("email", email);
+		
+		try {
+			dto = sqlSession.selectOne(namespace + "forgotid", param);
+		} catch (Exception e) {
+			System.out.println("아이디 찾기 error");
+		}
+		return dto;
 	}
 
 	@Override
