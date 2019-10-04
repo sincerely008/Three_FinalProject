@@ -29,7 +29,7 @@
 				<td>해당하는 아이디가 없습니다.</td>
 			</c:when>
 			<c:otherwise>
-				<td>${dto.member_id }</td><br>
+				<td>아이디 : ${dto.member_id }</td><br>
 				<a href="javascript:forgotPw()">비밀번호를 찾으시겠습니까?</a><br>
 			</c:otherwise>
 		</c:choose>
