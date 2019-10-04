@@ -8,6 +8,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -229,6 +230,23 @@ public class login {
 		
 		
 	}
+	
+	@RequestMapping("/UserLogin.do")
+	public String gologin() {
+		
+		return"UserLogin";
+	}
+	
+	
+	@RequestMapping(value="/login.do", method = RequestMethod.POST)
+	public String loginres(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		
+		
+		return "";
+	}
+	
+	
 	
 	
 }

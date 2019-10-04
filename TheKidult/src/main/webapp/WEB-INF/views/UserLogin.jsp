@@ -43,7 +43,6 @@
 </div>
 	<div class="con">
 		<form action="login.do" method="post">
-			<input type="hidden" name="command" value="loginres">
 			<div class="login">
 				<h1>LOGIN</h1>
 			</div>
@@ -90,9 +89,9 @@ Kakao.init('8e6d53d7202906065b4fa4f403a2bee0');
 		</div>
 		<div class="sub">
 			<ul>
-				<li><a href="#" onclick="window.open('useridsearch.jsp','searchid','width=456, height=510')">아이디 찾기</a></li>
-				<li><a href="#" onclick="window.open('userpasswordsearch.jsp','searchpassword','width=456, height=510')">비밀번호 찾기</a></li>
-				<li><a href="#" onclick="location.href='UserSignUp.do'">회원가입</a></li>
+				<li><a href="#" onclick="window.open('forgotid.do','searchid','width=456, height=510')">아이디 찾기</a></li>
+				<li><a href="#" onclick="window.open('forgotpw.do','searchpassword','width=456, height=510')">비밀번호 찾기</a></li>
+				<li><a href="#" onclick="location.href='signup.do'">회원가입</a></li>
 
 			</ul>
 		</div>
