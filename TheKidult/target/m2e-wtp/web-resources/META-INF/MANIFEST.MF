@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
 Built-By: user2
+<<<<<<< HEAD
 Build-Jdk: 1.8.0_201
+=======
+Build-Jdk: 1.8.0_211
+>>>>>>> branch 'master' of https://github.com/sincerely008/Three_FinalProject.git
 Created-By: Maven Integration for Eclipse
 
