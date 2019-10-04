@@ -17,6 +17,12 @@ height: 300px;
 <script src="https://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
 <script type="text/javascript">
 
+	var ws = new SockJS("<c:url value="/echo" />");
+
+	ws.onmessage = onMessage;
+
+	ws.onclose = onClose;
+
 	$(document).ready(function() {
 		$("#sendBtn").click(function() {
 			sendMessage();
@@ -28,13 +34,7 @@ height: 300px;
 		var divdiv = document.getElementById("data");
 		divdiv.scrollTop=divdiv.scrollHeight;
 	}
-
-	var ws = new SockJS("<c:url value="/echo" />");
-
-	ws.onmessage = onMessage;
-
-	ws.onclose = onClose;
-
+	
 	function sendMessage() {
 		ws.send($("#message").val());
 	}
