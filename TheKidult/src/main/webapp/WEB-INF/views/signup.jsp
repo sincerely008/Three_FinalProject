@@ -14,12 +14,23 @@
 <title>Insert title here</title>
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/signup.js"></script>
+<link href="resources/css/loginform.css" rel="stylesheet" type="text/css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 
+<style type="text/css">
 
+.h1{
+
+ 
+
+	
+}
+
+</style>
 </head>
 <body>
-
+<%@ include file="/form/header.jsp"%>
+	<div id="style" class="myform">
 	<h1>회원가입</h1>
 	
 	<form action="signupres.do" method="post">
@@ -119,6 +130,8 @@
 			</tr>
 		</table>
 	</form>
-
+</div>
+<br/><br/><br/><br/><br/><br/><br/>
+<%@ include file="/form/footer.jsp"%>
 </body>
 </html>
