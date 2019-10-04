@@ -12,7 +12,17 @@
 	.footer {		position : relative;
 					width: 100%;
 					height : 250px;
-					background-color: #212226;
+					background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+					background-size: 400% 400%;
+					animation: gradientBG 15s ease infinite;
+					
+					
+					
+					
+					
+					
+					
+					
 					display : table}	
 	.footerdiv {width: 1000px;  margin : 0 auto; }			
 	.footerdivdiv {	width: 1000px;
@@ -23,16 +33,16 @@
 					
 	.footerlogo { margin-right : 20px; float : left; }
 	.footerul { list-style:none; }
-	.footerul li{ font-color :White; font-size : 20px; 
-				  float : left; color : White;}	
-	.footerul a{ font-color :White; font-size : 15px; padding-left :10px; 
+	.footerul li{ font-color :White; font-size : 25px; 
+				  float : left; color : black;}	
+	.footerul a{ font-color :White; font-size : 25px; padding-left :10px; 
 				  padding-bottom : 10px;
-				  float : left; color :#949596; 
+				  float : left; color :black; 
 				  border-left-width : 1px; text-decoration: none;}						  
 
-	.footeraddress { float:left; font-size : 12px; color:#949596;
+	.footeraddress { float:left; font-size : 11.5px; color:black;
 					margin-left:20px;}
-	.footerp { font-size : 15px; color : White; display : block;}
+	.footerp { font-size : 17px; color : White; display : block;}
 	.footerpdiv {height : 100px; display : table;}
 	.footerpdivdiv{ width:1000px; text-align:center; display : table-cell;
 					vertical-align: bottom;
