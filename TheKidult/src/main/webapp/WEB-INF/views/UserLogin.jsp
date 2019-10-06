@@ -60,31 +60,17 @@
 		</form>
 		<div>
 			<div>
-				<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-				<a id="kakao-login-btn"></a> 
-<a href="http://developers.kakao.com/logout"></a>
-	<script type='text/javascript'>
-	
-Kakao.init('8e6d53d7202906065b4fa4f403a2bee0');
+			<a href="https://kauth.kakao.com/oauth/authorize
+						?client_id=0e2f445e50f3854d752de29fe5f4f3b6
+						&redirect_uri=http://localhost:8787/kidult/kakaoLogin.do
+						&response_type=code">
+				<img alt="kakaoLogin" src="resources/images/kakao_account_login_btn_medium_narrow.png">
+			</a>
+			<a href="http://developers.kakao.com/logout"></a>
+		<script type='text/javascript'>
 
-	Kakao.Auth.createLoginButton({
-	container : '#kakao-login-btn',
-	success : function(authObj) {
-	Kakao.API.request({
-
-		url: '/v2/user/me',
-
-		success: function(res) {
-			   
-			location.href="login.do?command=snslogin&id="+res.properties['nickname'];
-      
-		}
-	})
-
-},fail : function(err) {alert("로그인 실패 했습니다. 고객센터에 문의해 주세요.");}});
-
-				</script>
+		</script>
 			</div>
 		</div>
 		<div class="sub">
