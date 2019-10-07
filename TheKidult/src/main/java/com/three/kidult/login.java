@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -250,21 +251,17 @@ public class login {
 	@RequestMapping(value="/kakaoLogin.do")
 	public String kakaoLogin(String code, HttpSession session, Model model) {
 		
-		System.out.println("code : " + code);
 		
 		String access_Token = biz.kakaoGetAccessToken(code);
 		HashMap<String, Object> userInfo = biz.kakaoGetUserInfo(access_Token);
 		
-		System.out.println("controller access_token : " + access_Token);
 		
 		String nickName = (String) userInfo.get("nickname"); 
 		String email = "";
-		//model.addAttribute("nickname", nickName);
 		
 		
 		if(userInfo.get("email") != null) {
 			email = (String)userInfo.get("email");
-			//model.addAttribute("email", email);
 			
 			session.setAttribute("access_Token", access_Token);
 			
@@ -272,10 +269,33 @@ public class login {
 			System.out.println("email is null");
 		}
 		
-		System.out.println("nick name : " + nickName);
-		System.out.println("E-Mail : " + email);
+		MemberDto dto;
 		
-		return "";
+		if(email != null) {
+			dto = biz.login(email, email);
+		} else {
+			dto = biz.login(nickName, nickName);
+		}
+		
+		
+		
+		if(dto != null) {
+			session.setAttribute("dto", dto);
+			return "home";
+		} else {
+			
+			dto = new MemberDto();
+			
+			if(email != null) {
+				dto.setMember_id(email);
+			} else {
+				dto.setMember_id(nickName);
+			}
+			model.addAttribute("dto", dto);
+			return "signup";
+		}
+		
+		
 	}
 	
 	

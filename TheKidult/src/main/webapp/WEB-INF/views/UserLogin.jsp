@@ -82,7 +82,7 @@
 			</ul>
 		</div>
 	</div>
-	<br />
+	<br/>
 	<%@ include file="/form/footer.jsp"%>
 </body>
 
