@@ -46,4 +46,8 @@ public class HomeController {
 		return "delivery";
 	}
 	
+	@RequestMapping("/note.do")
+	public String note() {
+		return "note";
+	}
 }
