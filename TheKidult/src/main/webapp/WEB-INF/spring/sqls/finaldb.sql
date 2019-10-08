@@ -25,6 +25,10 @@ SELECT * FROM MEMBER
 
 
 INSERT INTO MEMBER VALUES('admin', '0000', 'admin', SYSDATE, '경기도', '010-1234-5678', 'email@email.com', 'Y', 'man', 'ADMIN', SYSDATE, SYSDATE)
+INSERT INTO MEMBER VALUES('user1', '0000', 'user1', SYSDATE, '경기도', '010-1234-5678', 'email1@email.com', 'Y', 'man', 'user', 'N',SYSDATE, SYSDATE)
+INSERT INTO MEMBER VALUES('user2', '0000', 'user2', SYSDATE, '경기도', '010-1234-5678', 'email2@email.com', 'N', 'man', 'user', 'N',SYSDATE, SYSDATE)
+INSERT INTO MEMBER VALUES('user3', '0000', 'user3', SYSDATE, '경기도', '010-1234-5678', 'email3@email.com', 'N', 'man', 'user', 'Y',SYSDATE, SYSDATE)
+INSERT INTO MEMBER VALUES('user4', '0000', 'user4', SYSDATE, '경기도', '010-1234-5678', 'email4@email.com', 'Y', 'man', 'user', 'Y',SYSDATE, SYSDATE)
 DELETE FROM MEMBER WHERE MEMBER_ID='user'
 SELECT MEMBER_ID
 FROM MEMBER
