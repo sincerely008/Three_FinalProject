@@ -234,7 +234,8 @@ public class login {
 	}
 	
 	@RequestMapping("/UserLogin.do")
-	public String gologin() {
+	public String gologin(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
 		
 		return"UserLogin";
 	}
@@ -244,10 +245,23 @@ public class login {
 	public String loginres(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
 		session = request.getSession();
+
+		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("password");
+		
+		MemberDto dto = biz.login(id, pw);
+		
+		if(dto != null) {
+			session.setAttribute("memberDto", dto);
+			
+			return "loginnext";
+		}else {
+			return "UserLogin";
+		}
 		
 		
 		
-		return "";
 	}
 	
 	@RequestMapping(value="/kakaoLogin.do")
