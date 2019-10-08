@@ -41,4 +41,9 @@ public class HomeController {
 		return "chat";
 	}
 	
+	@RequestMapping("/delivery.do")
+	public String delivery() {
+		return "delivery";
+	}
+	
 }
