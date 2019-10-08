@@ -255,7 +255,7 @@ public class login {
 		if(dto != null) {
 			session.setAttribute("memberDto", dto);
 			
-			return "loginnext";
+			return "home";
 		}else {
 			return "UserLogin";
 		}
