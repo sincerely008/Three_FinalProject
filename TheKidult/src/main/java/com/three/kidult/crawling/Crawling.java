@@ -27,19 +27,17 @@ public class Crawling {
 		
 		
 		JSONArray jsonar = new JSONArray();
-		JSONObject jsonoj = new JSONObject();
 		while(ie1.hasNext()) {
 			//System.out.println("{"+"\"img\" : "+ "\""+"http://www.replicas.co.kr"+ie1.next().attr("src")+"\""+", "+"\"name\" : "+"\""+ie2.next().text()+"\""+", "+"\"price\" : "+"\""+ie3.next().text()+"\""+"}");
 			
-			String craw = "{"+"\"img\" : "+ "\""+"http://www.replicas.co.kr"+ie1.next().attr("src")+"\""+", "+"\"name\" : "+"\""+ie2.next().text()+"\""+", "+"\"price\" : "+"\""+ie3.next().text()+"\""+"}";
+			//String craw = "{"+"\"img\" : "+ "\""+"http://www.replicas.co.kr"+ie1.next().attr("src")+"\""+", "+"\"name\" : "+"\""+ie2.next().text()+"\""+", "+"\"price\" : "+"\""+ie3.next().text()+"\""+"}";
 				
-				
+			JSONObject jsonoj = new JSONObject();
 				jsonoj.put("img", link+ie1.next().attr("src"));
 				jsonoj.put("name", ie2.next().text());
 				jsonoj.put("price", ie3.next().text());
 				jsonar.add(jsonoj);
-				System.out.println(jsonar);
-						
+			
 		}
 		
 		try {
