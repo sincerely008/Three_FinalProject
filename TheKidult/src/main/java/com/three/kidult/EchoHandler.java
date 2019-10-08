@@ -20,6 +20,7 @@ public class EchoHandler extends TextWebSocketHandler {
 
 	private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
 	List<WebSocketSession> sessions = new ArrayList<WebSocketSession>();
+	
 	//Map<String, WebSocketSession> sessions = new HashMap<String, WebSocketSession>();
 	//int a = 0;
 
@@ -27,6 +28,7 @@ public class EchoHandler extends TextWebSocketHandler {
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		logger.info("{} conntected", session.getId());
 		sessions.add(session); 	
+		
 		/*String non = "비회원" + a;
 		System.out.println(non);
 		sessions.put(non, session);
@@ -43,16 +45,17 @@ public class EchoHandler extends TextWebSocketHandler {
 		for (Map.Entry<String, WebSocketSession> entry : entrySet) {
 			entry.getValue().sendMessage(new TextMessage(entry.getKey() + " : " + message.getPayload()));
 		}*/	
+		
 		String senderId = session.getId();
-		if(dto.getId==null){
+		//if(dto.getId==null){
 			for(WebSocketSession sess: sessions) {
-				sess.sendMessage(new TextMessage("비회원"+senderId+" : "+message.getPayload()));	
+				sess.sendMessage(new TextMessage("비회원 "+senderId+" : "+message.getPayload()));	
 			}
-		}else{
-			for(WebSocketSession sess: sessions) {
-				sess.sendMessage(new TextMessage(session.getId()+" : "+message.getPayload()));
-			}
-		}		
+	//	}else{
+			//for(WebSocketSession sess: sessions) {
+			//	sess.sendMessage(new TextMessage(session.getId()+" : "+message.getPayload()));
+			//}
+		//}		
 	}
 
 	@Override
@@ -61,5 +64,3 @@ public class EchoHandler extends TextWebSocketHandler {
 		sessions.remove(session);
 	}
 }
-
-//https://victorydntmd.tistory.com/253 참고사이트
