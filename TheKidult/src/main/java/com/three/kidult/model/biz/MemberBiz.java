@@ -1,5 +1,6 @@
 package com.three.kidult.model.biz;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.three.kidult.dto.MemberDto;
@@ -15,5 +16,7 @@ public interface MemberBiz {
 	public MemberDto forgotPw(String id, String name, String email);	// 비밀번호 찾기
 	public int updatePw(String id, String pw);							// 비빌번호 변경
 	public int goodbyeUser(MemberDto dto);								// 회원탈퇴
+	public String kakaoGetAccessToken(String authorize_code);				//카카오 로그인
+	public HashMap<String, Object> kakaoGetUserInfo(String access_Token);	//카카오 로그인
 
 }

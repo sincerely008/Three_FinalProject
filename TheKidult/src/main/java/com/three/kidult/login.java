@@ -3,6 +3,8 @@ package com.three.kidult;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -246,7 +248,55 @@ public class login {
 		return "";
 	}
 	
-	
+	@RequestMapping(value="/kakaoLogin.do")
+	public String kakaoLogin(String code, HttpSession session, Model model) {
+		
+		
+		String access_Token = biz.kakaoGetAccessToken(code);
+		HashMap<String, Object> userInfo = biz.kakaoGetUserInfo(access_Token);
+		
+		
+		String nickName = (String) userInfo.get("nickname"); 
+		String email = "";
+		
+		
+		if(userInfo.get("email") != null) {
+			email = (String)userInfo.get("email");
+			
+			session.setAttribute("access_Token", access_Token);
+			
+		}else {
+			System.out.println("email is null");
+		}
+		
+		MemberDto dto;
+		
+		if(email != null) {
+			dto = biz.login(email, email);
+		} else {
+			dto = biz.login(nickName, nickName);
+		}
+		
+		
+		
+		if(dto != null) {
+			session.setAttribute("dto", dto);
+			return "home";
+		} else {
+			
+			dto = new MemberDto();
+			
+			if(email != null) {
+				dto.setMember_id(email);
+			} else {
+				dto.setMember_id(nickName);
+			}
+			model.addAttribute("dto", dto);
+			return "signup";
+		}
+		
+		
+	}
 	
 	
 }
