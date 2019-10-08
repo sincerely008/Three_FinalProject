@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,15 +48,17 @@ public class EchoHandler extends TextWebSocketHandler {
 		}*/	
 		
 		String senderId = session.getId();
-		//if(dto.getId==null){
+		String id = (String)((HttpSession) session).getAttribute("memberDto");
+		System.out.println(id);
+		if(id==null){
 			for(WebSocketSession sess: sessions) {
 				sess.sendMessage(new TextMessage("비회원 "+senderId+" : "+message.getPayload()));	
 			}
-	//	}else{
-			//for(WebSocketSession sess: sessions) {
-			//	sess.sendMessage(new TextMessage(session.getId()+" : "+message.getPayload()));
-			//}
-		//}		
+		}else{
+			for(WebSocketSession sess: sessions) {
+				sess.sendMessage(new TextMessage(id+" : "+message.getPayload()));
+			}
+		}		
 	}
 
 	@Override
