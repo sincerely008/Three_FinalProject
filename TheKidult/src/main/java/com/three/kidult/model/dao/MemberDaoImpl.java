@@ -65,8 +65,18 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public MemberDto login(String id, String pw) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		MemberDto dto = new MemberDto();
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", id);
+		param.put("pw", pw);
+		
+		try {
+			dto = sqlSession.selectOne(namespace + "logingogo", param);
+		} catch (Exception e) {
+			System.out.println("login error");
+		}
+		return dto;
 	}
 
 	@Override

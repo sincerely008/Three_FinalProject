@@ -35,4 +35,8 @@
   	WHERE MEMBER_ID=#{id}
   </update>
   
+  <select id="logingogo" resultType="memberDto">
+  	
+  </select>
+  
 </mapper>
