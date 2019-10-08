@@ -13,6 +13,9 @@
 		<c:when test="${not empty memberDto.member_kakao }">
 			<h1>잘된건가?</h1>
 		</c:when>
+		<c:otherwise>
+			<h1>잘 안됨</h1>
+		</c:otherwise>
 	</c:choose>
 
 </body>
