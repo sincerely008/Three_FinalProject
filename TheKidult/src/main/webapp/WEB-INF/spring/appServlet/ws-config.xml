@@ -12,5 +12,6 @@
 	</websocket:handlers>
 
 	<bean id="echoHandler" class="com.three.kidult.EchoHandler" />
+	
 
 </beans>
