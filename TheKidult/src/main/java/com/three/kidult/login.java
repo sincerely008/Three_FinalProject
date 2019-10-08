@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -150,11 +149,13 @@ public class login {
 			out.print("<script>");
 			out.print("alert('회원가입 성공')");
 			out.print("</script>");
+			out.flush();
 			return "signend";
 		}else {
 			out.print("<script>");
 			out.print("alert('회원가입 실패')");
 			out.print("</script>");
+			out.flush();
 			return "signup";
 		}
 	
@@ -222,11 +223,13 @@ public class login {
 			out.print("<script>");
 			out.print("alert('변경 완료!')");
 			out.print("</script>");
+			out.flush();
 			return "changeforgotpw";
 		}else {
 			out.print("<script>");
 			out.print("alert('변경 실패!')");
 			out.print("</script>");
+			out.flush();
 			return "forgotpw";
 		}
 		
@@ -242,10 +245,14 @@ public class login {
 	
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
-	public String loginres(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String loginres(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		session = request.getSession();
-
+		PrintWriter out = response.getWriter();
+		
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("password");
@@ -257,6 +264,10 @@ public class login {
 			
 			return "home";
 		}else {
+			out.print("<script>");
+			out.print("alert('아이디와 비밀번호를 확인해주세요')");
+			out.print("</script>");
+			out.flush();
 			return "UserLogin";
 		}
 		
