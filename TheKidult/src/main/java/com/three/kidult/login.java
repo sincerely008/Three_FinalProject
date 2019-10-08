@@ -253,8 +253,9 @@ public class login {
 	@RequestMapping(value="/kakaoLogin.do")
 	public String kakaoLogin(String code, HttpSession session, Model model) {
 		
-		
+		System.out.println(code);
 		String access_Token = biz.kakaoGetAccessToken(code);
+		System.out.println(access_Token);
 		HashMap<String, Object> userInfo = biz.kakaoGetUserInfo(access_Token);
 		
 		

@@ -166,8 +166,9 @@ public class MemberBizImpl implements MemberBiz {
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			
 			userInfo.put("nickname", nickname);
+			if(email != null) {
 			userInfo.put("email", email);
-			
+			}
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
