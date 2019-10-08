@@ -27,8 +27,7 @@
 	<a href="crud.do">crud</a><br>
 	<a href="signup.do">회원가입</a><br>
 	<a href="chat.do">임시채팅방</a></br>
-	<a href="https://apis.tracker.delivery/carriers/:carrier_id/tracks/:track_id" target="_blank">배송조회</a>
-
+	<a href="delivery.do">배송조회</a></br>
 	<a href="home.do">ㅇ</a></br>
 
 	<a href="javascript:forgotId()">아이디 찾기</a><br>
