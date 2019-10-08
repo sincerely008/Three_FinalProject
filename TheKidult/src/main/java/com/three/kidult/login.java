@@ -243,6 +243,7 @@ public class login {
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String loginres(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
+		session = request.getSession();
 		
 		
 		return "";
