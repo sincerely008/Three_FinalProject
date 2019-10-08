@@ -1,14 +1,15 @@
 package com.three.kidult;
 
-import com.three.kidult.dto.MemberDto;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -19,37 +20,46 @@ public class EchoHandler extends TextWebSocketHandler {
 
 	private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
 	List<WebSocketSession> sessions = new ArrayList<WebSocketSession>();
-	
+	//Map<String, WebSocketSession> sessions = new HashMap<String, WebSocketSession>();
+	//int a = 0;
+
 	@Override
-	public void afterConnectionEstablished(WebSocketSession session) throws Exception{
-		logger.info("{0} conntected", session.getId());		
-		sessions.add(session); 
+	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+		logger.info("{} conntected", session.getId());
+		sessions.add(session); 	
+		/*String non = "비회원" + a;
+		System.out.println(non);
+		sessions.put(non, session);
+		a++;*/
 	}
-	
+
 	@Override
-	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception{
-		logger.info("From {0}, recieved Message : {1} ", session.getId(), message.getPayload());
-		
-		MemberDto dto = new MemberDto();
-		if(dto.getMember_id()==null) {	
-			String senderId = "비회원";
+	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+		logger.info("From {}, recieved Message : {} ", session.getId(), message.getPayload());
+
+		/*Set<Entry<String, WebSocketSession>> entrySet = sessions.entrySet();
+		 for( Map.Entry<String, String> entry : entrySet) {
+		 System.out.println(entry.getKey() + ":" + entry.getValue());
+		for (Map.Entry<String, WebSocketSession> entry : entrySet) {
+			entry.getValue().sendMessage(new TextMessage(entry.getKey() + " : " + message.getPayload()));
+		}*/	
+		String senderId = session.getId();
+		if(dto.getId==null){
 			for(WebSocketSession sess: sessions) {
-				sess.sendMessage(new TextMessage(senderId+" : "+message.getPayload()));
+				sess.sendMessage(new TextMessage("비회원"+senderId+" : "+message.getPayload()));	
 			}
-		}else {
-			String senderId = dto.getMember_id();
+		}else{
 			for(WebSocketSession sess: sessions) {
-				sess.sendMessage(new TextMessage(senderId+" : "+message.getPayload()));
+				sess.sendMessage(new TextMessage(session.getId()+" : "+message.getPayload()));
 			}
-		}
+		}		
 	}
-	
+
 	@Override
-	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception{
-		logger.info("{0} Connection Closed ", session.getId());
+	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+		logger.info("{} Connection Closed ", session.getId());
 		sessions.remove(session);
 	}
 }
-
 
 //https://victorydntmd.tistory.com/253 참고사이트
