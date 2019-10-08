@@ -20,7 +20,6 @@ public class Crawling {
 		Document doc = Jsoup.connect(URL).get();
 
 		Elements elem = doc.select("div.item-wrap");
-		
 		Iterator<Element> ie1 = elem.select("div.item-cont > dl.item-list > dt.thumb > a > img[src]").iterator();
 		Iterator<Element> ie2 = elem.select("div.item-cont > dl.item-list > dd > ul > li.prd-brand").iterator();
 		Iterator<Element> ie3 = elem.select("div.item-cont > dl.item-list > dd > ul > li.prd-price").iterator();
@@ -32,7 +31,7 @@ public class Crawling {
 		while(ie1.hasNext()) {
 			//System.out.println("{"+"\"img\" : "+ "\""+"http://www.replicas.co.kr"+ie1.next().attr("src")+"\""+", "+"\"name\" : "+"\""+ie2.next().text()+"\""+", "+"\"price\" : "+"\""+ie3.next().text()+"\""+"}");
 			
-			//String craw = "{"+"\"img\" : "+ "\""+"http://www.replicas.co.kr"+ie1.next().attr("src")+"\""+", "+"\"name\" : "+"\""+ie2.next().text()+"\""+", "+"\"price\" : "+"\""+ie3.next().text()+"\""+"}";
+			String craw = "{"+"\"img\" : "+ "\""+"http://www.replicas.co.kr"+ie1.next().attr("src")+"\""+", "+"\"name\" : "+"\""+ie2.next().text()+"\""+", "+"\"price\" : "+"\""+ie3.next().text()+"\""+"}";
 				
 				
 				jsonoj.put("img", link+ie1.next().attr("src"));
