@@ -7,6 +7,11 @@
 <%
 	response.setContentType("text/html; charset=UTF-8");
 %>
+<%
+	response.setHeader("Pragma", "no-cache");
+	response.setHeader("Cache-control", "no-store");
+	response.setHeader("Expires", "0");
+%>    
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +44,9 @@
 </style>
 </head>
 <body class="login">
+<header>
 <%@ include file="/form/header.jsp"%>
+</header>
 <div id="particles-js">
 </div>
 	<div class="con">

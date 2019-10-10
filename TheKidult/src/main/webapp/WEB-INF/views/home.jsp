@@ -8,7 +8,7 @@
 <script type="text/javascript">
 	
 </script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="resources/js/images.js"></script>
 <style type="text/css">
 * {
@@ -390,7 +390,9 @@ li{list-style:none}
 </style>
 </head>
 <body>
+<header>
 <%@ include file="/form/header.jsp"%>
+</header>
 		<div id="slider01" class="gallery-wrapper">
 	<ul class="gallery-list">
 		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/018_b3.png alt="" /></a></li>

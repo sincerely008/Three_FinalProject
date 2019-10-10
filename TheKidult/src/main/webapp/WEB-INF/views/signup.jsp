@@ -29,7 +29,10 @@
 </style>
 </head>
 <body>
+<header>
 <%@ include file="/form/header.jsp"%>
+</header>
+
 	<div id="style" class="myform">
 	<h1>회원가입</h1>
 	

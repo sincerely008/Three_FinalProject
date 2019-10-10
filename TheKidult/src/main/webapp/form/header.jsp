@@ -1,19 +1,20 @@
 <%@page import="com.three.kidult.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	response.setHeader("Pragma", "no-cache");
+	response.setHeader("Cache-control", "no-store");
+	response.setHeader("Expires", "0");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script type="text/javascript">
-	
 <%
-MemberDto memberDto = (MemberDto)session.getAttribute("memberDto");
+	MemberDto memberDto = (MemberDto)session.getAttribute("memberDto");
 %>
-	
-</script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="resources/js/images.js"></script>
 <style type="text/css">
@@ -468,7 +469,7 @@ MemberDto memberDto = (MemberDto)session.getAttribute("memberDto");
 										바이크 </a></li>
 							</ul>
 						</li>
-							</li>
+							
 							<li class="headerdiv2divulli"
 							onclick="location.href='pagemoving.do?command=concerthallmain'">
 							<a class="headerdiv2divullia"
@@ -494,7 +495,7 @@ MemberDto memberDto = (MemberDto)session.getAttribute("memberDto");
 				</div>
 				
 			</div>
-	
+	</header>
 
 </body>
 </html>
