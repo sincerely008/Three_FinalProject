@@ -121,7 +121,16 @@ function emailChk() {
 		}
 	});
 }
-
+function check(){
+	
+	var eran = $("input[name=emailConfirm]").val();
+	
+	if(ran == eran){
+		return true;
+	}else{
+		return false;
+	}
+}
 function emailCon() {
 	var eran = $("input[name=emailConfirm]").val();
 	var command = $("input[name=command]");
@@ -131,6 +140,7 @@ function emailCon() {
 		command.val("signupres");
 		eSpan.html("인증완료!");
 		$("#insertsign").css("display", "inline");
+		
 	} else {
 		eSpan.html("다시 확인해주세요!");
 	}

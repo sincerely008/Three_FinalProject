@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -12,6 +13,7 @@
 	response.setHeader("Cache-control", "no-store");
 	response.setHeader("Expires", "0");
 %>    
+
 
 <!DOCTYPE html>
 <html>
@@ -44,6 +46,15 @@
 </style>
 </head>
 <body class="login">
+
+<c:choose>
+	<c:when test="${!empty memberDto }">
+		<script type="text/javascript">
+			history.back();
+		</script>
+	</c:when>
+	<c:otherwise>
+
 <header>
 <%@ include file="/form/header.jsp"%>
 </header>
@@ -92,6 +103,8 @@
 	</div>
 	<br/>
 	<%@ include file="/form/footer.jsp"%>
+	</c:otherwise>
+	</c:choose>
 </body>
 
 </html>

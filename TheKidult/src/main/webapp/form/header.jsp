@@ -392,7 +392,7 @@
      								내정보보기  
    							  		</button>
    							  		<%} %>
-   							    	<button onclick="logout()" class="logindivdivbtn">
+   							    	<button onclick="location.href='logout.do'" class="logindivdivbtn">
      								로그아웃
    							    	</button>
    							   <% }%>

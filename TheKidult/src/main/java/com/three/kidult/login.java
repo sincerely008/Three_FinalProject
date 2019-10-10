@@ -146,11 +146,8 @@ public class login {
 		res = biz.signup(dto);
 		
 		if(res>0) {
-			out.print("<script>");
-			out.print("alert('회원가입 성공')");
-			out.print("</script>");
-			out.flush();
-			return "signend";
+			
+			return "redirect:signend.do";
 		}else {
 			out.print("<script>");
 			out.print("alert('회원가입 실패')");
@@ -160,6 +157,12 @@ public class login {
 		}
 	
 		
+	}
+	@RequestMapping("/signend.do")
+	public String signend(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		
+		return "signend";
 	}
 	
 	@RequestMapping("/forgotid.do")
@@ -262,7 +265,7 @@ public class login {
 		if(dto != null) {
 			session.setAttribute("memberDto", dto);
 			
-			return "home";
+			return "redirect:home.do";
 		}else {
 			out.print("<script>");
 			out.print("alert('아이디와 비밀번호를 확인해주세요')");
@@ -325,5 +328,14 @@ public class login {
 		
 	}
 	
+	@RequestMapping("/logout.do")
+	public String logOut(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		session = request.getSession();
+		
+		session.invalidate();
+		
+		return "home";
+	}
 	
 }
