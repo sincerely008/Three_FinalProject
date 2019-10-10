@@ -1,3 +1,4 @@
+<%@page import="com.three.kidult.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,6 +8,10 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
+	
+<%
+MemberDto memberDto = (MemberDto)session.getAttribute("memberDto");
+%>
 	
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -366,13 +371,30 @@
 
 						<div class="logindiv" style="float: right;">
 							<div class="logindivdiv" style="margin-top: -30px;">
+			
+									<%
+								if(memberDto == null) {
+									%>
+			
+								<button onclick="location.href='UserLogin.do'"class="logindivdivbtn">
+								로그인</button>
+								<button onclick="location.href='signup.do'"class="logindivdivbtn">
+								회원가입</button>
 
-								<button onclick="location.href='UserLogin.do'"
-									class="logindivdivbtn">로그인</button>
-								<button onclick="location.href='signup.do'"
-									class="logindivdivbtn">회원가입</button>
-
-
+								     <%}else{ %>
+						       		<div style ="font-size : 10px;">
+									<%=memberDto.getMember_name()%>님 반갑습니다.  <br>
+									</div>
+									
+									<%if(memberDto.getMember_enabled()!="N"){ %>
+									<button onclick="location.href='pagemoving.do?command=userinformation'" class="logindivdivbtn">
+     								내정보보기  
+   							  		</button>
+   							  		<%} %>
+   							    	<button onclick="logout()" class="logindivdivbtn">
+     								로그아웃
+   							    	</button>
+   							   <% }%>
 
 							</div>
 						</div>
