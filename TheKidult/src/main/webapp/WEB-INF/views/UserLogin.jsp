@@ -39,6 +39,7 @@
 </style>
 </head>
 <body class="login">
+<%@ include file="/form/header.jsp"%>
 <div id="particles-js">
 </div>
 	<div class="con">
