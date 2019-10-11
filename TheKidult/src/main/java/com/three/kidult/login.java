@@ -265,9 +265,10 @@ public class login {
 		
 		if(dto != null) {
 			session.setAttribute("memberDto", dto);
-			ChattingDto dto1=new ChattingDto();
-			dto1.setChatting_user(id);
-			
+
+			ChattingDto dto1 =new ChattingDto();
+			dto1.setChatting_user(id);		
+
 			return "redirect:home.do";
 		}else {
 			out.print("<script>");
@@ -294,9 +295,9 @@ public class login {
 		
 		
 		if(userInfo.get("email") != null) {
-			email = (String)userInfo.get("email");
-			
+			email = (String)userInfo.get("email");			
 			session.setAttribute("access_Token", access_Token);
+
 			ChattingDto dto1=new ChattingDto();
 			dto1.setChatting_user(nickName);
 			
@@ -328,9 +329,7 @@ public class login {
 			}
 			model.addAttribute("dto", dto);
 			return "signup";
-		}
-		
-		
+		}	
 	}
 	
 	@RequestMapping("/logout.do")
@@ -342,5 +341,4 @@ public class login {
 		
 		return "home";
 	}
-	
 }

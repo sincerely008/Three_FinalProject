@@ -49,10 +49,10 @@ public class EchoHandler extends TextWebSocketHandler {
 			entry.getValue().sendMessage(new TextMessage(entry.getKey() + " : " + message.getPayload()));
 		}*/	
 		
+
 		String senderId = session.getId();
-		
-		ChattingDto dto=new ChattingDto();
-		String id=dto.getChatting_user();
+		String id=ChattingDto.getChatting_user();
+
 		System.out.println(id);
 		
 		if(id==null){
@@ -61,7 +61,7 @@ public class EchoHandler extends TextWebSocketHandler {
 			}
 		}else{
 			for(WebSocketSession sess: sessions) {
-				sess.sendMessage(new TextMessage(id+" : "+message.getPayload()));
+				sess.sendMessage(new TextMessage(id+" 회원"+" : "+message.getPayload()));
 			}
 		}		
 	}

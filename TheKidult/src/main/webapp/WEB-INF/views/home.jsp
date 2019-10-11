@@ -385,8 +385,6 @@ li{list-style:none}
 	background-color: #dadada;
 	line-height: 20px;
 }
-
-
 </style>
 </head>
 <body>
@@ -515,6 +513,11 @@ li{list-style:none}
 	</section>
 	<input id="throwmusic" type="hidden" value="123" />
 	<%@ include file="/form/footer.jsp"%>
+	
+	<input type="text" id="message" />
+	<input type="button" id="sendBtn" value="전송" />
+	<div id="data" style="overflow:auto;"></div>
+	
 </body>
 </html>
 </body>
