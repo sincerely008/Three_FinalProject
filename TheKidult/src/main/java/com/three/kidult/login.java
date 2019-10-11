@@ -112,7 +112,7 @@ public class login {
 		return ran;
 	}
 	
-	@RequestMapping(value="/signupres.do", method = RequestMethod.POST)
+	@RequestMapping(value="/signupres.do", method = {RequestMethod.POST,RequestMethod.GET})
 	public String signupres(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		request.setCharacterEncoding("UTF-8");
