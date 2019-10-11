@@ -299,7 +299,7 @@ public class login {
 			session.setAttribute("access_Token", access_Token);
 
 			ChattingDto dto1=new ChattingDto();
-			dto1.setChatting_user(nickName);
+			dto1.setChatting_user(kakaoId);
 			
 		}else {
 			System.out.println("email is null");
@@ -327,13 +327,8 @@ public class login {
 			model.addAttribute("emailBack",emailBack);
 			
 			return "signup";
-<<<<<<< HEAD
 		}	
-=======
-		}
->>>>>>> refs/remotes/origin/furium
 	}
-<<<<<<< HEAD
 	
 	@RequestMapping("/logout.do")
 	public String logOut(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -344,6 +339,4 @@ public class login {
 		
 		return "home";
 	}
-=======
->>>>>>> refs/remotes/origin/furium
 }
