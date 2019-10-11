@@ -60,8 +60,9 @@
 				<c:otherwise>
 					<tr>
 						<td>
-							<input type="hidden" name="id" value="${member_id }">
-							<input type="hidden" name="password" value="${member_id }">
+							<input type="hidden" name="id" value="${dto.member_id }">
+							<input type="hidden" name="password" value="${dto.member_id }">
+							<input type="hidden" name="pwConfirm" value="${dto.member_id }">
 						</td>
 					</tr>
 				</c:otherwise>
@@ -98,8 +99,16 @@
 				<tr>
 					<th>이메일</th>
 					<td>
-						<input type="text" name="emailFront" > @
-						<input type="text" name="emailBack" id="emailBack">
+					<c:choose>
+						<c:when test="${emailFront ne null }">
+							<input type="text" name="emailFront" value="${emailFront }"> @
+							<input type="text" name="emailBack" id="emailBack" value="${emailBack }">
+						</c:when>
+						<c:otherwise>
+							<input type="text" name="emailFront"> @
+							<input type="text" name="emailBack" id="emailBack">
+						</c:otherwise>
+					</c:choose>
 						<select id="emailselect" name="emailselect">
 							<option selected="selected" value="self">직접 입력</option>
 							<option value="naver.com">naver.com</option>
