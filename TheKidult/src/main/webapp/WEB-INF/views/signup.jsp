@@ -16,14 +16,12 @@
 <script src="js/signup.js"></script>
 <link href="resources/css/loginform.css" rel="stylesheet" type="text/css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
-
+<script type="text/javascript">
+history.go(1);
+</script>
 <style type="text/css">
-
 .h1{
 
- 
-
-	
 }
 
 </style>
@@ -139,8 +137,8 @@
 					<th>성별</th>
 					<td>
 						<select name="gender">
-							<option value="man" selected="selected">남성</option>
-							<option value="woman">여성</option>
+							<option value="Man" selected="selected">남성</option>
+							<option value="Woman">여성</option>
 						</select>
 					</td>
 				</tr>
