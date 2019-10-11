@@ -16,14 +16,12 @@
 <script src="js/signup.js"></script>
 <link href="resources/css/loginform.css" rel="stylesheet" type="text/css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
-
+<script type="text/javascript">
+history.go(1);
+</script>
 <style type="text/css">
-
 .h1{
 
- 
-
-	
 }
 
 </style>
@@ -63,8 +61,9 @@
 				<c:otherwise>
 					<tr>
 						<td>
-							<input type="hidden" name="id" value="${member_id }">
-							<input type="hidden" name="password" value="${member_id }">
+							<input type="hidden" name="id" value="${dto.member_id }">
+							<input type="hidden" name="password" value="${dto.member_id }">
+							<input type="hidden" name="pwConfirm" value="${dto.member_id }">
 						</td>
 					</tr>
 				</c:otherwise>
@@ -101,8 +100,16 @@
 				<tr>
 					<th>이메일</th>
 					<td>
-						<input type="text" name="emailFront" > @
-						<input type="text" name="emailBack" id="emailBack">
+					<c:choose>
+						<c:when test="${emailFront ne null }">
+							<input type="text" name="emailFront" value="${emailFront }"> @
+							<input type="text" name="emailBack" id="emailBack" value="${emailBack }">
+						</c:when>
+						<c:otherwise>
+							<input type="text" name="emailFront"> @
+							<input type="text" name="emailBack" id="emailBack">
+						</c:otherwise>
+					</c:choose>
 						<select id="emailselect" name="emailselect">
 							<option selected="selected" value="self">직접 입력</option>
 							<option value="naver.com">naver.com</option>
@@ -130,8 +137,8 @@
 					<th>성별</th>
 					<td>
 						<select name="gender">
-							<option value="man" selected="selected">남성</option>
-							<option value="woman">여성</option>
+							<option value="Man" selected="selected">남성</option>
+							<option value="Woman">여성</option>
 						</select>
 					</td>
 				</tr>
