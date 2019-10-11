@@ -29,11 +29,14 @@
 </style>
 </head>
 <body>
+<header>
 <%@ include file="/form/header.jsp"%>
+</header>
+
 	<div id="style" class="myform">
 	<h1>회원가입</h1>
 	
-	<form action="signupres.do" method="post">
+	<form action="signupres.do" method="post" onsubmit="return check();" id="sign">
 		<table>
 			<c:choose>
 			
@@ -137,7 +140,7 @@
 				<tr>
 					<td>
 						<input type="submit" value="가입하기" id="insertsign" style="display: none">
-						<input type="button" value="취소" onclick="location.href=''"> <!-- 로그인 페이지 완성되면 추가할 것 -->
+						<input type="button" value="취소" onclick="location.replace('UserLogin.do')"> 
 					</td>
 				</tr>
 		</table>

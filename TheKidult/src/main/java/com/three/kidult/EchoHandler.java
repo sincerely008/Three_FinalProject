@@ -49,10 +49,12 @@ public class EchoHandler extends TextWebSocketHandler {
 			entry.getValue().sendMessage(new TextMessage(entry.getKey() + " : " + message.getPayload()));
 		}*/	
 		
-		String senderId = session.getId();		
+
+		String senderId = session.getId();
 		String id=ChattingDto.getChatting_user();
-		
+
 		System.out.println(id);
+		
 		if(id==null){
 			for(WebSocketSession sess: sessions) {
 				sess.sendMessage(new TextMessage("비회원 "+senderId+" : "+message.getPayload()));	
