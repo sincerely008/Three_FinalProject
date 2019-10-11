@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.three.kidult.dto.ChattingDto;
 import com.three.kidult.dto.MemberDto;
 import com.three.kidult.model.biz.MemberBiz;
 
@@ -254,6 +255,8 @@ public class login {
 		
 		if(dto != null) {
 			session.setAttribute("memberDto", dto);
+			ChattingDto dto1 =new ChattingDto();
+			dto1.setChatting_user(id);		
 			
 			return "home";
 		}else {
@@ -277,9 +280,10 @@ public class login {
 		
 		
 		if(userInfo.get("email") != null) {
-			email = (String)userInfo.get("email");
-			
+			email = (String)userInfo.get("email");			
 			session.setAttribute("access_Token", access_Token);
+			ChattingDto dto1 =new ChattingDto();
+			dto1.setChatting_user(nickName);	
 			
 		}else {
 			System.out.println("email is null");
@@ -309,10 +313,6 @@ public class login {
 			}
 			model.addAttribute("dto", dto);
 			return "signup";
-		}
-		
-		
+		}	
 	}
-	
-	
 }
