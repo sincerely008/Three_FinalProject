@@ -16,6 +16,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.three.kidult.dto.ChattingDto;
+
 @Controller
 public class EchoHandler extends TextWebSocketHandler {
 
@@ -47,16 +49,19 @@ public class EchoHandler extends TextWebSocketHandler {
 			entry.getValue().sendMessage(new TextMessage(entry.getKey() + " : " + message.getPayload()));
 		}*/	
 		
+
 		String senderId = session.getId();
-		String id = (String)((HttpSession) session).getAttribute("memberDto");
+		String id=ChattingDto.getChatting_user();
+
 		System.out.println(id);
+		
 		if(id==null){
 			for(WebSocketSession sess: sessions) {
 				sess.sendMessage(new TextMessage("비회원 "+senderId+" : "+message.getPayload()));	
 			}
 		}else{
 			for(WebSocketSession sess: sessions) {
-				sess.sendMessage(new TextMessage(id+" : "+message.getPayload()));
+				sess.sendMessage(new TextMessage(id+" 회원"+" : "+message.getPayload()));
 			}
 		}		
 	}
