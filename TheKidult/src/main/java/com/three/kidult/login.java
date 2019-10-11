@@ -339,6 +339,9 @@ public class login {
 		
 		session.invalidate();
 		
+		ChattingDto dto1 =new ChattingDto();
+		dto1.setChatting_user(null);		
+		
 		return "home";
 	}
 }
