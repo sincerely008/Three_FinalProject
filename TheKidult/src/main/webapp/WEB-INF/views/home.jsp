@@ -10,42 +10,6 @@
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="resources/js/images.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
-<script type="text/javascript">
-
-	var ws = new SockJS("<c:url value="/echo" />");
-
-	ws.onmessage = onMessage;
-
-	ws.onclose = onClose;
-
-	$(document).ready(function() {
-		$("#sendBtn").click(function() {
-			sendMessage();
-			moveScroll();
-		});
-	});
-	
-	function moveScroll() {
-		var divdiv = document.getElementById("data");
-		divdiv.scrollTop=divdiv.scrollHeight;
-	}
-	
-	function sendMessage() {
-		ws.send($("#message").val());
-	}
-
-	function onMessage(evt) {
-		var data = evt.data;
-		$("#data").append(data + "<br/>");
-	}
-
-	function onClose(evt) {
-		$("#data").append("서버가 닫혀 있습니다.");
-	}
-	
-</script>
 <style type="text/css">
 * {
 	padding: 0px;
@@ -421,13 +385,6 @@ li{list-style:none}
 	background-color: #dadada;
 	line-height: 20px;
 }
-
-#data{
-border: 1px solid gray;
-width: 250px; 
-height: 300px;
-}
-
 </style>
 </head>
 <body>
