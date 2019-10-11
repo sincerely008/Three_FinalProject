@@ -132,7 +132,7 @@ public class login {
 		String member_email = request.getParameter("emailFront") + "@" + request.getParameter("emailBack");
 		String member_gender = request.getParameter("gender");
 		
-		
+		System.out.println("id : " + member_id + "pw : " + member_pw);
 		
 		MemberDto dto = new MemberDto();
 		dto.setMember_id(member_id);
@@ -290,7 +290,7 @@ public class login {
 		HashMap<String, Object> userInfo = biz.kakaoGetUserInfo(access_Token);
 		
 		
-		String nickName = (String) userInfo.get("nickname"); 
+		String kakaoId = (String) userInfo.get("kakaoId"); 
 		String email = "";
 		
 		
@@ -305,15 +305,9 @@ public class login {
 			System.out.println("email is null");
 		}
 		
-		MemberDto dto;
+		MemberDto dto; 
 		
-		if(email != null) {
-			dto = biz.login(email, email);
-		} else {
-			dto = biz.login(nickName, nickName);
-		}
-		
-		
+		dto = biz.login(kakaoId, kakaoId);
 		
 		if(dto != null) {
 			session.setAttribute("dto", dto);
@@ -322,15 +316,24 @@ public class login {
 			
 			dto = new MemberDto();
 			
-			if(email != null) {
-				dto.setMember_id(email);
-			} else {
-				dto.setMember_id(nickName);
-			}
+			dto.setMember_id(kakaoId);
+			
+			String[] emailSplit = email.split("@");
+			String emailFront = emailSplit[0];
+			String emailBack = emailSplit[1];
+			
 			model.addAttribute("dto", dto);
+			model.addAttribute("emailFront",emailFront);
+			model.addAttribute("emailBack",emailBack);
+			
 			return "signup";
+<<<<<<< HEAD
 		}	
+=======
+		}
+>>>>>>> refs/remotes/origin/furium
 	}
+<<<<<<< HEAD
 	
 	@RequestMapping("/logout.do")
 	public String logOut(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -341,4 +344,6 @@ public class login {
 		
 		return "home";
 	}
+=======
+>>>>>>> refs/remotes/origin/furium
 }
