@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -148,18 +147,23 @@ public class login {
 		res = biz.signup(dto);
 		
 		if(res>0) {
-			out.print("<script>");
-			out.print("alert('회원가입 성공')");
-			out.print("</script>");
-			return "signend";
+			
+			return "redirect:signend.do";
 		}else {
 			out.print("<script>");
 			out.print("alert('회원가입 실패')");
 			out.print("</script>");
+			out.flush();
 			return "signup";
 		}
 	
 		
+	}
+	@RequestMapping("/signend.do")
+	public String signend(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		
+		return "signend";
 	}
 	
 	@RequestMapping("/forgotid.do")
@@ -223,11 +227,13 @@ public class login {
 			out.print("<script>");
 			out.print("alert('변경 완료!')");
 			out.print("</script>");
+			out.flush();
 			return "changeforgotpw";
 		}else {
 			out.print("<script>");
 			out.print("alert('변경 실패!')");
 			out.print("</script>");
+			out.flush();
 			return "forgotpw";
 		}
 		
@@ -243,10 +249,14 @@ public class login {
 	
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
-	public String loginres(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String loginres(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		session = request.getSession();
-
+		PrintWriter out = response.getWriter();
+		
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("password");
@@ -258,12 +268,16 @@ public class login {
 			ChattingDto dto1=new ChattingDto();
 			dto1.setChatting_user(id);
 			
-			return "home";
+			return "redirect:home.do";
 		}else {
+			out.print("<script>");
+			out.print("alert('아이디와 비밀번호를 확인해주세요')");
+			out.print("</script>");
+			out.flush();
 			return "UserLogin";
 		}
 		
-		
+	
 		
 	}
 	
@@ -319,5 +333,14 @@ public class login {
 		
 	}
 	
+	@RequestMapping("/logout.do")
+	public String logOut(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		session = request.getSession();
+		
+		session.invalidate();
+		
+		return "home";
+	}
 	
 }
