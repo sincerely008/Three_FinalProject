@@ -122,10 +122,11 @@ function emailChk() {
 	});
 }
 function check(){
-	
+	var pwText = $("input[name=password]").val();
+	var pwConfirm = $("input[name=pwConfirm]").val();
 	var eran = $("input[name=emailConfirm]").val();
 	
-	if(ran == eran){
+	if(ran == eran && pwText == pwConfirm){
 		return true;
 	}else{
 		return false;

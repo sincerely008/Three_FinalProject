@@ -113,7 +113,7 @@ public class login {
 		return ran;
 	}
 	
-	@RequestMapping(value="/signupres.do", method = RequestMethod.POST)
+	@RequestMapping(value="/signupres.do", method = {RequestMethod.POST,RequestMethod.GET})
 	public String signupres(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		request.setCharacterEncoding("UTF-8");
@@ -336,6 +336,9 @@ public class login {
 		session = request.getSession();
 		
 		session.invalidate();
+		
+		ChattingDto dto1 =new ChattingDto();
+		dto1.setChatting_user(null);		
 		
 		return "home";
 	}
