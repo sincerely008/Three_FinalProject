@@ -4,10 +4,12 @@
 <html>
 <head>
 <title>Home</title>
-</head>
+
 <script type="text/javascript">
 	
 </script>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="resources/js/images.js"></script>
 <style type="text/css">
 * {
 	padding: 0px;
@@ -103,7 +105,7 @@
 
 .headerdiv2divulli {
 	float: left;
-	width: calc(25% - 1.5px);
+	width: calc(16.5% - 1.5px);
 	height: 50px;
 	text-align: center;
 	border-left: 1px solid;
@@ -347,104 +349,69 @@
 	overflow: hidden;
 }
 .section2{
-   background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
-	background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
-
+background-color: silver;
+	background-image: linear-gradient(335deg, #eee 23px, transparent 23px),
+	linear-gradient(155deg, #f2f2f2 23px, transparent 23px),
+	linear-gradient(335deg, #eee 23px, transparent 23px),
+	linear-gradient(155deg, #f2f2f2 23px, transparent 23px);
+	background-size: 58px 58px;background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px}
 }
+*{ margin:0;padding:0;text-decoration:none}
+li{list-style:none}
+
+.gallery-wrapper{ position:relative; width:600px; top:100px;margin:0 auto;padding:10px; border:5px solid #ccc }
+.gallery-wrapper .gallery-list{overflow:hidden;position:relative;width:100%;height:350px;}
+.gallery-wrapper .gallery-list li{ position:absolute;left:0;display:none}
+.gallery-wrapper .gallery-list li:first-child{display:block;}
+.gallery-wrapper .gallery-list li.active{display:block;}
+.gallery-wrapper .gallery-list li a{display:block;text-align: center}
+.gallery-wrapper .gallery-list li a img {display:block;}
+
+.gallery-wrapper .btn-prev,.gallery-wrapper .btn-next { position:absolute;top:160px;color: #f4e9ed; font-size: 26px;}
+.gallery-wrapper .btn-prev { left:20px;}
+.gallery-wrapper .btn-next { right:20px;}
+.ctrl-box {margin-top:15px;text-align:center;}
+.ctrl-box a { }
+.ctrl-box a .bullet {display:inline-block; width: 12px; height: 12px;border:1px solid #cfd2d7;border-radius:100%;background:#dfe2e7; text-indent: -9999em; font-size: 0;vertical-align: middle}
+.ctrl-box a.active .bullet {
+	border: 1px solid #d43a3a;
+	background: #fd4b4b;
+}
+.btn-ctrl {
+	margin-left: 10px;
+	padding: 0 4px;
+	border: 1px solid #b6b6b6;
+	border-radius: 4px;
+	background-color: #dadada;
+	line-height: 20px;
+}
+
+
 </style>
 </head>
 <body>
-
-
-	<header class="header">
-		<div class="headerunderdiv">
-			<div class="headerdiv1">
-				<div class="headerdiv1div">
-					<div class="headerdiv1divdiv">
-						<div class="headerdivwrapa">
-							<a href="pagemoving.do?command=musichome" class="headerdiv1a">
-								<!-- 홈으로 링크 --> <img alt="Kidult"
-								src="resources/images/kidult.jpg" width="200px" height="100px">
-							</a>
-						</div>
-
-						<div class="logindiv" style="float: right;">
-							<div class="logindivdiv" style="margin-top: -30px;">
-
-								<button onclick="location.href='UserLogin.jsp'"
-									class="logindivdivbtn">로그인</button>
-								<button onclick="location.href='UserSignUp.jsp'"
-									class="logindivdivbtn">회원가입</button>
-
-
-
-							</div>
-						</div>
-
-						<div class="searchbar" style="float: right;">
-							<div class="searchbardiv">
-								<input type="text" id="search" type="text" placeholder="Search" />
-								<button class="searchbardivbtn">
-									<img src="resources/images/search.png" alt="대충 돋보기이미지"
-										width="35px" height="35px" />
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			
-			<div class="headerdiv2">
-				<div class="headerdiv2div">
-					<ul class="headerdiv2divul">
-						<li class="headerdiv2divulli"
-							onclick="location.href='pagemoving.do?command=musicgenre'">
-							<a class="headerdiv2divullia"
-							href="pagemoving.do?command=musicgenre"> 퍼즐/액세서리 </a>
-							<ul class="headerdiv2divulliul">
-								<li><a href="pagemoving.do?command=musicgenre"> 미니블럭 </a></li>
-								<li><a href="pagemoving.do?command=musicalbumpopular">
-										나노블럭</a></li>
-							</ul>
-						</li>						
-						<li class="headerdiv2divulli"
-							onclick="location.href='pagemoving.do?command=broadcstingtop'">
-							<a class="headerdiv2divullia"
-							href="pagemoving.do?command=broadcstingtop"> 건프라/피규어 </a>
-							<ul class="headerdiv2divulliul">
-								<li><a href="pagemoving.do?command=broadcstingtop">
-										건담(GUNDAM) </a></li>
-								<li><a href="pagemoving.do?command=broadcstingrecommand">
-										프라모델 </a></li>
-								<li><a href="pagemoving.do?command=broadcstingnewest">
-										피규어</a></li>
-							</ul>
-						</li>
-						
-						<li class="headerdiv2divulli"
-							onclick="location.href='pagemoving.do?command=concerthallmain'">
-							<a class="headerdiv2divullia"
-							href="pagemoving.do?command=concerthallmain"> RC-드론/헬리콥터 </a>
-							<ul class="headerdiv2divulliul">
-								<li><a href="pagemoving.do?command=concerthallmain">
-										입문용/고급용/실내용 </a></li>
-								<li><a href="pagemoving.do?command=concerthallreservation">
-										동영상촬영 </a></li>
-							</ul>
-						</li>
-						<li class="headerdiv2divulli"
-							style="border-right: 1px solid; border-right-color: rgba(200, 200, 200, 0.5);"
-							onclick="location.href='pagemoving.do?command=servicecenter'">
-							<a class="headerdiv2divullia"
-							href="pagemoving.do?command=servicecenter">고객센터</a>
-						</li>
-					</ul>
-				</div>
-				</div>
-				<
-			</div>
-		</div>
+<header>
+<%@ include file="/form/header.jsp"%>
+</header>
+		<div id="slider01" class="gallery-wrapper">
+	<ul class="gallery-list">
+		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/018_b3.png alt="" /></a></li>
+		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/019_b3.png alt="" /></a></li>
+		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/002_b3.png alt="" /></a></li>
+		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/016_b3.png alt="" /></a></li>
+		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/006_b3.png alt="" /></a></li>
+	</ul>
+	<a class="btn-prev" href="#none">◀ prev</a>
+	<a class="btn-next" href="#none">next ▶</a>
+	
+	<div class="ctrl-box">
+		<a href="#none" class="active"><i class="bullet">1</i></a>
+		<a href="#none"><i class="bullet">2</i></a>
+		<a href="#none"><i class="bullet">3</i></a>
+		<a href="#none"><i class="bullet">4</i></a>
+		<a href="#none"><i class="bullet">5</i></a>
+	</div>
+</div>
 	</header>
 	<section class="section2">
 		<div class="section2div1">

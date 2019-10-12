@@ -3,11 +3,13 @@ package com.three.kidult;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -110,7 +112,7 @@ public class login {
 		return ran;
 	}
 	
-	@RequestMapping(value="/signupres.do", method = RequestMethod.POST)
+	@RequestMapping(value="/signupres.do", method = {RequestMethod.POST,RequestMethod.GET})
 	public String signupres(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		request.setCharacterEncoding("UTF-8");
@@ -144,18 +146,23 @@ public class login {
 		res = biz.signup(dto);
 		
 		if(res>0) {
-			out.print("<script>");
-			out.print("alert('회원가입 성공')");
-			out.print("</script>");
-			return "signend";
+			
+			return "redirect:signend.do";
 		}else {
 			out.print("<script>");
 			out.print("alert('회원가입 실패')");
 			out.print("</script>");
+			out.flush();
 			return "signup";
 		}
 	
 		
+	}
+	@RequestMapping("/signend.do")
+	public String signend(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		
+		return "signend";
 	}
 	
 	@RequestMapping("/forgotid.do")
@@ -219,16 +226,116 @@ public class login {
 			out.print("<script>");
 			out.print("alert('변경 완료!')");
 			out.print("</script>");
+			out.flush();
 			return "changeforgotpw";
 		}else {
 			out.print("<script>");
 			out.print("alert('변경 실패!')");
 			out.print("</script>");
+			out.flush();
 			return "forgotpw";
 		}
 		
 		
 	}
 	
+	@RequestMapping("/UserLogin.do")
+	public String gologin(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		
+		return"UserLogin";
+	}
+	
+	
+	@RequestMapping(value="/login.do", method = RequestMethod.POST)
+	public String loginres(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		session = request.getSession();
+		PrintWriter out = response.getWriter();
+		
+		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("password");
+		
+		MemberDto dto = biz.login(id, pw);
+		
+		if(dto != null) {
+			session.setAttribute("memberDto", dto);
+			
+			return "redirect:home.do";
+		}else {
+			out.print("<script>");
+			out.print("alert('아이디와 비밀번호를 확인해주세요')");
+			out.print("</script>");
+			out.flush();
+			return "UserLogin";
+		}
+		
+	
+		
+	}
+	
+	@RequestMapping(value="/kakaoLogin.do")
+	public String kakaoLogin(String code, HttpSession session, Model model) {
+		
+		
+		String access_Token = biz.kakaoGetAccessToken(code);
+		HashMap<String, Object> userInfo = biz.kakaoGetUserInfo(access_Token);
+		
+		
+		String nickName = (String) userInfo.get("nickname"); 
+		String email = "";
+		
+		
+		if(userInfo.get("email") != null) {
+			email = (String)userInfo.get("email");
+			
+			session.setAttribute("access_Token", access_Token);
+			
+		}else {
+			System.out.println("email is null");
+		}
+		
+		MemberDto dto;
+		
+		if(email != null) {
+			dto = biz.login(email, email);
+		} else {
+			dto = biz.login(nickName, nickName);
+		}
+		
+		
+		
+		if(dto != null) {
+			session.setAttribute("dto", dto);
+			return "home";
+		} else {
+			
+			dto = new MemberDto();
+			
+			if(email != null) {
+				dto.setMember_id(email);
+			} else {
+				dto.setMember_id(nickName);
+			}
+			model.addAttribute("dto", dto);
+			return "signup";
+		}
+		
+		
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logOut(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		session = request.getSession();
+		
+		session.invalidate();
+		
+		return "home";
+	}
 	
 }
