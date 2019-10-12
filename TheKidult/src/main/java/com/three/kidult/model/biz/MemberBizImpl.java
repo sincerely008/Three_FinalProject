@@ -167,7 +167,6 @@ public class MemberBizImpl implements MemberBiz {
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			
 			if(email != null) {
-				
 				userInfo.put("email", email);
 			}
 			
