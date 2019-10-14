@@ -37,6 +37,7 @@ var TopPosition=(screen.height-300)/2;
 	<a href="javascript:forgotId()">아이디 찾기</a><br>
 	<a href="javascript:forgotPw()">비밀번호 찾기</a><br>
 	<a href="UserLogin.do">로그인</a><br>
+	<a href="payment.do">결제창</a><br>
 
 
 
