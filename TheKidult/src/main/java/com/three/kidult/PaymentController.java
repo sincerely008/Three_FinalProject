@@ -34,9 +34,8 @@ public class PaymentController {
 	
 	@RequestMapping(value = "/paymentres.do", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public String Payment(Model model,HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String Payment(Model model,HttpServletRequest request, HttpServletResponse response, HttpSession session) {		
 		
-				
 		return "";
 	}
 	
