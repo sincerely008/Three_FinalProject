@@ -257,7 +257,6 @@ public class login {
 		session = request.getSession();
 		PrintWriter out = response.getWriter();
 		
-		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("password");
 		
