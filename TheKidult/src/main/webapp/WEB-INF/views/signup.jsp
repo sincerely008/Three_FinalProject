@@ -137,7 +137,7 @@
 				<tr>
 					<td>
 						<input type="submit" value="가입하기" id="insertsign" style="display: none">
-						<input type="button" value="취소" onclick="location.href=''"> <!-- 로그인 페이지 완성되면 추가할 것 -->
+						<input type="button" value="취소" onclick="location.href='UserLogin.do'"> <!-- 로그인 페이지 완성되면 추가할 것 -->
 					</td>
 				</tr>
 		</table>

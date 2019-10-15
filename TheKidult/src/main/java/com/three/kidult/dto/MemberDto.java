@@ -42,6 +42,7 @@ public class MemberDto {
 		this.member_regdate = member_regdate;
 		this.member_pwevent = member_pwevent;
 	}
+	
 
 
 	public String getMember_id() {

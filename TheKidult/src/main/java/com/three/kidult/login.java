@@ -44,9 +44,23 @@ public class login {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/signup.do", method = RequestMethod.GET)
-	public String signup(Model model) {
+	public String signup(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
 		
 		return "signup";
+	}
+	@RequestMapping(value = "/UserInformation.do", method = RequestMethod.GET)
+	public String UserInformation(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+		
+		session = request.getSession();
+		
+		return "UserInformation";
+	}
+	@RequestMapping(value = "/UserInformationUpdate.do", method = RequestMethod.GET)
+	public String UserInformationUpdate(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+		
+		session = request.getSession();
+	
+		return "UserInformationUpdate";
 	}
 	
 	@RequestMapping("/idchk.do")
@@ -239,6 +253,7 @@ public class login {
 	@RequestMapping("/UserLogin.do")
 	public String gologin(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
+		session = request.getSession();
 		
 		return"UserLogin";
 	}
