@@ -2,16 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="note">
 
+	<select id="selectlist">
+		SELECT NOTE_NO, NOTE_CONTENT, NOTE_SEND, NOTE_GET, NOTE_DATA, NOTE_CONFIRM 
+		FROM NOTE 
+		WHERE NOTE_GET = #{note_get}
+		ORDER BY NOTE_NO
+	</select>
+
 	<insert id="sendnote" parameterType="HashMap">
-		INSERT INTO NOTE VALUES(NOTESEQ.NEXTVAL, {#content}, {#send}, {#from}, SYSDATE, 'N')
+		INSERT INTO NOTE VALUES(NOTESEQ.NEXTVAL, #{note_content}, #{note_send}, #{note_get}, SYSDATE, 'N')
 	</insert>
 	
 	<update id="noteselect">
-		UPDATE NOTE SET NOTE_CONFIRM = 'Y' WHERE NOTE_GET = {}
+		UPDATE NOTE SET NOTE_CONFIRM = 'Y' WHERE NOTE_NO = #{note_no} AND NOTE_GET = #{note_get}
 	</update>
 	
 	<delete id="notedelete">
-		DELETE FROM NOTE WHERE NOTE_NO = {}
+		DELETE FROM NOTE WHERE NOTE_NO = #{note_no} AND NOTE_GET = #{note_get}
 	</delete>
 
 </mapper>

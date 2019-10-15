@@ -1,8 +1,11 @@
 package com.three.kidult.model.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.three.kidult.dto.NoteDto;
 import com.three.kidult.model.dao.NoteDao;
 
 @Service
@@ -18,15 +21,20 @@ public class NoteBizImpl implements NoteBiz {
 	}
 
 	@Override
-	public int noteselect(String note_get) {
+	public int noteselect(int note_no, String note_get) {
 
-		return dao.noteselect(note_get);
+		return dao.noteselect(note_no, note_get);
 	}
 
 	@Override
-	public int notedelete(int note_no) {
+	public int notedelete(int note_no, String note_get) {
 
-		return dao.notedelete(note_no);
+		return dao.notedelete(note_no, note_get);
 	}
 
+	@Override
+	public List<NoteDto> selectlist(String note_get) {
+		
+		return dao.selectlist(note_get);
+	}
 }

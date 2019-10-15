@@ -11,11 +11,11 @@
 
 $(function(){
 	$("#send").click(function(){
-		var sender = $("#sender").val();
-		var get = $("#get").val();
-		var contet = $("#content").val();
-		
-		
+		var note_send = $("#sender").val();
+		var note_get = $("#get").val();
+		var note_contet = $("#content").val();
+	
+		location.href='/notesend.do?note_send='+note_send+'&note_get='+note_get+'&note_content='+note_content;
 	})
 });
 

@@ -31,7 +31,7 @@ var TopPosition=(screen.height-300)/2;
 	<a href="signup.do">회원가입</a><br>
 	<a href="chat.do">임시채팅방</a><br>
 	<a href="signup.do">회원가입</a><br>
-	<a href="note.do">쪽지</a><br>
+	<a href="notelist.do?note_get="+<%session.getAttribute("memberDto");%>>쪽지</a><br>
 	<a href="delivery.do">배송조회</a><br>
 	<a href="home.do">ㅇ</a><br>
 	<a href="javascript:forgotId()">아이디 찾기</a><br>

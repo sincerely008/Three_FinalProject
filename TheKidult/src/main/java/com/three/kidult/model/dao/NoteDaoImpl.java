@@ -1,10 +1,14 @@
 package com.three.kidult.model.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.three.kidult.dto.NoteDto;
 
 @Repository
 public class NoteDaoImpl implements NoteDao {
@@ -30,7 +34,7 @@ public class NoteDaoImpl implements NoteDao {
 	}
 
 	@Override
-	public int noteselect(String note_get) {
+	public int noteselect(int note_no, String note_get) {
 		
 		int res = 0;
 		
@@ -44,7 +48,7 @@ public class NoteDaoImpl implements NoteDao {
 	}
 
 	@Override
-	public int notedelete(int note_no) {
+	public int notedelete(int note_no, String note_get) {
 
 		int res = 0;
 		
@@ -57,4 +61,17 @@ public class NoteDaoImpl implements NoteDao {
 		return res;
 	}
 
+	@Override
+	public List<NoteDto> selectlist(String note_get) {
+		
+		List<NoteDto> list = new ArrayList<NoteDto>();
+		
+		try {
+			list = sqlSession.selectList(namespace+"selectlist",note_get);
+		} catch (Exception e) {
+			System.out.println("selectlist error");
+		}
+		
+		return list;
+	}
 }
