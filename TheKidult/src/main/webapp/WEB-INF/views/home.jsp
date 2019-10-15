@@ -3,13 +3,58 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+
 <title>Home</title>
 
 <script type="text/javascript">
-	
+
+</script>
+<style type="text/css">	
+	/* banner */
+	.banner {position: relative; width: 700px; height: 500px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
+	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
+	.banner ul li {float: left; width: 700px; height: 500px; margin:0; padding:0;}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script language="JavaScript">
+
+
+
+	$(document).ready(function() {
+		var $banner = $(".banner").find("ul");
+
+		var $bannerWidth = $banner.children().outerWidth();//이미지의 폭
+		var $bannerHeight = $banner.children().outerHeight(); // 높이
+		var $length = $banner.children().length;//이미지의 갯수
+		var rollingId;
+
+		//정해진 초마다 함수 실행
+		rollingId = setInterval(function() { rollingStart(); }, 3000);//다음 이미지로 롤링 애니메이션 할 시간차
+    
+		function rollingStart() {
+			$banner.css("width", $bannerWidth * $length + "px");
+			$banner.css("height", $bannerHeight + "px");
+			//alert(bannerHeight);
+			//배너의 좌측 위치를 옮겨 준다.
+			$banner.animate({left: - $bannerWidth + "px"}, 1500, function() { //숫자는 롤링 진행되는 시간이다.
+				//첫번째 이미지를 마지막 끝에 복사(이동이 아니라 복사)해서 추가한다.
+				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
+				//뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.
+				$(this).find("li:first").remove();
+				//다음 움직임을 위해서 배너 좌측의 위치값을 초기화 한다.
+				$(this).css("left", 0);
+				//이 과정을 반복하면서 계속 롤링하는 배너를 만들 수 있다.
+			});
+		}
+	}); 
+
 </script>
 <script src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="resources/js/images.js"></script>
+
+
 <style type="text/css">
 * {
 	padding: 0px;
@@ -260,27 +305,26 @@
 
 .section2 {
 	width: 100%;
-	height: 1500px;
+	height: 2000px;
 }
 
 .section2div1 {
 	width: 70%;
-	height: 600px;
-	margin: 0 auto;
+	height: 100px;
+	margin: -200 auto;
 	background-image: url("images/braodcastpicture1.jpg");
 	background-repeat: no-repeat;
-	background-position: -400px;
 	position: relative;
 	overflow: hidden;
 }
 
 .section2div1div {
-	width: 100%;
+	width: 70%;
 	height: 100px;
 	color: white;
 	font-size: 30px;
 	text-align: center;
-	padding-top: 50px;
+	padding-top: 0px;
 	font-weight: bold;
 }
 
@@ -370,12 +414,7 @@ li{list-style:none}
 .gallery-wrapper .btn-prev,.gallery-wrapper .btn-next { position:absolute;top:160px;color: #f4e9ed; font-size: 26px;}
 .gallery-wrapper .btn-prev { left:20px;}
 .gallery-wrapper .btn-next { right:20px;}
-.ctrl-box {margin-top:15px;text-align:center;}
-.ctrl-box a { }
-.ctrl-box a .bullet {display:inline-block; width: 12px; height: 12px;border:1px solid #cfd2d7;border-radius:100%;background:#dfe2e7; text-indent: -9999em; font-size: 0;vertical-align: middle}
-.ctrl-box a.active .bullet {
-	border: 1px solid #d43a3a;
-	background: #fd4b4b;
+
 }
 .btn-ctrl {
 	margin-left: 10px;
@@ -385,11 +424,101 @@ li{list-style:none}
 	background-color: #dadada;
 	line-height: 20px;
 }
+<<<<<<< HEAD
+=======
+.section3 {
+	width: 100%;
+	height: 1500px;
+}
+
+.section3div2 {
+	width: 70%;
+	height: 600px;
+	margin: 20px auto;
+}
+
+.section3div2div1 {
+	width: 100%;
+	height: 50px;
+	color: red;
+	font-size: 30px;
+	text-align: center;
+	padding-top: 10px;
+	font-weight: bold;
+	display: table;
+}
+
+.section3div2div1div {
+	display: table-cell;
+	vertical-align: middle;
+	border-top: 2px groove gray;
+	border-bottom: 2px double gray;
+	
+}
+
+.section3div2div2 {
+	width: 100%;
+	height: 500px;
+	margin: 20px auto;
+}
+
+.section3div2div2div1 {
+	display: flex;
+}
+
+.section3div2div2div1div {
+	display: flex-basis;
+	width: calc(20% - 2px);;
+	border: solid 1px;
+}
+
+.section3div2div2div1divdiv1 {
+	width: 100%;
+	height: 300px;
+	margin: 0 auto;
+	border: solid 1px;
+}
+
+.section3div2div2div1divdiv2 {
+	width: 100%;
+	height: 100px;
+	text-align: center;
+	magin-top: 5px;
+	background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+	background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);	
+	border: solid 1px;
+}
+
+.section3div2div2div1divdiv3 {
+	width: 100%;
+	height: 160px;
+	margin: 0 auto;
+	text-align: center;
+	overflow: hidden;
+}
+
+.section3{
+	width: 100%;
+	height: 2000px;
+background-color: silver;
+	background-image: linear-gradient(335deg, #eee 23px, transparent 23px),
+	linear-gradient(155deg, #f2f2f2 23px, transparent 23px),
+	linear-gradient(335deg, #eee 23px, transparent 23px),
+	linear-gradient(155deg, #f2f2f2 23px, transparent 23px);
+	background-size: 58px 58px;background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px}
+
+}
+
+
+
+
+>>>>>>> refs/heads/GwangHyun
 </style>
 </head>
 <body>
 <header>
 <%@ include file="/form/header.jsp"%>
+<<<<<<< HEAD
 </header>
 		<div id="slider01" class="gallery-wrapper">
 	<ul class="gallery-list">
@@ -401,22 +530,136 @@ li{list-style:none}
 	</ul>
 	<a class="btn-prev" href="#none">◀ prev</a>
 	<a class="btn-next" href="#none">next ▶</a>
+=======
+<section class="section3">
+
+
+		<div class="banner">
+>>>>>>> refs/heads/GwangHyun
 	
-	<div class="ctrl-box">
-		<a href="#none" class="active"><i class="bullet">1</i></a>
-		<a href="#none"><i class="bullet">2</i></a>
-		<a href="#none"><i class="bullet">3</i></a>
-		<a href="#none"><i class="bullet">4</i></a>
-		<a href="#none"><i class="bullet">5</i></a>
-	</div>
+			<ul>
+				<li><img src="http://replic.godohosting.com/makeshop/IMG/201910DIY_MAIN.jpg" width="700" height="500px"></li>
+				<li><img src="http://replic.godohosting.com/makeshop/IMG/20190425_Main_39.jpg" width="700" height="500px"></li>
+				<li><img src="http://replic.godohosting.com/makeshop/IMG/20190326_main.jpg" width="700" height="500px"></li>
+				<li><img src="http://replic.godohosting.com/makeshop/IMG/20190801_Main.jpg" width="700" height="500px"></li>
+				<li><img src="http://replic.godohosting.com/makeshop/IMG/20190425_Main_40_1.jpg" width="700" height="500px"></li>
+			</ul>
+
+		</div>
+		
+			
+            <div id="main_img_6">
+<table width="700" height="500px" border="0" cellspacing="123" cellpadding="0">
+  <tr>
+    <td><a href="/shop/shopbrand.html?type=N&xcode=126&mcode=007"><img src="http://replic.godohosting.com/makeshop/IMG/190328_Main_Sub_1.jpg" /></a></td>
+    <td><a href="/shop/shopbrand.html?xcode=126&type=N&mcode=014"><img src="http://replic.godohosting.com/makeshop/IMG/190328_Main_Sub_2.jpg" /></a></td>
+    <td><a href="/shop/shopbrand.html?xcode=126&type=N&mcode=013"><img src="http://replic.godohosting.com/makeshop/IMG/190328_Main_Sub_3.jpg" /></a></td>
+    <td><a href="/shop/shopbrand.html?type=N&xcode=126&mcode=010"><img src="http://replic.godohosting.com/makeshop/IMG/171122_Main_Sub_4.jpg" /></a></td>
+  </tr>
+</table>
 </div>
-	</header>
+		<div class="section3div1">
+	</div>
+		<div class="section3div2">
+			<div class="section2div2div1">
+				<div class="section3div2div1div">
+					<span> 인기 아이템 Top10 </span>
+				</div>
+			</div>
+			<div class="section3div2div2">
+				<div class="section3div2div2div1">
+					<div class="section3div2div2div1div">
+						<div class="section3div2div2div1divdiv1">
+							<img src="resources/images/hot1.jpg" alt="HOT1" width="100%" height="100%" />
+						</div>
+						<div class="section3div2div2div1divdiv2">
+							<span>이름 / 가격</span>
+						</div>
+					</div>
+					<div class="section3div2div2div1div">
+						<div class="section3div2div2div1divdiv1">
+							<img src="resources/images/hot2.jpg" alt="HOT2" width="100%" height="100%" />
+						</div>
+						<div class="section3div2div2div1divdiv2">
+							<span>이름 / 가격</span>
+						</div>
+					</div>
+					<div class="section3div2div2div1div">
+						<div class="section3div2div2div1divdiv1">
+							<img src="resources/images/hot3.jpg" alt="HOT3" width="100%" height="100%" />
+						</div>
+						<div class="section3div2div2div1divdiv2">
+							<span>이름 / 가격</span>
+						</div>
+					</div>
+					<div class="section3div2div2div1div">
+						<div class="section3div2div2div1divdiv1">
+							<img src="resources/images/hot4.jpg" alt="HOT4" width="100%" height="100%" />
+						</div>
+						<div class="section3div2div2div1divdiv2">
+							<span>이름 / 가격</span>
+						</div>
+					</div>
+					<div class="section3div2div2div1div">
+						<div class="section3div2div2div1divdiv1">
+							<img src="resources/images/hot5.jpg" alt="HOT5" width="100%" height="100%" />
+						</div>
+						<div class="section3div2div2div1divdiv2">
+							<span>이름 / 가격</span>
+						</div>
+					</div>
+				</div>
+				<div class="section3div2div2div1">
+					<div class="section3div2div2div1div">
+						<div class="section3div2div2div1divdiv1">
+							<img src="resources/images/hot6.jpg" alt="HOT6" width="100%" height="100%" />
+						</div>
+						<div class="section3div2div2div1divdiv2">
+							<span>이름 / 가격</span>
+						</div>
+					</div>
+					<div class="section3div2div2div1div">
+						<div class="section3div2div2div1divdiv1">
+							<img src="resources/images/hot7.jpg" alt="HOT7" width="100%" height="100%" />
+						</div>
+						<div class="section3div2div2div1divdiv2">
+							<span>이름 / 가격</span>
+						</div>
+					</div>
+					<div class="section3div2div2div1div">
+						<div class="section3div2div2div1divdiv1">
+							<img src="resources/images/hot8.jpg" alt="HOT8" width="100%" height="100%" />
+						</div>
+						<div class="section3div2div2div1divdiv2">
+							<span>이름 / 가격</span>
+						</div>
+					</div>
+					<div class="section3div2div2div1div">
+						<div class="section3div2div2div1divdiv1">
+							<img src="resources/images/hot9.jpg" alt="HOT9" width="100%" height="100%" />
+						</div>
+						<div class="section3div2div2div1divdiv2">
+							<span>이름 / 가격</span>
+						</div>
+					</div>
+					<div class="section3div2div2div1div">
+						<div class="section3div2div2div1divdiv1">
+							<img src="resources/images/hot10.jpg" alt="HOT10" width="100%" height="100%" />
+						</div>
+						<div class="section3div2div2div1divdiv2">
+							<span>이름 / 가격</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 	<section class="section2">
-		<div class="section2div1">
+		
 			<div class="section2div1div">
 				<span> </span>
 			</div>
-		</div>
+	
 		<div class="section2div2">
 			<div class="section2div2div1">
 				<div class="section2div2div1div">
@@ -510,6 +753,10 @@ li{list-style:none}
 				</div>
 			</div>
 		</div>
+	</section>
+		<section class="section222">
+		
+		<div class="section2div2div2div1div"></div>
 	</section>
 	<input id="throwmusic" type="hidden" value="123" />
 	<%@ include file="/form/footer.jsp"%>

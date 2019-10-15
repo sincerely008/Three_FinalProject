@@ -15,6 +15,10 @@
 <%
 	MemberDto memberDto = (MemberDto)session.getAttribute("memberDto");
 %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/heads/GwangHyun
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="resources/js/images.js"></script>
 <style type="text/css">
@@ -388,7 +392,7 @@
 									</div>
 									
 									<%if(memberDto.getMember_enabled()!="N"){ %>
-									<button onclick="location.href='pagemoving.do?command=userinformation'" class="logindivdivbtn">
+									<button onclick="location.href='UserInformation.do'" class="logindivdivbtn">
      								내정보보기  
    							  		</button>
    							  		<%} %>
@@ -495,7 +499,12 @@
 				</div>
 				
 			</div>
+<<<<<<< HEAD
 	</header>
 
+=======
+	
+		</header>
+>>>>>>> refs/heads/GwangHyun
 </body>
 </html>
