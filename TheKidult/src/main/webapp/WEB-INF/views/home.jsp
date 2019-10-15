@@ -424,8 +424,7 @@ li{list-style:none}
 	background-color: #dadada;
 	line-height: 20px;
 }
-<<<<<<< HEAD
-=======
+
 .section3 {
 	width: 100%;
 	height: 1500px;
@@ -512,30 +511,21 @@ background-color: silver;
 
 
 
->>>>>>> refs/heads/GwangHyun
+
 </style>
 </head>
 <body>
 <header>
 <%@ include file="/form/header.jsp"%>
-<<<<<<< HEAD
+
 </header>
-		<div id="slider01" class="gallery-wrapper">
-	<ul class="gallery-list">
-		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/018_b3.png alt="" /></a></li>
-		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/019_b3.png alt="" /></a></li>
-		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/002_b3.png alt="" /></a></li>
-		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/016_b3.png alt="" /></a></li>
-		<li><a href="#none"><img src=http://willywillytoy.com/shop/data/category/goods_list/006_b3.png alt="" /></a></li>
-	</ul>
-	<a class="btn-prev" href="#none">◀ prev</a>
-	<a class="btn-next" href="#none">next ▶</a>
-=======
+	
+
 <section class="section3">
 
 
 		<div class="banner">
->>>>>>> refs/heads/GwangHyun
+
 	
 			<ul>
 				<li><img src="http://replic.godohosting.com/makeshop/IMG/201910DIY_MAIN.jpg" width="700" height="500px"></li>

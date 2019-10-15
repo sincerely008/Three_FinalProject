@@ -31,20 +31,19 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
-<<<<<<< HEAD
-	public String home(Locale locale, Model model,HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-=======
+
+
 	public String home(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
 
->>>>>>> refs/heads/GwangHyun
+
 		logger.info("Welcome home! The client locale is {}.", locale);
-<<<<<<< HEAD
+
 		session = request.getSession();
-=======
+
 		
 		session = request.getSession();
 		
->>>>>>> refs/heads/GwangHyun
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		

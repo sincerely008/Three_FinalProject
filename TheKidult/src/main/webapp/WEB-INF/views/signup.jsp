@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -157,7 +157,7 @@ history.go(1);
 <br/><br/><br/><br/><br/><br/><br/>
 <%@ include file="/form/footer.jsp"%>
 </body>
-=======
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -167,8 +167,6 @@ history.go(1);
 	response.setHeader("Expires", "0");
 %>    
 
-<!DOCTYPE html>
-<html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -189,7 +187,8 @@ history.go(1);
 </style>
 </head>
 <body>
-<%@ include file="/form/header.jsp"%>
+
+
 	<div id="style" class="myform">
 	<h1>회원가입</h1>
 	
@@ -306,5 +305,4 @@ history.go(1);
 <br/><br/><br/><br/><br/><br/><br/>
 <%@ include file="/form/footer.jsp"%>
 </body>
->>>>>>> refs/heads/GwangHyun
 </html>
