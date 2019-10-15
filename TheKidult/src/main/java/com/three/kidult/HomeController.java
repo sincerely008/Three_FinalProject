@@ -1,5 +1,7 @@
 package com.three.kidult;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -15,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.three.kidult.dto.MemberDto;
+
 /**
  * Handles requests for the application home page.
  */
@@ -27,9 +31,19 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
-	public String home(Locale locale, Model model,HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+
+
+	public String home(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
+
+
 		logger.info("Welcome home! The client locale is {}.", locale);
+
 		session = request.getSession();
+
+		
+		session = request.getSession();
+		
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
@@ -39,6 +53,7 @@ public class HomeController {
 		
 		return "home";
 	}
+	
 	
 	@RequestMapping("/chat.do")
 	public String chat() {

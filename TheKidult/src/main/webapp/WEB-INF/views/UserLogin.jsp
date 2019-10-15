@@ -82,7 +82,7 @@
 
 			<a href="https://kauth.kakao.com/oauth/authorize
 						?client_id=0e2f445e50f3854d752de29fe5f4f3b6
-						&redirect_uri=http://localhost:8787/kidult/kakaoLogin.do
+						&redirect_uri=http://localhost:8787/mvc03/kakaoLogin.do
 						&response_type=code">
 				<img alt="kakaoLogin" src="resources/images/kakao_account_login_btn_medium_narrow.png">
 			</a>
