@@ -15,22 +15,24 @@ public class NoteController {
 	@Autowired
 	private NoteBiz biz;
 	
-	@RequestMapping(value="/notebox.do")
+	@RequestMapping(value="/notelist.do")
 	public String noteBox(Model model, String note_get) {
 		
 		model.addAttribute("list",biz.selectlist(note_get));
 		
-		return "notebox";
+		return "notelist";
 	}
 	
 	@RequestMapping(value="/notesendform.do")
-	public String notesendform(Model model, HttpServletRequest request) {
+	public String notesendform() {
 		
-		return null;
+		return "notesend";
 	}
 	
 	@RequestMapping(value="/notesend.do")
-	public String notesend(Model model, HttpServletRequest request) {
+	public String notesend(Model model, String note_content, String note_send, String note_get) {
+		
+		
 		return null;
 	}
 	

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.three.kidult.dto.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,23 +23,23 @@
 		<c:choose>
 			<c:when test="${empty list}">
 				<tr>
-					<td colspan="2">쪽지가 없습니다.</td>
+					<td colspan="4">쪽지가 없습니다.</td>
 				</tr>
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${list}" var="dto">
 					<tr>
-						<td>${dto.note_no}</td>
-						<td>${dto.note_send}</td>
-						<td><a href="noteselect.do?">${dto.note_content}</a></td>
-						<td>${dto.note_date}</td>
+						<td>${list.note_no}</td>
+						<td>${list.note_send}</td>
+						<td><a href="noteselect.do?">${list.note_content}</a></td>
+						<td>${list.note_date}</td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 		<tr>
-			<td colspan="2">
-				<input type="button" onclick="location.href='/notesendform.do'" value="쪽지 보내기" />
+			<td colspan="4">
+				<input type="button" onclick="location.href='notesendform.do?note_send=<%=ChattingDto.getChatting_user() %>'" value="쪽지 보내기" />
 			</td>
 		</tr>
 	</table>

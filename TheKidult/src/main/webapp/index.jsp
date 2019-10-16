@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.three.kidult.dto.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +20,8 @@ var TopPosition=(screen.height-300)/2;
 		var url = "forgotpw.do";
 		var popOption = "width=500, height=300, resizable=no, scrollbars=no, status=no";
 		window.open(url,"",popOption + ", top="+TopPosition + ", left="+LeftPosition +";");
-
 	}
+	
 </script>
 </head>
 <body>
@@ -31,7 +32,7 @@ var TopPosition=(screen.height-300)/2;
 	<a href="signup.do">회원가입</a><br>
 	<a href="chat.do">임시채팅방</a><br>
 	<a href="signup.do">회원가입</a><br>
-	<a href="notelist.do?note_get="+<%session.getAttribute("memberDto");%>>쪽지</a><br>
+	<a href="notelist.do?note_get=<%=ChattingDto.getChatting_user() %>">쪽지</a><br>
 	<a href="delivery.do">배송조회</a><br>
 	<a href="home.do">ㅇ</a><br>
 	<a href="javascript:forgotId()">아이디 찾기</a><br>
