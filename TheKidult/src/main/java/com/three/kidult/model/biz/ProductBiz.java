@@ -13,5 +13,7 @@ public interface ProductBiz {
 	public int deleteBoard(int product_no);
 	public int getNoOfRecords();
 	public List<ProductDto> searchFiled(int offset, int noOfRecords, String searchFiled, String searchValue);
+	public List<ProductDto> productList();
+	public int insert(List<ProductDto> list);
 
 }
