@@ -20,16 +20,17 @@
 <title>Insert title here</title>
 <script src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-function enabled(){
-	var change="이 회원의 이용여부를 변경 하시겠습니까?";
-	var flag = confirm(change);
-	var bung = $(this).attr('.enabled').attr('value');
-	alert(bung);
-	flag;
-	if(flag==true){
-		location.href="roleupdate.do?enabled="+bung +"&id="+$('.id').attr('value');
-	}
-};
+
+$(document).on("click", "a.enabled", function() {
+    var bung = $(this).text();
+    //alert(bung);
+    var id = $(this).parent().siblings('.id').text();
+    //alert(id);
+    if(confirm("이 회원의 이용여부를 변경 하시겠습니까?")) {
+        location.href="roleupdate.do?enabled=" + bung + "&id=" + id;
+    }
+    return false;
+});
 
 </script>
 </head>
