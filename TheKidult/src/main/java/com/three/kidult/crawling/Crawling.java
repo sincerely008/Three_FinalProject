@@ -15,7 +15,7 @@ public class Crawling {
 	
 	public static void main(String[] args) throws Exception {
 		
-		String URL = "http://www.replicas.co.kr/shop/shopbrand.html?xcode=125&type=N&mcode=001&scode=003";
+		String URL = "http://www.replicas.co.kr/shop/shopbrand.html?type=Y&xcode=124&sort=&page=1";
 		
 		Document doc = Jsoup.connect(URL).get();
 
@@ -48,9 +48,6 @@ public class Crawling {
 			file.close();
 		} catch (Exception e) {
 			System.out.println("실패");
-		}
-		
-		
+		}		
 	}
-
 }

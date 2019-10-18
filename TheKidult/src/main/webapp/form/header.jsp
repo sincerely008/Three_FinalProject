@@ -386,7 +386,12 @@
 						       		<div style ="font-size : 10px;">
 									<%=memberDto.getMember_name()%>님 반갑습니다.  <br>
 									</div>
-									
+									<%if(memberDto.getMember_role().equals("USER")){%>
+									<%}else{ %>
+									<button onclick="location.href='usermanagement.do'" class="logindivdivbtn">
+									관리자 메뉴
+									</button>
+									<%} %>
 									<%if(memberDto.getMember_enabled()!="N"){ %>
 									<button onclick="location.href='pagemoving.do?command=userinformation'" class="logindivdivbtn">
      								내정보보기  

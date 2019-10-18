@@ -181,4 +181,9 @@ public class MemberBizImpl implements MemberBiz {
 		return userInfo;
 	}
 
+	@Override
+	public int roleupdate(String enabled, String id) {
+		return dao.roleupdate(enabled, id);
+	}
+
 }

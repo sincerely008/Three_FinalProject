@@ -342,4 +342,27 @@ public class login {
 		
 		return "home";
 	}
+	
+	@RequestMapping("/usermanagement.do")
+	public String usermanagement(Model model) {	
+		
+		model.addAttribute("list", biz.selectList());	
+		
+		return "usermanagement";
+	}
+	
+	@RequestMapping(value="/roleupdate.do")
+	public String roleupdate(Model model, String enabled, String id) {
+			
+		int res = biz.roleupdate(enabled,id);
+		
+		if(res>0) {
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}else {
+			System.out.println("roleupdate error");
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}
+	}
 }

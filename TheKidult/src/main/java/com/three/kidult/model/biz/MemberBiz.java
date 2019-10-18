@@ -18,5 +18,6 @@ public interface MemberBiz {
 	public int goodbyeUser(MemberDto dto);								// 회원탈퇴
 	public String kakaoGetAccessToken(String authorize_code);				//카카오 로그인
 	public HashMap<String, Object> kakaoGetUserInfo(String access_Token);	//카카오 로그인
+	public int roleupdate(String enabled, String id);									// 웹 사용여부 변경(관리자 페이지)
 
 }
