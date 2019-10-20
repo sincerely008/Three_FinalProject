@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.three.kidult.dto.ChattingDto;
 import com.three.kidult.dto.MemberDto;
 import com.three.kidult.model.biz.MemberBiz;
 
@@ -44,9 +45,23 @@ public class login {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/signup.do", method = RequestMethod.GET)
-	public String signup(Model model) {
+	public String signup(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
 		
 		return "signup";
+	}
+	@RequestMapping(value = "/UserInformation.do", method = RequestMethod.GET)
+	public String UserInformation(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+		
+		session = request.getSession();
+		
+		return "UserInformation";
+	}
+	@RequestMapping(value = "/UserInformationUpdate.do", method = RequestMethod.GET)
+	public String UserInformationUpdate(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+		
+		session = request.getSession();
+	
+		return "UserInformationUpdate";
 	}
 	
 	@RequestMapping("/idchk.do")
@@ -131,7 +146,7 @@ public class login {
 		String member_email = request.getParameter("emailFront") + "@" + request.getParameter("emailBack");
 		String member_gender = request.getParameter("gender");
 		
-		
+		System.out.println("id : " + member_id + "pw : " + member_pw);
 		
 		MemberDto dto = new MemberDto();
 		dto.setMember_id(member_id);
@@ -242,6 +257,7 @@ public class login {
 	@RequestMapping("/UserLogin.do")
 	public String gologin(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
+		session = request.getSession();
 		
 		return"UserLogin";
 	}
@@ -262,13 +278,28 @@ public class login {
 		
 		MemberDto dto = biz.login(id, pw);
 		
-		if(dto != null) {
+		if(dto != null && dto.getMember_kakao().equals("N") && dto.getMember_enabled().equals("Y")) {
 			session.setAttribute("memberDto", dto);
-			
+
+			ChattingDto dto1 =new ChattingDto();
+			dto1.setChatting_user(id);		
+
 			return "redirect:home.do";
+		}else if(dto.getMember_kakao().equals("Y") && dto.getMember_enabled().equals("Y")) {
+			out.print("<script>");
+			out.print("alert('카카오 로그인을 해주세요')");
+			out.print("</script>");
+			out.print("<script>");
+			out.print("location.href='UserLogin.do'");
+			out.print("</script>");
+			out.flush();
+			return "UserLogin";
 		}else {
 			out.print("<script>");
 			out.print("alert('아이디와 비밀번호를 확인해주세요')");
+			out.print("</script>");
+			out.print("<script>");
+			out.print("location.href='UserLogin.do'");
 			out.print("</script>");
 			out.flush();
 			return "UserLogin";
@@ -286,28 +317,24 @@ public class login {
 		HashMap<String, Object> userInfo = biz.kakaoGetUserInfo(access_Token);
 		
 		
-		String nickName = (String) userInfo.get("nickname"); 
+		String kakaoId = (String) userInfo.get("kakaoId"); 
 		String email = "";
 		
 		
 		if(userInfo.get("email") != null) {
-			email = (String)userInfo.get("email");
-			
+			email = (String)userInfo.get("email");			
 			session.setAttribute("access_Token", access_Token);
+
+			ChattingDto dto1=new ChattingDto();
+			dto1.setChatting_user(kakaoId);
 			
 		}else {
 			System.out.println("email is null");
 		}
 		
-		MemberDto dto;
+		MemberDto dto; 
 		
-		if(email != null) {
-			dto = biz.login(email, email);
-		} else {
-			dto = biz.login(nickName, nickName);
-		}
-		
-		
+		dto = biz.login(kakaoId, kakaoId);
 		
 		if(dto != null) {
 			session.setAttribute("dto", dto);
@@ -316,16 +343,18 @@ public class login {
 			
 			dto = new MemberDto();
 			
-			if(email != null) {
-				dto.setMember_id(email);
-			} else {
-				dto.setMember_id(nickName);
-			}
+			dto.setMember_id(kakaoId);
+			
+			String[] emailSplit = email.split("@");
+			String emailFront = emailSplit[0];
+			String emailBack = emailSplit[1];
+			
 			model.addAttribute("dto", dto);
+			model.addAttribute("emailFront",emailFront);
+			model.addAttribute("emailBack",emailBack);
+			
 			return "signup";
-		}
-		
-		
+		}	
 	}
 	
 	@RequestMapping("/logout.do")
@@ -335,7 +364,9 @@ public class login {
 		
 		session.invalidate();
 		
+		ChattingDto dto1 =new ChattingDto();
+		dto1.setChatting_user(null);		
+		
 		return "home";
 	}
-	
 }

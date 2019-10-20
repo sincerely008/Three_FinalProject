@@ -43,5 +43,15 @@
  		SELECT CATEGORY_NO, PRODUCT_NO, PRODUCT_NAME, PRODUCT_STOCK, PRODUCT_DETAILS, PRODUCT_PRICE
  		FROM PRODUCT
  	</select>
+ 	
+ 	<select id="productlist" resultType="productDto">
+ 		SELECT CATEGORY_NO, PRODUCT_NO, PRODUCT_NAME, PRODUCT_STOCK, PRODUCT_DETAILS, PRODUCT_PRICE
+		FROM PRODUCT
+		ORDER BY CATEGORY_NO DESC
+ 	</select>
+ 	
+ 	<insert id="dummyInsert">
+ 		INSERT INTO PRODUCT VALUES(#{category_no}, PRODUCTSEQ.NEXTVAL, #{product_name}, #{product_stock}, #{product_details}, #{product_price}, #{product_imgurl})
+ 	</insert>
 	
 </mapper>
