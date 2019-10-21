@@ -23,16 +23,24 @@ MemberDto memberDto = (MemberDto)session.getAttribute("memberDto");
 a{
 	color:white;
 }
+h2{
+	font-size: 25px;
+	background-color: white;
+	color:blue;
+	
+}
 </style>
 </head>
 <body>
 	<div id="style" class="myform">
-		<form id="form" name="form" method="get" action="Userlogin.do">
+		<form id="form" name="form" method="POST" action="update.do">
 		<input type="hidden" name= "command" value="update" />
 		<input type="hidden" name= "id" value="<%= memberDto.getMember_id() %>" />
 			<h1>회원 정보 수정</h1>
-			<p>수정해주세요. 수정 완료후에는 재로그인이 필요합니다.</p>
 			<div>
+				
+				<label>ID<span class="small"><h2>${memberDto.getMember_id()}</h2></span></label>
+				<br/> 	<br/> 	<br/>
 				<label>NickName<span class="small">닉네임</span></label>
 				<input type="text" name="nickname" id="nickname" value="<%=memberDto.getMember_name()%>" />
 				<label>Password<span class="small">패스워드</span></label>
