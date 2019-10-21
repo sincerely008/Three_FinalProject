@@ -365,4 +365,19 @@ public class login {
 			return	 "usermanagement";	
 		}
 	}
+	
+	@RequestMapping(value="/deleteid.do")
+	public String deleteid(Model model, String id) {
+		
+		int res = biz.deleteid(id);
+		
+		if(res>0) {
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}else {
+			System.out.println("roleupdate error");
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}
+	}
 }

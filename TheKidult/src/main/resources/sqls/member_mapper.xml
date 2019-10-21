@@ -54,4 +54,8 @@
     UPDATE MEMBER SET MEMBER_ENABLED ='Y' WHERE MEMBER_ID = #{id}
   </update>
   
+  <delete id="deleteid">
+  	DELETE FROM MEMBER WHERE MEMBER_ID = #{id}
+  </delete>
+  
 </mapper>

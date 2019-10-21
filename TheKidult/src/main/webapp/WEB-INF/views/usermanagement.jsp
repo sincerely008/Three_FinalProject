@@ -23,13 +23,17 @@
 
 $(document).on("click", "a.enabled", function() {
     var bung = $(this).text();
-    //alert(bung);
-    var id = $(this).parent().siblings('.id').text();
-    //alert(id);
+    var id = $(this).parent().siblings('.id').children('.aid').text();
     if(confirm("이 회원의 이용여부를 변경 하시겠습니까?")) {
         location.href="roleupdate.do?enabled=" + bung + "&id=" + id;
     }
-    return false;
+});
+
+$(document).on("click", "a.aid", function(){
+	var id = $(this).text();
+	if(confirm("이 회원을 탈퇴 시키겠습니까?")){
+		location.href="deleteid.do?id="+id;
+	}
 });
 
 </script>
@@ -65,14 +69,14 @@ $(document).on("click", "a.enabled", function() {
 				</tr>
 				<c:forEach items="${list }" var="dto">
 					<tr>
-						<td class="id" value="${dto.member_id}">${dto.member_id}</td>
+						<td class="id"><a class='aid' href="javascript:;" onclick="delete();" value="${dto.member_id}">${dto.member_id}</a></td>
 						<td>${dto.member_pw}</td>
 						<td>${dto.member_name}</td>
 						<td>${dto.member_birth}</td>
 						<td>${dto.member_addr}</td>
 						<td>${dto.member_phone}</td>
 						<td>${dto.member_email}</td>
-						<td><a class="enabled" href="javascript:;" onclick="enabled($(this)attr('value'));" value="${dto.member_enabled}">${dto.member_enabled}</a></td>
+						<td><a class="enabled" href="javascript:;" onclick="enabled();" value="${dto.member_enabled}">${dto.member_enabled}</a></td>
 						<td>${dto.member_gender}</td>
 						<td>${dto.member_role}</td>
 						<td>${dto.member_kakao}</td>
@@ -83,5 +87,6 @@ $(document).on("click", "a.enabled", function() {
 			</c:otherwise>
 		</c:choose>
 	</table>
+	<h4>아이디 클릭시 계정삭제 / 이용여부 클릭시 계정 잠금</h4>
 </body>
 </html>

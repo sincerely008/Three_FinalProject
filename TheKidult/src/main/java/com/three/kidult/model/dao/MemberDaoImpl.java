@@ -157,4 +157,14 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 
+	@Override
+	public int deleteid(String id) {
+		
+		int res = 0;
+		
+		res = sqlSession.delete(namespace+"deleteid",id);
+		
+		return res;
+	}
+
 }

@@ -18,6 +18,7 @@ public interface MemberDao {
 	public int updatePw(String id, String pw);							// 비빌번호 변경
 	public int goodbyeUser(MemberDto dto);								// 회원탈퇴
 	public int roleupdate(String enabled, String id);
+	public int deleteid(String id);
 	
 	// 생각나는데로 추가 예정
 

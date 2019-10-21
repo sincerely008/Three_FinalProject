@@ -186,4 +186,9 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.roleupdate(enabled, id);
 	}
 
+	@Override
+	public int deleteid(String id) {
+		return dao.deleteid(id);
+	}
+
 }
