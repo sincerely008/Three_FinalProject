@@ -375,7 +375,7 @@ public class login {
 			model.addAttribute("list", biz.selectList());	
 			return	 "usermanagement";	
 		}else {
-			System.out.println("roleupdate error");
+			System.out.println("enabled error");
 			model.addAttribute("list", biz.selectList());	
 			return	 "usermanagement";	
 		}
