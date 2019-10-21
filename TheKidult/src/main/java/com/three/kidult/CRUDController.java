@@ -85,7 +85,5 @@ public class CRUDController {
 		
 		return "crudlist";
 	}
-	
-
-	
+		
 }

@@ -17,7 +17,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+<<<<<<< HEAD
 import com.three.kidult.dto.MemberDto;
+=======
+import com.three.kidult.model.biz.MemberBiz;
+>>>>>>> refs/heads/mastercopy
 
 /**
  * Handles requests for the application home page.
