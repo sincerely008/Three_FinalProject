@@ -50,8 +50,10 @@
 		ORDER BY CATEGORY_NO DESC
  	</select>
  	
- 	<insert id="dummyInsert">
- 		INSERT INTO PRODUCT VALUES(#{category_no}, PRODUCTSEQ.NEXTVAL, #{product_name}, #{product_stock}, #{product_details}, #{product_price}, #{product_imgurl})
+ 	<insert id="dummyInsert" parameterType="map">
+ 		<foreach collection="lists" item="list" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">	
+ 			INTO PRODUCT VALUES(#{list.category_no}, #{list.product_no}, #{list.product_name}, #{list.product_stock}, #{list.product_details}, #{list.product_price}, #{list.product_imgurl})
+ 		</foreach>
  	</insert>
 	
 </mapper>

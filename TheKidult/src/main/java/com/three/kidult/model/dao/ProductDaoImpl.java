@@ -111,10 +111,13 @@ public class ProductDaoImpl implements ProductDao {
 		int res = 0;
 		Map<String, List<ProductDto>> map = new HashMap<String, List<ProductDto>>();
 		map.put("lists", list);
+		map.get("lists").get(0).getCategory_no();
+		System.out.println(map.get("lists").get(0).getCategory_no());
 		
 		try {
 			res = sqlSession.insert(namespace + "dummyInsert", map);
 		} catch (Exception e) {
+			System.out.println(e);
 			System.out.println("dummy insert error");
 		}
 		return res;
