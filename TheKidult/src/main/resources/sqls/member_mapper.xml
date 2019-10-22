@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
+
+  <select id="selectList" resultType="memberDto">
+    SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_GENDER, MEMBER_ROLE, MEMBER_KAKAO, MEMBER_REGDATE, MEMBER_PWEVENT
+    FROM MEMBER
+  </select>
   
   <select id="idchk" resultType="memberDto" parameterType="String">
-  	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_GENDER, MEMBER_ROLE, MEMBER_REGDATE, MEMBER_PWEVENT
+  	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_GENDER, MEMBER_ROLE, MEMBER_KAKAO, MEMBER_REGDATE, MEMBER_PWEVENT
   	FROM MEMBER
   	WHERE MEMBER_ID=#{id}
   </select>
   
   <select id="emailchk" resultType="memberDto" parameterType="String">
-  	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_GENDER, MEMBER_ROLE, MEMBER_REGDATE, MEMBER_PWEVENT
+  	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_GENDER, MEMBER_ROLE, MEMBER_KAKAO, MEMBER_REGDATE, MEMBER_PWEVENT
   	FROM MEMBER
   	WHERE MEMBER_EMAIL=#{email}
   </select>
   
   <insert id="signup">
-  	INSERT INTO MEMBER VALUES(#{member_id}, #{member_pw}, #{member_name}, #{member_birth}, #{member_addr}, #{member_phone}, #{member_email}, 'Y', #{member_gender}, 'USER', SYSDATE, SYSDATE)
+  	INSERT INTO MEMBER VALUES(#{member_id}, #{member_pw}, #{member_name}, #{member_birth}, #{member_addr}, #{member_phone}, #{member_email}, 'Y', #{member_gender}, 'USER', #{member_kakao}, SYSDATE, SYSDATE)
   </insert>
   
   <select id="forgotid" resultType="memberDto">
-  	SELECT MEMBER_ID
+  	SELECT MEMBER_ID, MEMBER_KAKAO
   	FROM MEMBER
   	WHERE MEMBER_NAME=#{name} AND MEMBER_EMAIL=#{email}
   </select>
   
   <select id="forgotpw" resultType="memberDto">
-  	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_GENDER, MEMBER_ROLE, MEMBER_REGDATE, MEMBER_PWEVENT
+  	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_GENDER, MEMBER_ROLE, MEMBER_KAKAO, MEMBER_REGDATE, MEMBER_PWEVENT
   	FROM MEMBER
   	WHERE MEMBER_ID=#{id} AND MEMBER_NAME=#{name} AND MEMBER_EMAIL=#{email}
   </select>
@@ -34,5 +39,23 @@
   	UPDATE MEMBER SET MEMBER_PW=#{pw}, MEMBER_PWEVENT=SYSDATE 
   	WHERE MEMBER_ID=#{id}
   </update>
+  
+  <select id="logingogo" resultType="memberDto">
+  	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, MEMBER_ADDR, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_ENABLED, MEMBER_GENDER, MEMBER_ROLE, MEMBER_KAKAO, MEMBER_REGDATE, MEMBER_PWEVENT
+  	FROM MEMBER
+  	WHERE MEMBER_ID=#{id} AND MEMBER_PW=#{pw} AND MEMBER_KAKAO='N' AND MEMBER_ENABLED='Y'
+  </select>
+  
+  <update id="roleupdate1">
+    UPDATE MEMBER SET MEMBER_ENABLED ='N' WHERE MEMBER_ID = #{id}
+  </update>
+  
+  <update id="roleupdate2">
+    UPDATE MEMBER SET MEMBER_ENABLED ='Y' WHERE MEMBER_ID = #{id}
+  </update>
+  
+  <delete id="deleteid">
+  	DELETE FROM MEMBER WHERE MEMBER_ID = #{id}
+  </delete>
   
 </mapper>

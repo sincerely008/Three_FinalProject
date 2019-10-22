@@ -42,6 +42,9 @@
 			<c:when test="${empty dto }">
 				<td>해당하는 아이디가 없습니다.</td>
 			</c:when>
+			<c:when test="${dto.member_kakao == Y}">
+				<td>카카오 계정 찾기를 해주세요.</td>
+			</c:when>
 			<c:otherwise>
 				<form onsubmit="return check()" name="pwchk" action="changeforgotpw.do" method="POST">
 					<table>

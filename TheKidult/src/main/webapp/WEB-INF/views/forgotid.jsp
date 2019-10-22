@@ -35,7 +35,7 @@
 
 	<h1>ID 찾기</h1>
 	
-	<form action="goforgotid.do" method="POST" name="chk" onsubmit="return check()">
+	<form action="#" method="POST" name="chk" onsubmit="return check()">
 		<table>
 			<tr>
 				<th>이름</th>

@@ -14,6 +14,7 @@ public class MemberDto {
 	private String member_enabled;
 	private String member_gender;
 	private String member_role;
+	private String member_kakao;
 	private Date member_regdate;
 	private Date member_pwevent;
 	
@@ -25,7 +26,7 @@ public class MemberDto {
 
 	public MemberDto(String member_id, String member_pw, String member_name, String member_birth, String member_addr,
 			String member_phone, String member_email, String member_enabled, String member_gender, String member_role,
-			Date member_regdate, Date member_pwevent) {
+			String member_kakao, Date member_regdate, Date member_pwevent) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -37,9 +38,11 @@ public class MemberDto {
 		this.member_enabled = member_enabled;
 		this.member_gender = member_gender;
 		this.member_role = member_role;
+		this.member_kakao = member_kakao;
 		this.member_regdate = member_regdate;
 		this.member_pwevent = member_pwevent;
 	}
+	
 
 
 	public String getMember_id() {
@@ -142,6 +145,16 @@ public class MemberDto {
 	}
 
 
+	public String getMember_kakao() {
+		return member_kakao;
+	}
+
+
+	public void setMember_kakao(String member_kakao) {
+		this.member_kakao = member_kakao;
+	}
+
+
 	public Date getMember_regdate() {
 		return member_regdate;
 	}
@@ -160,9 +173,6 @@ public class MemberDto {
 	public void setMember_pwevent(Date member_pwevent) {
 		this.member_pwevent = member_pwevent;
 	}
-	
-	
-	
-	
 
+	
 }

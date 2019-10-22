@@ -98,7 +98,7 @@ public class MemberBizImpl implements MemberBiz {
 			
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=0e2f445e50f3854d752de29fe5f4f3b6");
-			sb.append("&redirect_uri=http://localhost:8787/kidult/kakaoLogin.do");
+			sb.append("&redirect_uri=http://localhost:8787/mvc03/kakaoLogin.do");
 			sb.append("&code="+authorize_code);
 			
 			bw.write(sb.toString());
@@ -166,6 +166,10 @@ public class MemberBizImpl implements MemberBiz {
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			
+			System.out.println("id : " + kakaoId);
+			System.out.println("nickname : " + nickname);
+			System.out.println("email : " + email);
+			
 			if(email != null) {
 				userInfo.put("email", email);
 			}
@@ -178,6 +182,16 @@ public class MemberBizImpl implements MemberBiz {
 			e.printStackTrace();
 		}
 		return userInfo;
+	}
+
+	@Override
+	public int roleupdate(String enabled, String id) {
+		return dao.roleupdate(enabled, id);
+	}
+
+	@Override
+	public int deleteid(String id) {
+		return dao.deleteid(id);
 	}
 
 }

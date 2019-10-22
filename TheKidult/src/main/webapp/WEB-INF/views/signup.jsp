@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,24 +17,25 @@
 <script src="js/signup.js"></script>
 <link href="resources/css/loginform.css" rel="stylesheet" type="text/css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
-
+<script type="text/javascript">
+history.go(1);
+</script>
 <style type="text/css">
-
 .h1{
 
- 
-
-	
 }
 
 </style>
 </head>
 <body>
+<header>
 <%@ include file="/form/header.jsp"%>
+</header>
+
 	<div id="style" class="myform">
 	<h1>회원가입</h1>
 	
-	<form action="signupres.do" method="post">
+	<form action="signupres.do" method="post" onsubmit="return check();" id="sign">
 		<table>
 			<c:choose>
 			
@@ -54,6 +56,7 @@
 						<td>
 							<input type="password" name="pwConfirm">
 							<span id="pwSapn"></span>
+							<input type="hidden" name="kakao" value="N">
 						</td>
 					</tr>
 				</c:when>
@@ -63,6 +66,7 @@
 							<input type="hidden" name="id" value="${dto.member_id }">
 							<input type="hidden" name="password" value="${dto.member_id }">
 							<input type="hidden" name="pwConfirm" value="${dto.member_id }">
+							<input type="hidden" name="kakao" value="Y">
 						</td>
 					</tr>
 				</c:otherwise>
@@ -136,8 +140,8 @@
 					<th>성별</th>
 					<td>
 						<select name="gender">
-							<option value="man" selected="selected">남성</option>
-							<option value="woman">여성</option>
+							<option value="Man" selected="selected">남성</option>
+							<option value="Woman">여성</option>
 						</select>
 					</td>
 				</tr>
@@ -146,7 +150,7 @@
 				<tr>
 					<td>
 						<input type="submit" value="가입하기" id="insertsign" style="display: none">
-						<input type="button" value="취소" onclick="location.href=''"> <!-- 로그인 페이지 완성되면 추가할 것 -->
+						<input type="button" value="취소" onclick="location.replace('UserLogin.do')"> 
 					</td>
 				</tr>
 		</table>

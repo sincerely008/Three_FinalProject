@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.three.kidult.dto.ChattingDto;
 import com.three.kidult.dto.MemberDto;
 import com.three.kidult.model.biz.MemberBiz;
 
@@ -45,9 +45,23 @@ public class login {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/signup.do", method = RequestMethod.GET)
-	public String signup(Model model) {
+	public String signup(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
 		
 		return "signup";
+	}
+	@RequestMapping(value = "/UserInformation.do", method = RequestMethod.GET)
+	public String UserInformation(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+		
+		session = request.getSession();
+		
+		return "UserInformation";
+	}
+	@RequestMapping(value = "/UserInformationUpdate.do", method = RequestMethod.GET)
+	public String UserInformationUpdate(Model model, HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+		
+		session = request.getSession();
+	
+		return "UserInformationUpdate";
 	}
 	
 	@RequestMapping("/idchk.do")
@@ -113,7 +127,7 @@ public class login {
 		return ran;
 	}
 	
-	@RequestMapping(value="/signupres.do", method = RequestMethod.POST)
+	@RequestMapping(value="/signupres.do", method = {RequestMethod.POST,RequestMethod.GET})
 	public String signupres(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		request.setCharacterEncoding("UTF-8");
@@ -130,9 +144,8 @@ public class login {
 		String member_addr = request.getParameter("addr1") + " " + request.getParameter("addr2");
 		String member_phone = request.getParameter("phone1") + "-" + request.getParameter("phone2") + "-" + request.getParameter("phone3");
 		String member_email = request.getParameter("emailFront") + "@" + request.getParameter("emailBack");
+		String member_kakao = request.getParameter("kakao");
 		String member_gender = request.getParameter("gender");
-		
-		System.out.println("id : " + member_id + "pw : " + member_pw);
 		
 		MemberDto dto = new MemberDto();
 		dto.setMember_id(member_id);
@@ -142,23 +155,29 @@ public class login {
 		dto.setMember_addr(member_addr);
 		dto.setMember_phone(member_phone);
 		dto.setMember_email(member_email);
+		dto.setMember_kakao(member_kakao);
 		dto.setMember_gender(member_gender);
 		
 		res = biz.signup(dto);
 		
 		if(res>0) {
-			out.print("<script>");
-			out.print("alert('회원가입 성공')");
-			out.print("</script>");
-			return "signend";
+			
+			return "redirect:signend.do";
 		}else {
 			out.print("<script>");
 			out.print("alert('회원가입 실패')");
 			out.print("</script>");
+			out.flush();
 			return "signup";
 		}
 	
 		
+	}
+	@RequestMapping("/signend.do")
+	public String signend(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		
+		return "signend";
 	}
 	
 	@RequestMapping("/forgotid.do")
@@ -222,11 +241,13 @@ public class login {
 			out.print("<script>");
 			out.print("alert('변경 완료!')");
 			out.print("</script>");
+			out.flush();
 			return "changeforgotpw";
 		}else {
 			out.print("<script>");
 			out.print("alert('변경 실패!')");
 			out.print("</script>");
+			out.flush();
 			return "forgotpw";
 		}
 		
@@ -234,18 +255,46 @@ public class login {
 	}
 	
 	@RequestMapping("/UserLogin.do")
-	public String gologin() {
+	public String gologin(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		session = request.getSession();
 		
 		return"UserLogin";
 	}
 	
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
-	public String loginres(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	public String loginres(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		session = request.getSession();
+		PrintWriter out = response.getWriter();
 		
 		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("password");
 		
-		return "";
+		MemberDto dto = biz.login(id, pw);
+		
+		if(dto != null) {
+			session.setAttribute("memberDto", dto);
+
+			ChattingDto dto1 =new ChattingDto();
+			dto1.setChatting_user(id);		
+
+			return "redirect:home.do";
+		}else {
+			out.print("<script>");
+			out.print("alert('아이디와 비밀번호를 확인해주세요')");
+			out.print("</script>");
+			out.flush();
+			return "UserLogin";
+		}
+		
+	
+		
 	}
 	
 	@RequestMapping(value="/kakaoLogin.do")
@@ -260,10 +309,20 @@ public class login {
 		String email = "";
 		
 		
-		if(userInfo.get("email") != null) {
-			email = (String)userInfo.get("email");
-			
+		
+		if(userInfo.get("email") != null&& userInfo.get("email") != "") {
+			email = (String)userInfo.get("email");			
 			session.setAttribute("access_Token", access_Token);
+			
+			String[] emailSplit = email.split("@");
+			String emailFront = emailSplit[0];
+			String emailBack = emailSplit[1];
+			
+			model.addAttribute("emailFront",emailFront);
+			model.addAttribute("emailBack",emailBack);
+
+			ChattingDto dto1=new ChattingDto();
+			dto1.setChatting_user(kakaoId);
 			
 		}else {
 			System.out.println("email is null");
@@ -279,18 +338,62 @@ public class login {
 		} else {
 			
 			dto = new MemberDto();
-			
 			dto.setMember_id(kakaoId);
 			
-			String[] emailSplit = email.split("@");
-			String emailFront = emailSplit[0];
-			String emailBack = emailSplit[1];
-			
 			model.addAttribute("dto", dto);
-			model.addAttribute("emailFront",emailFront);
-			model.addAttribute("emailBack",emailBack);
 			
 			return "signup";
+		}	
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logOut(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		session = request.getSession();
+		
+		session.invalidate();
+		
+		ChattingDto dto1 =new ChattingDto();
+		dto1.setChatting_user(null);		
+		
+		return "home";
+	}
+	
+	@RequestMapping("/usermanagement.do")
+	public String usermanagement(Model model) {	
+		
+		model.addAttribute("list", biz.selectList());	
+		
+		return "usermanagement";
+	}
+	
+	@RequestMapping(value="/roleupdate.do")
+	public String roleupdate(Model model, String enabled, String id) {
+			
+		int res = biz.roleupdate(enabled,id);
+		
+		if(res>0) {
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}else {
+			System.out.println("roleupdate error");
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}
+	}
+	
+	@RequestMapping(value="/deleteid.do")
+	public String deleteid(Model model, String id) {
+		
+		int res = biz.deleteid(id);
+		
+		if(res>0) {
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}else {
+			System.out.println("roleupdate error");
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
 		}
 	}
 }
