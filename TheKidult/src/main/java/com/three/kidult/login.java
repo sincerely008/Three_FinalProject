@@ -144,9 +144,8 @@ public class login {
 		String member_addr = request.getParameter("addr1") + " " + request.getParameter("addr2");
 		String member_phone = request.getParameter("phone1") + "-" + request.getParameter("phone2") + "-" + request.getParameter("phone3");
 		String member_email = request.getParameter("emailFront") + "@" + request.getParameter("emailBack");
+		String member_kakao = request.getParameter("kakao");
 		String member_gender = request.getParameter("gender");
-		
-		System.out.println("id : " + member_id + "pw : " + member_pw);
 		
 		MemberDto dto = new MemberDto();
 		dto.setMember_id(member_id);
@@ -156,6 +155,7 @@ public class login {
 		dto.setMember_addr(member_addr);
 		dto.setMember_phone(member_phone);
 		dto.setMember_email(member_email);
+		dto.setMember_kakao(member_kakao);
 		dto.setMember_gender(member_gender);
 		
 		res = biz.signup(dto);
@@ -309,9 +309,17 @@ public class login {
 		String email = "";
 		
 		
-		if(userInfo.get("email") != null) {
+		
+		if(userInfo.get("email") != null&& userInfo.get("email") != "") {
 			email = (String)userInfo.get("email");			
 			session.setAttribute("access_Token", access_Token);
+			
+			String[] emailSplit = email.split("@");
+			String emailFront = emailSplit[0];
+			String emailBack = emailSplit[1];
+			
+			model.addAttribute("emailFront",emailFront);
+			model.addAttribute("emailBack",emailBack);
 
 			ChattingDto dto1=new ChattingDto();
 			dto1.setChatting_user(kakaoId);
@@ -330,16 +338,9 @@ public class login {
 		} else {
 			
 			dto = new MemberDto();
-			
 			dto.setMember_id(kakaoId);
 			
-			String[] emailSplit = email.split("@");
-			String emailFront = emailSplit[0];
-			String emailBack = emailSplit[1];
-			
 			model.addAttribute("dto", dto);
-			model.addAttribute("emailFront",emailFront);
-			model.addAttribute("emailBack",emailBack);
 			
 			return "signup";
 		}	
