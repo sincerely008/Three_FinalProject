@@ -344,6 +344,7 @@ public class login {
 		
 		dto = biz.login(kakaoId, kakaoId);
 		
+		
 		if(dto != null) {
 			session.setAttribute("dto", dto);
 			return "home";
