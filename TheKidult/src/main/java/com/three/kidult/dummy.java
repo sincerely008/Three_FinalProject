@@ -130,7 +130,7 @@ public class dummy {
 			
 		PrintWriter out = response.getWriter();
 		
-		String info = request.getParameter("info");
+		String info = request.getParameter("info2");
 		
 		JsonParser parser = new JsonParser();
 		JsonElement infoEle = parser.parse(info);
@@ -171,7 +171,6 @@ public class dummy {
 				dto.setProduct_price(product_price);
 				dto.setProduct_details(product_details);
 				dto.setProduct_stock(10000);
-				
 				product.add(dto);
 				
 			}
