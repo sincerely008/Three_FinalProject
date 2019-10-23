@@ -2,6 +2,7 @@ package com.three.kidult;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -100,7 +101,7 @@ public class dummy {
 				dto.setCategory_no(1);
 				dto.setProduct_no(i+1);
 				dto.setProduct_name(product_name);
-				dto.setProduct_imgurl(product_imgUrl);
+				dto.setProduct_img(product_imgUrl);
 				dto.setProduct_price(product_price);
 				dto.setProduct_details(product_details);
 				dto.setProduct_stock(10000);
@@ -136,10 +137,11 @@ public class dummy {
 		JsonElement infoEle = parser.parse(info);
 	
 		List<ProductDto> product = pbiz.productList();
-		
+		List<ProductDto> products = new ArrayList<ProductDto>();
+	
 		
 		if(product.size() == 120) {
-			for(int i = 110; i < infoEle.getAsJsonObject().get("DATA").getAsJsonArray().size(); i++) {
+			for(int i = 0; i < infoEle.getAsJsonObject().get("DATA").getAsJsonArray().size(); i++) {
 				JsonObject infoObj = infoEle.getAsJsonObject().get("DATA").getAsJsonArray().get(i).getAsJsonObject();
 				
 				JsonElement product_names = infoObj.get("name");
@@ -167,15 +169,15 @@ public class dummy {
 				dto.setCategory_no(2);
 				dto.setProduct_no(i+121);
 				dto.setProduct_name(product_name);
-				dto.setProduct_imgurl(product_imgUrl);
+				dto.setProduct_img(product_imgUrl);
 				dto.setProduct_price(product_price);
 				dto.setProduct_details(product_details);
 				dto.setProduct_stock(10000);
-				product.add(dto);
+				products.add(dto);
 				
 			}
 			
-			int res = pbiz.insert(product);
+			int res = pbiz.insert(products);
 			
 			out.println("카테고리 2 더미데이터 "+res+" 개 생성");
 			

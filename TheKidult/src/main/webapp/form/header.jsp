@@ -438,7 +438,7 @@
 						<li class="headerdiv2divulli"
 							onclick="location.href='pagemoving.do?command=broadcstingtop'">
 							<a class="headerdiv2divullia"
-							href="pagemoving.do?command=broadcstingtop"> 건프라/피규어 </a>
+							href="product.do"> 건프라/피규어 </a>
 							<ul class="headerdiv2divulliul">
 								<li><a href="pagemoving.do?command=broadcstingtop">
 										건담(GUNDAM) </a></li>
