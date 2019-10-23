@@ -40,11 +40,9 @@ $(document).on("click", "a.aid", function(){
 </head>
 <body>
 
-	<h1>회원 목록</h1>
+	<h1>회원 관리 페이지</h1>
 
 	<table border="1">
-		<col width="200px"/>
-		<col width="100px"/>
 		<c:choose>
 			<c:when test="${empty list }">
 				<tr>
