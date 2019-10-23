@@ -346,7 +346,7 @@ public class login {
 		
 		
 		if(dto != null) {
-			session.setAttribute("dto", dto);
+			session.setAttribute("memberDto", dto);
 			return "home";
 		} else {
 			
