@@ -43,5 +43,17 @@
  		SELECT CATEGORY_NO, PRODUCT_NO, PRODUCT_NAME, PRODUCT_STOCK, PRODUCT_DETAILS, PRODUCT_PRICE
  		FROM PRODUCT
  	</select>
+ 	
+ 	<select id="productlist" resultType="productDto">
+ 		SELECT CATEGORY_NO, PRODUCT_NO, PRODUCT_NAME, PRODUCT_STOCK, PRODUCT_DETAILS, PRODUCT_PRICE
+		FROM PRODUCT
+		ORDER BY CATEGORY_NO DESC
+ 	</select>
+ 	
+ 	<insert id="dummyInsert" parameterType="map">
+ 		<foreach collection="lists" item="list" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">	
+ 			INTO PRODUCT VALUES(#{list.category_no}, #{list.product_no}, #{list.product_name}, #{list.product_stock}, #{list.product_details}, #{list.product_price}, #{list.product_imgurl})
+ 		</foreach>
+ 	</insert>
 	
 </mapper>

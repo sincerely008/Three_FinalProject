@@ -67,8 +67,8 @@
 			</div>
 			<div class="input_box">
 				<div>
-					<input type="text" placeholder="ID" name="id"> <input type="password"
-						placeholder="PASSWORD" name="password">
+					<input type="text" placeholder="ID" name="id"> 
+					<input type="password" placeholder="PASSWORD" name="password">
 				</div>
 			</div>
 			<div class="login_box" style="margin-bottom: 15px;">
