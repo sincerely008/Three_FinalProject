@@ -56,4 +56,16 @@ public class ProductBizImpl implements ProductBiz {
 		return dao.searchFiled(offset, noOfRecords, searchFiled, searchValue);
 	}
 
+	@Override
+	public List<ProductDto> productList() {
+		
+		return dao.productList();
+	}
+
+	@Override
+	public int insert(List<ProductDto> list) {
+		
+		return dao.insert(list);
+	}
+
 }

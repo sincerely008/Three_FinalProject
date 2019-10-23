@@ -3,6 +3,7 @@ package com.three.kidult.model.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,6 +90,37 @@ public class ProductDaoImpl implements ProductDao {
 		this.noOfRecords = sqlSession.selectOne(namespace + "fileCount", params);
 		
 		return list;
+	}
+
+	@Override
+	public List<ProductDto> productList() {
+		
+		List<ProductDto> list = new ArrayList<ProductDto>();
+		
+		try {
+			list = sqlSession.selectList(namespace + "productlist");
+		} catch (Exception e) {
+			System.out.println("list 출력 실패");
+		}
+		return list;
+	}
+
+	@Override
+	public int insert(List<ProductDto> list) {
+		
+		int res = 0;
+		Map<String, List<ProductDto>> map = new HashMap<String, List<ProductDto>>();
+		map.put("lists", list);
+		map.get("lists").get(0).getCategory_no();
+		System.out.println(map.get("lists").get(0).getCategory_no());
+		
+		try {
+			res = sqlSession.insert(namespace + "dummyInsert", map);
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("dummy insert error");
+		}
+		return res;
 	}
 
 }

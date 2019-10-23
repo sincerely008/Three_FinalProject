@@ -278,16 +278,28 @@ public class login {
 		
 		MemberDto dto = biz.login(id, pw);
 		
-		if(dto != null) {
+		if(dto != null && dto.getMember_kakao().equals("N") && dto.getMember_enabled().equals("Y")) {
 			session.setAttribute("memberDto", dto);
 
 			ChattingDto dto1 =new ChattingDto();
 			dto1.setChatting_user(id);		
 
 			return "redirect:home.do";
+		}else if(dto.getMember_kakao().equals("Y") && dto.getMember_enabled().equals("Y")) {
+			out.print("<script>");
+			out.print("alert('카카오 로그인을 해주세요')");
+			out.print("</script>");
+			out.print("<script>");
+			out.print("location.href='UserLogin.do'");
+			out.print("</script>");
+			out.flush();
+			return "UserLogin";
 		}else {
 			out.print("<script>");
 			out.print("alert('아이디와 비밀번호를 확인해주세요')");
+			out.print("</script>");
+			out.print("<script>");
+			out.print("location.href='UserLogin.do'");
 			out.print("</script>");
 			out.flush();
 			return "UserLogin";
