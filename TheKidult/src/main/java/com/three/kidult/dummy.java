@@ -84,7 +84,7 @@ public class dummy {
 				JsonElement URLs = infoObj.get("det");
 				
 				String product_name = product_names.getAsString();
-				String product_imgUrl = product_imgUrls.getAsString();
+				String product_img = product_imgUrls.getAsString();
 				String product_pricest = product_prices.getAsString();
 				int product_price = Integer.parseInt(product_pricest.replace("￦", "").replace(",", ""));
 				
@@ -101,7 +101,7 @@ public class dummy {
 				dto.setCategory_no(1);
 				dto.setProduct_no(i+1);
 				dto.setProduct_name(product_name);
-				dto.setProduct_img(product_imgUrl);
+				dto.setProduct_img(product_img);
 				dto.setProduct_price(product_price);
 				dto.setProduct_details(product_details);
 				dto.setProduct_stock(10000);
@@ -151,7 +151,7 @@ public class dummy {
 				JsonElement URLs = infoObj.get("det");
 				
 				String product_name = product_names.getAsString();
-				String product_imgUrl = product_imgUrls.getAsString();
+				String product_img = product_imgUrls.getAsString();
 				String product_pricest = product_prices.getAsString();
 				int product_price = Integer.parseInt(product_pricest.replace("￦", "").replace(",", ""));
 				
@@ -169,7 +169,7 @@ public class dummy {
 				dto.setCategory_no(2);
 				dto.setProduct_no(i+121);
 				dto.setProduct_name(product_name);
-				dto.setProduct_img(product_imgUrl);
+				dto.setProduct_img(product_img);
 				dto.setProduct_price(product_price);
 				dto.setProduct_details(product_details);
 				dto.setProduct_stock(10000);

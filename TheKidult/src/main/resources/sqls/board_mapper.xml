@@ -63,7 +63,7 @@
  	
  	<insert id="dummyInsert" parameterType="map">
  		<foreach collection="lists" item="list" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">	
- 			INTO PRODUCT VALUES(#{list.category_no}, #{list.product_no}, #{list.product_name}, #{list.product_stock}, #{list.product_details}, #{list.product_price}, #{list.product_imgurl})
+ 			INTO PRODUCT VALUES(#{list.category_no}, #{list.product_no}, #{list.product_name}, #{list.product_stock}, #{list.product_details}, #{list.product_price}, #{list.product_img})
  		</foreach>
  	</insert>
 	
