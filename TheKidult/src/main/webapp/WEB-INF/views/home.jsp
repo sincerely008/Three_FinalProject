@@ -25,11 +25,14 @@
  	text-align: center;
    }
    
-   #divCalendar{
-   	width: 500px;
-   	height: 500px;
-   	
-   }
+   
+   .chart{
+			display: inline-block;
+			width: 25px;
+			height: 75px;
+			margin-right: 2px;
+			background-color: red;
+	} 
 	
 
  </style>
@@ -71,6 +74,9 @@
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js'></script>
 	<script src='js/fullcalendar.js'></script>
 	<script type="text/javascript" src="js/locale/ko.js"></script>
+	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="js/ddd.js"></script>
+	
 	<script type="text/javascript">
 		
 	
@@ -166,9 +172,21 @@
 		eventColor:'chocolate'
 		
 		});	//fullcalendar end
+		
+		lineGraph.data = [122,1299,124,2];
+		lineGraph.chartname = ['A제품','B제품','C제품','D제품'];
+	    lineGraph.width = 500;
+	    lineGraph.height = 300;
+	    lineGraph.display();
+
+		
 	});	//$(function) end
 	
+
+	
+	
 	</script>
+	
 <script type="text/javascript" src="resources/js/images.js"></script>
 
 
@@ -856,6 +874,7 @@ background-color: silver;
 						<div class="section2div2div2div1divdiv2">
 							<span>이름 / 가격</span>
 						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -870,6 +889,9 @@ background-color: silver;
 			<div id="loading">loading...</div>
 			<div id="calendar"></div>
 		</div>
+		
+		<!-- D3 -->
+		<div id="dddChart"></div>
 		
 	</section>
 	<input id="throwmusic" type="hidden" value="123" />
