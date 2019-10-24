@@ -52,9 +52,10 @@ height: 300px;
 </head>
 <body>
 
-	<input type="text" id="message" />
-	<input type="button" id="sendBtn" value="전송" />
-	<div id="data" style="overflow:auto;"></div>
-
+	<table>
+		<input type="text" id="message" />
+		<input type="button" id="sendBtn" value="전송" />
+		<div id="data" style="overflow:auto;"></div>
+	</table>
 </body>
 </html>

@@ -658,6 +658,11 @@ background-color: silver;
 
 <section class="section3">
 
+	<table>
+		<input type="text" id="message" />
+		<input type="button" id="sendBtn" value="전송" />
+		<div id="data" style="overflow:auto;"></div>
+	</table>
 
 		<div class="banner">
 
