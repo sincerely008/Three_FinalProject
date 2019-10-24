@@ -5,28 +5,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<script src="js/pament.js"></script>
-<script type="text/javascript">
 <%
 	MemberDto mdto = (MemberDto)session.getAttribute("memberDto");
 %>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript">
+
 	var IMP = window.IMP;
 	IMP.init('imp31732258');
 	
 	
 	function requestPay() {
 	      // IMP.request_pay(param, callback) 호출
+	    
+	    
 		IMP.request_pay({
 		    pg : 'kakaopay',
 		    pay_method : 'card',
 		    merchant_uid : 'merchant_' + new Date().getTime(),
-		    name : ${pdto.product_name},
-		    amount : ${pdto.product_price },
-		    buyer_email : 'iamport@siot.do',
-		    buyer_name : '구매자이름',
-		    buyer_tel : '010-1234-5678',
+		    name : $("input[name=product_name]").val(),
+		    amount :$("input[name=product_price]").val(),
+		    buyer_email : <%mdto.getMember_email();%>,
+		    buyer_name : <%mdto.getMember_name();%>,
+		    buyer_tel : <%mdto.getMember_name();%>,
 		    buyer_addr : '서울특별시 강남구 삼성동',
 		    buyer_postcode : '12356'
 		}, function(rsp) {
@@ -43,8 +45,10 @@
 				}
 				alert(msg);
 				});
- 
+	    
 	    }
+	
+	
 
 </script>
 
@@ -54,14 +58,14 @@
 	<div>
 		<table>
 			<tr>
-				<td><a>이름 : ${pdto.product_name }</a></td>
+				<td><span>상품명 : </span><a>${pdto.product_name }</a></td>
 			</tr>
 			<tr>
-				<td><a>가격 : ${pdto.product_price } 원</a></td>
+				<td><span>가격 : </span><a>${pdto.product_price }</a><span>원</span></td>
 			</tr>
 			<tr>
 				<td>
-					<input type="button" value="구입하기" onclick="location.href='requestPay()'">
+					<input type="button" value="구입하기" onclick="location.href='javascript:requestPay()'">
 					<input type="button" value="장바구니" onclick="location.href=''">
 				</td>
 			</tr>
@@ -70,8 +74,9 @@
 	<div>
 		<img alt="" src="${pdto.product_details }">
 	</div>
-	<a>${mdto.member_id }</a>
-
+	
+	<input type="hidden" name="product_name" value="${pdto.product_name }">
+	<input type="hidden" name="product_price" value="${pdto.product_price }">
 
 </body>
 </html>
