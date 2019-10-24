@@ -705,19 +705,12 @@ background-color: silver;
 
 <section class="section3">
 
-<<<<<<< HEAD
-	<table>
-		<input type="text" id="message" />
-		<input type="button" id="sendBtn" value="전송" />
-		<div id="data" style="overflow:auto;"></div>
-	</table>
-=======
+
 	<div id="chat">
 		<input type="text" id="message" />
 		<input type="button" id="sendBtn" value="전송" /><br>
 		<div id="data" style="overflow:auto;"></div>
 	</div>
->>>>>>> branch 'master' of https://github.com/sincerely008/Three_FinalProject.git
 
 		<div class="banner">
 
