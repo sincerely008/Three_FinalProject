@@ -235,7 +235,7 @@
 }
 
 .logindiv {
-	padding-top: 35px;
+	padding-top: 28px;
 	padding-right: 5px;
 	width: 15%;
 }
