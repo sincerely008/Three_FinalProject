@@ -19,6 +19,7 @@ public interface MemberDao {
 	public int goodbyeUser(MemberDto dto);								// 회원탈퇴
 	public int roleupdate(String enabled, String id);
 	public int deleteid(String id);
+	public MemberDto userInfo(String id);								// 회원정보
 	
 	// 생각나는데로 추가 예정
 

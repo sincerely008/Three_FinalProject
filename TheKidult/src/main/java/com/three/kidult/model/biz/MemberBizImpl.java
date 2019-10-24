@@ -190,4 +190,10 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.deleteid(id);
 	}
 
+	@Override
+	public MemberDto userInfo(String id) {
+		
+		return dao.userInfo(id);
+	}
+
 }
