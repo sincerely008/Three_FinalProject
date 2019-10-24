@@ -34,12 +34,60 @@
 			background-color: red;
 	} 
 	
+		#data{
+border: 1px solid gray;
+width: 250px; 
+height: 300px;
+background-color: white;
+}
+	
+	#chat{
+	position: fixed;
+    bottom: 250;
+    left: 10;
+    width: 250px;
+
+	}
+	
 
  </style>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
+ <script src="https://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
  <script language="JavaScript">
 
+ var ws = new SockJS("<c:url value="/echo" />");
+
+	ws.onmessage = onMessage;
+
+	ws.onclose = onClose;
+
+	$(document).ready(function() {
+		$("#sendBtn").click(function() {
+			sendMessage();
+			moveScroll();
+		});
+	});
+	
+	function moveScroll() {
+		var divdiv = document.getElementById("data");
+		divdiv.scrollTop=divdiv.scrollHeight;
+	}
+	
+	function sendMessage() {
+		ws.send($("#message").val());
+	}
+
+	function onMessage(evt) {
+		var data = evt.data;
+		$("#data").append(data + "<br/>");
+	}
+
+	function onClose(evt) {
+		$("#data").append("서버가 닫혀 있습니다.");
+	}
+
+ 
+ 
 	$(document).ready(function() {
 		var $banner = $(".banner").find("ul");
 
@@ -74,8 +122,7 @@
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js'></script>
 	<script src='js/fullcalendar.js'></script>
 	<script type="text/javascript" src="js/locale/ko.js"></script>
-	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-	<script src="js/ddd.js"></script>
+
 	
 	<script type="text/javascript">
 		
@@ -658,6 +705,11 @@ background-color: silver;
 
 <section class="section3">
 
+	<div id="chat">
+		<input type="text" id="message" />
+		<input type="button" id="sendBtn" value="전송" /><br>
+		<div id="data" style="overflow:auto;"></div>
+	</div>
 
 		<div class="banner">
 
@@ -889,18 +941,11 @@ background-color: silver;
 			<div id="loading">loading...</div>
 			<div id="calendar"></div>
 		</div>
-		
-		<!-- D3 -->
-		<div id="dddChart"></div>
+
 		
 	</section>
-	<input id="throwmusic" type="hidden" value="123" />
+
 	<%@ include file="/form/footer.jsp"%>
-	
-	<input type="text" id="message" />
-	<input type="button" id="sendBtn" value="전송" />
-	<div id="data" style="overflow:auto;"></div>
-	
 </body>
 </html>
 </body>

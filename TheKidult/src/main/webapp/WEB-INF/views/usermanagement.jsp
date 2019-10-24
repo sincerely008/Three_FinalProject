@@ -19,6 +19,8 @@
 <meta charset="UTF-8"">
 <title>Insert title here</title>
 <script src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+<script src="js/ddd.js"></script>
 <script type="text/javascript">
 
 $(document).on("click", "a.enabled", function() {
@@ -36,6 +38,13 @@ $(document).on("click", "a.aid", function(){
 	}
 });
 
+onload=function(){
+lineGraph.data = [122,1299,124,2];
+lineGraph.chartname = ['A제품','B제품','C제품','D제품'];
+lineGraph.width = 500;
+lineGraph.height = 300;
+lineGraph.display();
+}
 </script>
 </head>
 <body>
@@ -88,5 +97,7 @@ $(document).on("click", "a.aid", function(){
 		</c:choose>
 	</table>
 	<h4>아이디 클릭시 계정삭제 / 이용여부 클릭시 계정 잠금</h4>
+<!-- D3 -->
+		<div id="dddChart"></div>
 </body>
 </html>
