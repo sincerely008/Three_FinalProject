@@ -158,5 +158,8 @@ history.go(1);
 </div>
 <br/><br/><br/><br/><br/><br/><br/>
 <%@ include file="/form/footer.jsp"%>
+<<<<<<< HEAD
 </body>
+=======
+>>>>>>> refs/heads/LJS
 </html>

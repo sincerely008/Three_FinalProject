@@ -6,21 +6,36 @@
 
 <title>Home</title>
 
-<script type="text/javascript">
-
-</script>
 <style type="text/css">	
 	/* banner */
 	.banner {position: relative; width: 700px; height: 500px; top: 50px;  margin:0 auto; padding:0; overflow: hidden;}
 	.banner ul {position: absolute; margin: 0px; padding:0; list-style: none; }
 	.banner ul li {float: left; width: 700px; height: 500px; margin:0; padding:0;}
+	
+	.fc-sat, .fc-sat > span {color: Blue;} /* 토요일 글자 blue */
+	.fc-sun, .fc-sun > span{color: red;}	/* 일요일 글자 red  */
+   
+   body{
+   	background-color: #f3f1ec;
+   }
+   td.fc-day.fc-today{
+ 	background: khaki;
+   }
+   .fc-content{
+ 	text-align: center;
+   }
+   
+   #divCalendar{
+   	width: 500px;
+   	height: 500px;
+   	
+   }
+	
 
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script language="JavaScript">
-
-
+ </style>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+ <script language="JavaScript">
 
 	$(document).ready(function() {
 		var $banner = $(".banner").find("ul");
@@ -51,9 +66,109 @@
 	}); 
 
 </script>
-<script src="js/jquery-3.4.1.min.js"></script>
-
-</script>
+<script src="js/jquery-3.4.1.js"></script>
+<link rel='stylesheet'  href='resources/css/fullcalendar.css'  />  
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js'></script>
+	<script src='js/fullcalendar.js'></script>
+	<script type="text/javascript" src="js/locale/ko.js"></script>
+	<script type="text/javascript">
+		
+	
+	$(function () {
+		
+		$('#calendar').fullCalendar({
+			
+			
+		header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,listMonth'
+        }
+		,
+		defaultDate: moment().format('YYYY-MM-DD')	
+		,
+		locale: 'ko'								
+		,
+		editable: true								
+		,
+		eventDurationEditable: true					
+		,
+		navLinks: true								
+		,
+		eventLimit: true							
+		,
+		allDaySlot: false							
+		,
+		contentHeight: 'auto'						
+		,
+		dayClick: function() {						
+			
+			window.open("uploadform.go","","left=600px,top=50px,width=600px,height=300px");
+			
+   		}
+		,
+		eventClick: function(event) {				
+			window.open("fullDetail.go?id="+event.id,"","left=600px,top=50px,width=600px,height=300px");
+		}
+		,
+		eventDrop: function(event , delta , revertFunc , jsEvent , ui , view){		
+			if(event.end == null){				
+				event.end = event.start;		
+			}
+			$.ajax({
+				url:"fullDropUpdate.go",
+				data:"id="+event.id+"&start="+event.start.format()+"&end="+event.end.format(),		
+				dataType:"text",
+				success:function(dropDate){
+						alert(dropDate);
+				}
+			});
+		}
+		,
+		eventResize: function(event , delta , revertFunc , jsEvent , ui , view){			
+			$.ajax({
+				url:"fullDropUpdate.go",
+				data:"id="+event.id+"&start="+event.start.format()+"&end="+event.end.format(),
+				dataType:"text",
+				success:function(dropDate){
+						alert(dropDate);
+				}
+			});
+		}
+		,
+		events: function(start, end, timezone, callback) {		
+		    $.ajax({
+		    	url: 'full.go',
+		    	dataType:'text',								
+		    	success: function(data){						
+		    		var parse = JSON.parse(data);				
+		    		var events = [];							
+		    		
+		    		$(parse).each(function(){
+		    			
+		    			events.push({							
+		    				id: $(this).attr('id'),				
+		    				title: $(this).attr('title'),		
+ 		    				start: $(this).attr('start'),
+		    				end: $(this).attr('end'),
+ 		    				description: $(this).attr('description')
+		    			});
+		    		});
+		    		callback(events);
+		    	}	//success end
+		    });
+		  }
+		,
+		loading: function(bool) {					
+            $('#loading').toggle(bool);				
+        }
+		,
+		eventColor:'chocolate'
+		
+		});	//fullcalendar end
+	});	//$(function) end
+	
+	</script>
 <script type="text/javascript" src="resources/js/images.js"></script>
 
 
@@ -518,7 +633,7 @@ background-color: silver;
 </head>
 <body>
 <header>
-<%@ include file="/form/header.jsp"%>
+ <%@ include file="/form/header.jsp"%> 
 
 </header>
 	
@@ -749,6 +864,12 @@ background-color: silver;
 		<section class="section222">
 		
 		<div class="section2div2div2div1div"></div>
+		
+		<!-- fullCalendar -->
+		<div id="divCalendar">
+			<div id="loading">loading...</div>
+			<div id="calendar"></div>
+		</div>
 		
 	</section>
 	<input id="throwmusic" type="hidden" value="123" />
