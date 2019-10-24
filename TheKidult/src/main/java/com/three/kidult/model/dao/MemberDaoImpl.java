@@ -167,4 +167,18 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 
+	@Override
+	public MemberDto userInfo(String id) {
+
+		MemberDto dto = new MemberDto();
+		
+		try {
+			dto = sqlSession.selectOne(namespace + "selectuser", id);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("userInfo error");
+		}
+		return dto;
+	}
+
 }
