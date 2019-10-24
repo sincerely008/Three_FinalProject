@@ -3,6 +3,7 @@ package com.three.kidult;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.three.kidult.dto.MemberDto;
 import com.three.kidult.dto.PagingDto;
 import com.three.kidult.dto.ProductDto;
 import com.three.kidult.model.biz.ProductBiz;
@@ -34,7 +36,7 @@ public class ProductController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/product.do", method = RequestMethod.GET)
-	public String productPage(Model model, HttpServletRequest request) {
+	public String productPage(Model model, HttpServletRequest request, HttpSession session) {
 		
 		if(request.getParameter("pages") != null) {
 			currentPageNo = Integer.parseInt(request.getParameter("pages"));
@@ -48,8 +50,13 @@ public class ProductController {
 		List<ProductDto> list = biz.boardList(offset, paging.getRecordsPerPage());
 		paging.setNumberOfRecords(biz.getNoOfRecords());
 		paging.makePaging();
+		
+		MemberDto mdto = (MemberDto)session.getAttribute("memberDto");
+		
+		model.addAttribute("mdto", mdto);
 		model.addAttribute("list", list);
 		model.addAttribute("paging", paging);
+		
 		
 		return "product";
 	}
@@ -83,10 +90,14 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/selectpage.do")
-	public String selectOne(Model model, HttpServletRequest requset) {
+	public String selectOne(Model model, HttpServletRequest requset, HttpSession session) {
 		
-		ProductDto dto = biz.selectBoard();
-		model.addAttribute("dto", dto);
+		int product_no = Integer.parseInt(requset.getParameter("product_no"));
+		
+		MemberDto mdto = (MemberDto)session.getAttribute("memberDto");
+		ProductDto pdto = biz.selectBoard(product_no);
+		model.addAttribute("pdto", pdto);
+		model.addAttribute("mdto", mdto);
 		
 		return "selectproduct";
 	}

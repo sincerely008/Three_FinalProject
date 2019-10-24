@@ -285,7 +285,7 @@ public class login {
 			dto1.setChatting_user(id);		
 
 			return "redirect:home.do";
-		}else if(dto.getMember_kakao().equals("Y") && dto.getMember_enabled().equals("Y")) {
+		}else if(dto != null && dto.getMember_kakao().equals("Y") && dto.getMember_enabled().equals("Y")) {
 			out.print("<script>");
 			out.print("alert('카카오 로그인을 해주세요')");
 			out.print("</script>");
@@ -389,7 +389,7 @@ public class login {
 			model.addAttribute("list", biz.selectList());	
 			return	 "usermanagement";	
 		}else {
-			System.out.println("roleupdate error");
+			System.out.println("enabled error");
 			model.addAttribute("list", biz.selectList());	
 			return	 "usermanagement";	
 		}

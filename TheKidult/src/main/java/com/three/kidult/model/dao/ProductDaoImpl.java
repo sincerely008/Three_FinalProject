@@ -39,12 +39,14 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public ProductDto selectBoard() {
+	public ProductDto selectBoard(int product_no) {
 		
+
 		ProductDto dto = new ProductDto();
+
 		
 		try {
-			dto = sqlSession.selectOne(namespace + "selectOne");
+			dto = sqlSession.selectOne(namespace + "selectOne", product_no);
 		} catch (Exception e) {
 			System.out.println("selectOne error");
 		}
@@ -110,9 +112,8 @@ public class ProductDaoImpl implements ProductDao {
 		
 		int res = 0;
 		Map<String, List<ProductDto>> map = new HashMap<String, List<ProductDto>>();
+
 		map.put("lists", list);
-		map.get("lists").get(0).getCategory_no();
-		System.out.println(map.get("lists").get(0).getCategory_no());
 		
 		try {
 			res = sqlSession.insert(namespace + "dummyInsert", map);

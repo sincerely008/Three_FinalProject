@@ -21,9 +21,9 @@ public class ProductBizImpl implements ProductBiz {
 	}
 
 	@Override
-	public ProductDto selectBoard() {
+	public ProductDto selectBoard(int product_no) {
 		
-		return dao.selectBoard();
+		return dao.selectBoard(product_no);
 	}
 
 	@Override
