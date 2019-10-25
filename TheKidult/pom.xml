@@ -293,7 +293,7 @@
 		
 		<!-- ??? -->
 		
-			<plugin>
+<!-- 			<plugin>
                 	<groupId>org.apache.maven.plugins</groupId>
                 	<artifactId>maven-war-plugin</artifactId>
                 	<version>2.4</version>
@@ -304,7 +304,7 @@
                 		<failOnMissingWebXml>false</failOnMissingWebXml>
                 	</configuration>
                 </plugin>
-			<plugin>
+ -->			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>

@@ -122,8 +122,8 @@ background-color: white;
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js'></script>
 	<script src='js/fullcalendar.js'></script>
 	<script type="text/javascript" src="js/locale/ko.js"></script>
-
-	
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script type="text/javascript" src="js/ddd.js"></script>
 	<script type="text/javascript">
 		
 	
@@ -681,7 +681,7 @@ li{list-style:none}
 .section3{
 	width: 100%;
 	height: 2000px;
-background-color: silver;
+	background-color: silver;
 	background-image: linear-gradient(335deg, #eee 23px, transparent 23px),
 	linear-gradient(155deg, #f2f2f2 23px, transparent 23px),
 	linear-gradient(335deg, #eee 23px, transparent 23px),
@@ -689,6 +689,7 @@ background-color: silver;
 	background-size: 58px 58px;background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px}
 
 }
+
 
 
 
@@ -942,6 +943,9 @@ background-color: silver;
 			<div id="loading">loading...</div>
 			<div id="calendar"></div>
 		</div>
+		
+		<!-- d3 -->
+		<div id="dddChart"></div>
 
 		
 	</section>
