@@ -13,6 +13,8 @@ const lineGraph = {
         const max = Math.max.apply(null, data);			//최대 값 찾음
         const svg = d3.select('#dddChart')			//svg 태그를 먼저 만들고
             .append('svg')
+            .style('float','right')
+            .style('text-align','right')
             .attr('width', width)
             .attr('height', height);
     
@@ -50,15 +52,15 @@ const lineGraph = {
       
         		
         
-       const text2 = svg.selectAll('.text2')
-        .data(chartname)
-        .enter()
-        .append('text')
-	        .attr('class','text2')
-	        .attr('x', (d, i) => ((98 / data.length) * i + (50 / data.length)+ '%'))
-	        .attr('y', '96%')
-	        .attr('text-anchor', 'middle')
-	        .text(d => (d));
+	       const text2 = svg.selectAll('.text2')
+	        .data(chartname)
+	        .enter()
+	        .append('text')
+		        .attr('class','text2')
+		        .attr('x', (d, i) => ((98 / data.length) * i + (50 / data.length)+ '%'))
+		        .attr('y', '96%')
+		        .attr('text-anchor', 'middle')
+		        .text(d => (d));
         
     }
 };

@@ -20,7 +20,7 @@ function getJsonInfo02(){
 		$.ajax({
 			url : "dummydata02.do",
 			method : "post",
-			data : {"info" : JSON.stringify(infoData)},
+			data : {"info2" : JSON.stringify(infoData)},
 			success : function(msg){
 				alert(msg);
 			},
