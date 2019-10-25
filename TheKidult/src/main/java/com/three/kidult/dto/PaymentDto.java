@@ -5,7 +5,7 @@ import java.util.Date;
 public class PaymentDto {
 	
 	private int payment_no;
-	private int paymemt_groupno;
+	private String paymemt_groupno;
 	private String member_id;
 	private int product_no;
 	private String payment_name;
@@ -17,7 +17,7 @@ public class PaymentDto {
 		
 	}
 
-	public PaymentDto(int payment_no, int paymemt_groupno, String member_id, int product_no, String payment_name,
+	public PaymentDto(int payment_no, String paymemt_groupno, String member_id, int product_no, String payment_name,
 			int payment_price, Date payment_date, String payment_addr) {
 		super();
 		this.payment_no = payment_no;
@@ -38,11 +38,11 @@ public class PaymentDto {
 		this.payment_no = payment_no;
 	}
 
-	public int getPaymemt_groupno() {
+	public String getPaymemt_groupno() {
 		return paymemt_groupno;
 	}
 
-	public void setPaymemt_groupno(int paymemt_groupno) {
+	public void setPaymemt_groupno(String paymemt_groupno) {
 		this.paymemt_groupno = paymemt_groupno;
 	}
 
@@ -93,7 +93,5 @@ public class PaymentDto {
 	public void setPayment_addr(String payment_addr) {
 		this.payment_addr = payment_addr;
 	}
-	
-	
 
 }
