@@ -1,5 +1,8 @@
 package com.three.kidult;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.three.kidult.dto.MemberDto;
+import com.three.kidult.dto.PaymentDto;
 import com.three.kidult.dto.ProductDto;
 import com.three.kidult.model.biz.MemberBiz;
+import com.three.kidult.model.biz.PaymentBiz;
 import com.three.kidult.model.biz.ProductBiz;
 
 /**
@@ -31,6 +36,11 @@ public class PaymentController {
 	
 	@Autowired
 	private ProductBiz pbiz;
+	
+	@Autowired
+	private PaymentBiz paybiz;
+	
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
 	
@@ -60,15 +70,36 @@ public class PaymentController {
 	
 	@RequestMapping(value = "/paymentres.do", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public String Payment(Model model,HttpServletRequest request, HttpServletResponse response, HttpSession session) {		
+	public String Payment(Model model,HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {		
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
 		
 		String member_id = request.getParameter("member_id");
 		int product_no = Integer.parseInt(request.getParameter("product_no"));
-		String product_addr = request.getParameter("product_addr");
+		String payment_addr = request.getParameter("product_addr");
 		
-		MemberDto mdto = mbiz.userInfo(member_id);
+	
+		PaymentDto paydto = new PaymentDto();
+		paydto.setMember_id(member_id);
+		paydto.setProduct_no(product_no);
+		paydto.setPayment_addr(payment_addr);
 		
-		return "home.do";
+		int res = paybiz.payinsert(paydto);
+		
+		if(res>0) {
+			out.println("<script>");
+			out.println("alert('결제완료')");
+			out.println("</script>");
+			return "home.do";
+		}else {
+			out.println("<script>");
+			out.println("alert('결제실패')");
+			out.println("</script>");
+			return "home.do";
+		}
 	}
 	
 }
