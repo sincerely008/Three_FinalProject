@@ -142,11 +142,11 @@ background-color: white;
 		,
 		locale: 'ko'								
 		,
-		editable: true								
+		editable: false								
 		,
-		eventDurationEditable: true					
+		eventDurationEditable: false					
 		,
-		navLinks: true								
+		navLinks: false								
 		,
 		eventLimit: true							
 		,
@@ -154,13 +154,13 @@ background-color: white;
 		,
 		contentHeight: 'auto'						
 		,
-		dayClick: function() {						
+/*		dayClick: function() {						
 			
 			window.open("uploadform.go","","left=600px,top=50px,width=600px,height=300px");
 			
    		}
 		,
-		eventClick: function(event) {				
+ 		eventClick: function(event) {				
 			window.open("fullDetail.go?id="+event.id,"","left=600px,top=50px,width=600px,height=300px");
 		}
 		,
@@ -189,7 +189,7 @@ background-color: white;
 			});
 		}
 		,
-		events: function(start, end, timezone, callback) {		
+ 		events: function(start, end, timezone, callback) {		
 		    $.ajax({
 		    	url: 'full.go',
 		    	dataType:'text',								
@@ -200,7 +200,7 @@ background-color: white;
 		    		$(parse).each(function(){
 		    			
 		    			events.push({							
-		    				id: $(this).attr('id'),				
+		    				id: $(this).attr('id'),
 		    				title: $(this).attr('title'),		
  		    				start: $(this).attr('start'),
 		    				end: $(this).attr('end'),
@@ -212,6 +212,29 @@ background-color: white;
 		    });
 		  }
 		,
+		*/
+		events:  [									
+		    {
+		        title  : '타노스 손가락 프리오더',					
+		        start  : '2019-10-02',
+		        end : '2019-10-05'
+		    },
+		    {
+		        title  : '건담 BB 391 RX-0(SD ver) 기간 한정 판매',
+		        start  : '2019-10-04',
+		        end    : '2019-10-06'				
+		    },
+		    {
+		        title  : '조커(아서 플렉ver) 발매',
+		        start  : '2019-10-10T10:00:00',		
+		        allDay : false 						
+		    },
+		    {
+		    	title : '탈출',
+		    	start : '2019-10-25'
+		    }
+		]
+		,
 		loading: function(bool) {					
             $('#loading').toggle(bool);				
         }
@@ -219,13 +242,6 @@ background-color: white;
 		eventColor:'chocolate'
 		
 		});	//fullcalendar end
-		
-		lineGraph.data = [122,1299,124,2];
-		lineGraph.chartname = ['A제품','B제품','C제품','D제품'];
-	    lineGraph.width = 500;
-	    lineGraph.height = 300;
-	    lineGraph.display();
-
 		
 	});	//$(function) end
 	
