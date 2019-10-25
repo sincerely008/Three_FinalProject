@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link rel='stylesheet' href='resources/css/all.css' />
 </head>
+<%@ include file="/form/header.jsp"%>
 <body>
 
 	<div class="main-item">
@@ -65,7 +66,7 @@
 		</select> <input type="text" name="searchValue" placeholder="내용을 입력하시오"
 			style="width: 200px;" /> <input type="submit" value="검색">
 	</form>
-
-
+<br/><br/><br/>
+<%@ include file="/form/footer.jsp"%>
 </body>
 </html>
