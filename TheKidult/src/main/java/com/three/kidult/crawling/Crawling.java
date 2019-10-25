@@ -17,8 +17,11 @@ public class Crawling {
 		JSONArray jsonar = new JSONArray();
 		for(int i = 1; i < 5; i++) {
 		
+
+
 			String URL = "http://www.replicas.co.kr/shop/shopbrand.html?type=Y&xcode=125&sort=&page="+i;
 			//String URL = "http://www.replicas.co.kr/shop/shopbrand.html?type=Y&xcode=073&sort=&page="+i;
+
 		
 		Document doc = Jsoup.connect(URL).get();
 
@@ -53,9 +56,7 @@ public class Crawling {
 			file.close();
 		} catch (Exception e) {
 			System.out.println("실패");
-		}
-		
-		
+		}		
 	}
-	
+
 }

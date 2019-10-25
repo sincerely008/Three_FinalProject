@@ -167,7 +167,6 @@ public class MemberBizImpl implements MemberBiz {
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			
 			if(email != null) {
-				
 				userInfo.put("email", email);
 			}
 			
@@ -179,6 +178,22 @@ public class MemberBizImpl implements MemberBiz {
 			e.printStackTrace();
 		}
 		return userInfo;
+	}
+
+	@Override
+	public int roleupdate(String enabled, String id) {
+		return dao.roleupdate(enabled, id);
+	}
+
+	@Override
+	public int deleteid(String id) {
+		return dao.deleteid(id);
+	}
+
+	@Override
+	public MemberDto userInfo(String id) {
+		
+		return dao.userInfo(id);
 	}
 
 }

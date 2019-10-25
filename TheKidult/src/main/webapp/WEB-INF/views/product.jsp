@@ -9,27 +9,32 @@
 </head>
 <body>
 
-	<table>
-		<tr>
-			<th>이름</th>
-			<th>가격</th>
-		</tr>
-		
+	<div>
 			<c:choose>
 			<c:when test="${empty list }">
 				<td colspan="3">작성된 글이 없습니다.</td>
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${list}" var="dto">
+				<table>
 					<tr>
-						<td><a href="selectpage.do">${dto.product_name }</a></td>
-						<td>${dto.product_price }</td>
+						<td><img alt="" src="${dto.product_img }" onclick="location.href='selectpage.do?product_no=${dto.product_no}'"></td>
 					</tr>
+					<tr>
+						<td><a href="selectpage.do?product_no=${dto.product_no}">${dto.product_name }</a></td>
+					</tr>
+					<tr>
+						<td>가격 : ${dto.product_price }</td>
+					</tr>
+				</table>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
+		<c:if test="${mdto.member_role eq 'ADMIN' }">
+			<input type="button" value="입력하기" onclick="">
+		</c:if>
 		
-	</table>
+	</div>
 	<jsp:include page="paging.jsp" flush="false">
 				<jsp:param name="searchFiled" value="${paging.searchFiled }" />
 				<jsp:param name="searchValue" value="${paging.searchValue }" />

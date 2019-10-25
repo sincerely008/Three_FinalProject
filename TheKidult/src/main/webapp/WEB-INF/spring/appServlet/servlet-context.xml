@@ -16,6 +16,8 @@
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/json/**" location="/json/" />
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources location="/css/" mapping="/css/**"/>
+	
 	
 	
 

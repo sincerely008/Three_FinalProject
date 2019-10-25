@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="calendar">
+
+	 <select id="callist" resultType="calendarDto">
+ 		SELECT *
+ 		FROM FULLCAL
+ 	</select>
+ 	
+ 	<update id="caldropupdate" parameterType="calendarDto">
+ 		UPDATE FULLCAL
+ 		SET FULLSTART = #{fullstart}, FULLEND = #{fullend}
+ 		WHERE FULLID = #{fullid}
+ 	</update>
+ 	
+  	<insert id="calinsert" parameterType="calendarDto">
+ 		INSERT INTO FULLCAL
+ 		VALUES(FULLID_SEQ.NEXTVAL,#{fulltitle},#{fullstart},#{fullend},#{fulldescription})
+ 	</insert>
+ 	
+ 	<select id="caldetail" resultType="calendarDto">
+ 		SELECT *
+ 		FROM FULLCAL
+ 		WHERE FULLID = #{fullid}
+ 	</select>
+ 	
+ 	<update id="calupdate" parameterType="calendarDto">
+ 		UPDATE FULLCAL
+ 		SET FULLTITLE = #{fulltitle}, FULLSTART = #{fullstart}, FULLEND = #{fullend}, FULLDESCRIPTION = #{fulldescription}
+ 		WHERE FULLID = #{fullid}
+ 	</update>
+ 	
+ 	<delete id="caldelete" parameterType="int">
+ 		DELETE FROM FULLCAL
+ 		WHERE FULLID = #{fullid}
+ 	</delete>
+	
+
+</mapper>

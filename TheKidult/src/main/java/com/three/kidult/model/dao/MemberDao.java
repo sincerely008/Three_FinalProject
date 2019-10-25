@@ -17,6 +17,9 @@ public interface MemberDao {
 	public MemberDto forgotPw(String id, String name, String email);	// 비밀번호 찾기
 	public int updatePw(String id, String pw);							// 비빌번호 변경
 	public int goodbyeUser(MemberDto dto);								// 회원탈퇴
+	public int roleupdate(String enabled, String id);
+	public int deleteid(String id);
+	public MemberDto userInfo(String id);								// 회원정보
 	
 	// 생각나는데로 추가 예정
 

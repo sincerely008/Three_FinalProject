@@ -56,6 +56,7 @@ history.go(1);
 						<td>
 							<input type="password" name="pwConfirm">
 							<span id="pwSapn"></span>
+							<input type="hidden" name="kakao" value="N">
 						</td>
 					</tr>
 				</c:when>
@@ -65,6 +66,7 @@ history.go(1);
 							<input type="hidden" name="id" value="${dto.member_id }">
 							<input type="hidden" name="password" value="${dto.member_id }">
 							<input type="hidden" name="pwConfirm" value="${dto.member_id }">
+							<input type="hidden" name="kakao" value="Y">
 						</td>
 					</tr>
 				</c:otherwise>
@@ -156,4 +158,8 @@ history.go(1);
 </div>
 <br/><br/><br/><br/><br/><br/><br/>
 <%@ include file="/form/footer.jsp"%>
+<<<<<<< HEAD
+</body>
+=======
+>>>>>>> refs/heads/LJS
 </html>

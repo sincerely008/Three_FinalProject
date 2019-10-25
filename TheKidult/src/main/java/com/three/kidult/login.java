@@ -144,9 +144,8 @@ public class login {
 		String member_addr = request.getParameter("addr1") + " " + request.getParameter("addr2");
 		String member_phone = request.getParameter("phone1") + "-" + request.getParameter("phone2") + "-" + request.getParameter("phone3");
 		String member_email = request.getParameter("emailFront") + "@" + request.getParameter("emailBack");
+		String member_kakao = request.getParameter("kakao");
 		String member_gender = request.getParameter("gender");
-		
-		System.out.println("id : " + member_id + "pw : " + member_pw);
 		
 		MemberDto dto = new MemberDto();
 		dto.setMember_id(member_id);
@@ -156,6 +155,7 @@ public class login {
 		dto.setMember_addr(member_addr);
 		dto.setMember_phone(member_phone);
 		dto.setMember_email(member_email);
+		dto.setMember_kakao(member_kakao);
 		dto.setMember_gender(member_gender);
 		
 		res = biz.signup(dto);
@@ -285,7 +285,7 @@ public class login {
 			dto1.setChatting_user(id);		
 
 			return "redirect:home.do";
-		}else if(dto.getMember_kakao().equals("Y") && dto.getMember_enabled().equals("Y")) {
+		}else if(dto != null && dto.getMember_kakao().equals("Y") && dto.getMember_enabled().equals("Y")) {
 			out.print("<script>");
 			out.print("alert('카카오 로그인을 해주세요')");
 			out.print("</script>");
@@ -321,9 +321,17 @@ public class login {
 		String email = "";
 		
 		
-		if(userInfo.get("email") != null) {
+		
+		if(userInfo.get("email") != null&& userInfo.get("email") != "") {
 			email = (String)userInfo.get("email");			
 			session.setAttribute("access_Token", access_Token);
+			
+			String[] emailSplit = email.split("@");
+			String emailFront = emailSplit[0];
+			String emailBack = emailSplit[1];
+			
+			model.addAttribute("emailFront",emailFront);
+			model.addAttribute("emailBack",emailBack);
 
 			ChattingDto dto1=new ChattingDto();
 			dto1.setChatting_user(kakaoId);
@@ -336,22 +344,16 @@ public class login {
 		
 		dto = biz.login(kakaoId, kakaoId);
 		
+		
 		if(dto != null) {
-			session.setAttribute("dto", dto);
+			session.setAttribute("memberDto", dto);
 			return "home";
 		} else {
 			
 			dto = new MemberDto();
-			
 			dto.setMember_id(kakaoId);
 			
-			String[] emailSplit = email.split("@");
-			String emailFront = emailSplit[0];
-			String emailBack = emailSplit[1];
-			
 			model.addAttribute("dto", dto);
-			model.addAttribute("emailFront",emailFront);
-			model.addAttribute("emailBack",emailBack);
 			
 			return "signup";
 		}	
@@ -368,5 +370,43 @@ public class login {
 		dto1.setChatting_user(null);		
 		
 		return "home";
+	}
+	
+	@RequestMapping("/usermanagement.do")
+	public String usermanagement(Model model) {	
+		
+		model.addAttribute("list", biz.selectList());	
+		
+		return "usermanagement";
+	}
+	
+	@RequestMapping(value="/roleupdate.do")
+	public String roleupdate(Model model, String enabled, String id) {
+			
+		int res = biz.roleupdate(enabled,id);
+		
+		if(res>0) {
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}else {
+			System.out.println("roleupdate error");
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}
+	}
+	
+	@RequestMapping(value="/deleteid.do")
+	public String deleteid(Model model, String id) {
+		
+		int res = biz.deleteid(id);
+		
+		if(res>0) {
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}else {
+			System.out.println("roleupdate error");
+			model.addAttribute("list", biz.selectList());	
+			return	 "usermanagement";	
+		}
 	}
 }

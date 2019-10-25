@@ -5,10 +5,12 @@
 		<typeAlias type="com.three.kidult.dto.ProductDto" alias="productDto"/>
 		<typeAlias type="com.three.kidult.dto.UsedproductDto" alias="usedproductDto"/>
 		<typeAlias type="com.three.kidult.dto.MemberDto" alias="memberDto"/>
+		<typeAlias type="com.three.kidult.dto.CalendarDto" alias="calendarDto"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="/sqls/board_mapper.xml"/>
 		<mapper resource="/sqls/usedboard_mapper.xml"/>
 		<mapper resource="/sqls/member_mapper.xml"/>
+		<mapper resource="/sqls/calendar_mapper.xml"/>
 	</mappers>
 </configuration>

@@ -14,3 +14,19 @@ function getJsonInfo01(){
 		});
 	});
 }
+
+function getJsonInfo02(){
+	$.getJSON("json/product02.json",function(infoData){
+		$.ajax({
+			url : "dummydata02.do",
+			method : "post",
+			data : {"info2" : JSON.stringify(infoData)},
+			success : function(msg){
+				alert(msg);
+			},
+			error : function(){
+				alert("2번 실패")
+			}
+		});
+	});
+}

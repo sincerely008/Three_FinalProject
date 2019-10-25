@@ -1,5 +1,6 @@
 package com.three.kidult.model.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -59,8 +60,17 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public List<MemberDto> selectList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		
+		try {
+			list = sqlSession.selectList(namespace+"selectList");
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("selectlist error");
+		}
+		
+		return list;
 	}
 
 	@Override
@@ -132,6 +142,43 @@ public class MemberDaoImpl implements MemberDao {
 	public int goodbyeUser(MemberDto dto) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int roleupdate(String enabled, String id) {
+		
+		int res = 0;
+		
+		if(enabled.equals("Y")) {
+			res = sqlSession.update(namespace+"roleupdate1",id);
+		}else {
+			res = sqlSession.update(namespace+"roleupdate2",id);
+		}
+		return res;
+	}
+
+	@Override
+	public int deleteid(String id) {
+		
+		int res = 0;
+		
+		res = sqlSession.delete(namespace+"deleteid",id);
+		
+		return res;
+	}
+
+	@Override
+	public MemberDto userInfo(String id) {
+
+		MemberDto dto = new MemberDto();
+		
+		try {
+			dto = sqlSession.selectOne(namespace + "selectuser", id);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("userInfo error");
+		}
+		return dto;
 	}
 
 }

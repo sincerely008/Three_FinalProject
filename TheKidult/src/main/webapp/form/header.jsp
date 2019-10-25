@@ -12,12 +12,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%
+ <%
 	MemberDto memberDto = (MemberDto)session.getAttribute("memberDto");
-%>
+ %>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="resources/js/images.js"></script>
 <style type="text/css">
 * {
 	padding: 0px;
@@ -387,7 +385,12 @@
 						       		<div style ="font-size : 10px;">
 									<%=memberDto.getMember_name()%>님 반갑습니다.  <br>
 									</div>
-									
+									<%if(memberDto.getMember_role().equals("USER")){%>
+									<%}else{ %>
+									<button onclick="location.href='usermanagement.do'" class="logindivdivbtn">
+									관리자 메뉴
+									</button>
+									<%} %>
 									<%if(memberDto.getMember_enabled()!="N"){ %>
 									<button onclick="location.href='UserInformation.do'" class="logindivdivbtn">
      								내정보보기  
@@ -433,7 +436,7 @@
 						<li class="headerdiv2divulli"
 							onclick="location.href='pagemoving.do?command=broadcstingtop'">
 							<a class="headerdiv2divullia"
-							href="pagemoving.do?command=broadcstingtop"> 건프라/피규어 </a>
+							href="product.do"> 건프라/피규어 </a>
 							<ul class="headerdiv2divulliul">
 								<li><a href="pagemoving.do?command=broadcstingtop">
 										건담(GUNDAM) </a></li>
