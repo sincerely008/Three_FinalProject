@@ -80,12 +80,18 @@ public class PaymentController {
 		String member_id = request.getParameter("member_id");
 		int product_no = Integer.parseInt(request.getParameter("product_no"));
 		String payment_addr = request.getParameter("product_addr");
+		int payment_groupno = Integer.parseInt(request.getParameter("payment_groupno"));
 		
-	
+		
+		ProductDto pdto = pbiz.selectBoard(product_no);
+		
 		PaymentDto paydto = new PaymentDto();
 		paydto.setMember_id(member_id);
 		paydto.setProduct_no(product_no);
 		paydto.setPayment_addr(payment_addr);
+		paydto.setPayment_name(pdto.getProduct_name());
+		paydto.setPayment_price(pdto.getProduct_price());
+		paydto.setPaymemt_groupno(payment_groupno);
 		
 		int res = paybiz.payinsert(paydto);
 		

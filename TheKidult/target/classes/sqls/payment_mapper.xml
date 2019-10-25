@@ -3,7 +3,7 @@
 <mapper namespace="payment">
 
 	<insert id="insertpay">
-		INSERT INTO PAYMENT VALUES(PAYMENTSEQ.NEXTVAL)
+		INSERT INTO PAYMENT VALUES(PAYMENTSEQ.NEXTVAL, #{payment_groupno}, #{member_id}, #{product_no}, #{payment_name}, #{payment_price}, SYSDATE, #{payment_addr})
 	</insert>
 	
 </mapper>
