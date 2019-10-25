@@ -40,7 +40,7 @@ $(document).on("click", "a.aid", function(){
 
 onload=function(){
 	lineGraph.data = [122,1299,124,20];
-	lineGraph.chartname = ['A제품','B제품','C제품','D제품'];
+	lineGraph.chartname = ['피규어','RC-카','드론','퍼즐'];
 	lineGraph.width = 500;
 	lineGraph.height = 300;
 	lineGraph.display();
