@@ -48,7 +48,7 @@ a {
 			<div>
 				<button type="submit" id="submit">수정하기</button>
 				<button type="button" onclick="">탈퇴하기</button>
-				<button type="button" onclick="" >결제하기</button>
+				<button type="button" onclick="" >결재내역</button>
 				<button type="button" onclick="location.href='home.do'" >뒤로가기</button><br/>
 			</div>
 		

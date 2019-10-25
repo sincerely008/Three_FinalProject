@@ -29,6 +29,7 @@ public class PaymentDaoImpl implements PaymentDao {
 			res = sqlSession.insert(namespace + "insertpay", dto);
 		} catch (Exception e) {
 			System.out.println("payinsert error");
+			System.out.println(e);
 		}
 		return res;
 	}

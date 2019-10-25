@@ -69,8 +69,7 @@ public class PaymentController {
 	}
 	
 	@RequestMapping(value = "/paymentres.do", method = {RequestMethod.POST,RequestMethod.GET})
-	@ResponseBody
-	public String Payment(Model model,HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {		
+	public void Payment(Model model,HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {		
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -80,7 +79,7 @@ public class PaymentController {
 		String member_id = request.getParameter("member_id");
 		int product_no = Integer.parseInt(request.getParameter("product_no"));
 		String payment_addr = request.getParameter("product_addr");
-		int payment_groupno = Integer.parseInt(request.getParameter("payment_groupno"));
+		String payment_groupno = request.getParameter("payment_groupno");
 		
 		
 		ProductDto pdto = pbiz.selectBoard(product_no);
@@ -98,13 +97,15 @@ public class PaymentController {
 		if(res>0) {
 			out.println("<script>");
 			out.println("alert('결제완료')");
+			out.println("location.replace('home.do')");
 			out.println("</script>");
-			return "home.do";
+			
 		}else {
 			out.println("<script>");
 			out.println("alert('결제실패')");
+			out.println("location.replace('home.do')");
 			out.println("</script>");
-			return "home.do";
+			
 		}
 	}
 	
