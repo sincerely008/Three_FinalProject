@@ -758,91 +758,91 @@ li{list-style:none}
 		<div class="section3div2">
 			<div class="section2div2div1">
 				<div class="section3div2div1div">
-					<span> 인기 아이템 Top10 </span>
+					<span> 신규 아이템 Top10 </span>
 				</div>
 			</div>
 			<div class="section3div2div2">
 				<div class="section3div2div2div1">
 					<div class="section3div2div2div1div">
 						<div class="section3div2div2div1divdiv1">
-							<img src="resources/images/hot1.jpg" alt="HOT1" width="100%" height="100%" />
+							<img src="http://www.replicas.co.kr/shopimages/replicas/0840020011453.jpg?1571037042" alt="HOT1" width="100%" height="100%" />
 						</div>
 						<div class="section3div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>신규 아이템1 / 10000원</span>
 						</div>
 					</div>
 					<div class="section3div2div2div1div">
 						<div class="section3div2div2div1divdiv1">
-							<img src="resources/images/hot2.jpg" alt="HOT2" width="100%" height="100%" />
+							<img src="http://www.replicas.co.kr/shopimages/replicas/0840020011323.jpg?1566280493" alt="HOT2" width="100%" height="100%" />
 						</div>
 						<div class="section3div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>신규 아이템2 / 11000원</span>
 						</div>
 					</div>
 					<div class="section3div2div2div1div">
 						<div class="section3div2div2div1divdiv1">
-							<img src="resources/images/hot3.jpg" alt="HOT3" width="100%" height="100%" />
+							<img src="http://www.replicas.co.kr/shopimages/replicas/0840020011283.jpg?1565933970" alt="HOT3" width="100%" height="100%" />
 						</div>
 						<div class="section3div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>신규 아이템3 / 12000원</span>
 						</div>
 					</div>
 					<div class="section3div2div2div1div">
 						<div class="section3div2div2div1divdiv1">
-							<img src="resources/images/hot4.jpg" alt="HOT4" width="100%" height="100%" />
+							<img src="http://www.replicas.co.kr/shopimages/replicas/0460060001033.jpg?1559727116" alt="HOT4" width="100%" height="100%" />
 						</div>
 						<div class="section3div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>신규 아이템4 / 13000원</span>
 						</div>
 					</div>
 					<div class="section3div2div2div1div">
 						<div class="section3div2div2div1divdiv1">
-							<img src="resources/images/hot5.jpg" alt="HOT5" width="100%" height="100%" />
+							<img src="http://www.replicas.co.kr/shopimages/replicas/0460060000923.jpg?1559710547" alt="HOT5" width="100%" height="100%" />
 						</div>
 						<div class="section3div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>신규 아이템5 / 14000원</span>
 						</div>
 					</div>
 				</div>
 				<div class="section3div2div2div1">
 					<div class="section3div2div2div1div">
 						<div class="section3div2div2div1divdiv1">
-							<img src="resources/images/hot6.jpg" alt="HOT6" width="100%" height="100%" />
+							<img src="http://www.replicas.co.kr/shopimages/replicas/0460060000713.jpg?1559702784" alt="HOT6" width="100%" height="100%" />
 						</div>
 						<div class="section3div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>신규 아이템6 / 15000원</span>
 						</div>
 					</div>
 					<div class="section3div2div2div1div">
 						<div class="section3div2div2div1divdiv1">
-							<img src="resources/images/hot7.jpg" alt="HOT7" width="100%" height="100%" />
+							<img src="http://www.replicas.co.kr/shopimages/replicas/0840020011253.jpg?1565773515" alt="HOT7" width="100%" height="100%" />
 						</div>
 						<div class="section3div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>신규 아이템7 / 16000원</span>
 						</div>
 					</div>
 					<div class="section3div2div2div1div">
 						<div class="section3div2div2div1divdiv1">
-							<img src="resources/images/hot8.jpg" alt="HOT8" width="100%" height="100%" />
+							<img src="http://www.replicas.co.kr/shopimages/replicas/0090010017293.jpg?1563863095" alt="HOT8" width="100%" height="100%" />
 						</div>
 						<div class="section3div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>신규 아이템8 / 17000원</span>
 						</div>
 					</div>
 					<div class="section3div2div2div1div">
 						<div class="section3div2div2div1divdiv1">
-							<img src="resources/images/hot9.jpg" alt="HOT9" width="100%" height="100%" />
+							<img src="http://www.replicas.co.kr/shopimages/replicas/0090010017393.jpg?1564463382" alt="HOT9" width="100%" height="100%" />
 						</div>
 						<div class="section3div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>신규 아이템9 / 18000원</span>
 						</div>
 					</div>
 					<div class="section3div2div2div1div">
 						<div class="section3div2div2div1divdiv1">
-							<img src="resources/images/hot10.jpg" alt="HOT10" width="100%" height="100%" />
+							<img src="http://www.replicas.co.kr/shopimages/replicas/0040010013573.jpg?1525340930" alt="HOT10" width="100%" height="100%" />
 						</div>
 						<div class="section3div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>신규 아이템10 / 200000원 </span>
 						</div>
 					</div>
 				</div>
@@ -868,7 +868,7 @@ li{list-style:none}
 							<img src="resources/images/hot1.jpg" alt="HOT1" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>인기 아이템1 / 200000원</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
@@ -876,7 +876,7 @@ li{list-style:none}
 							<img src="resources/images/hot2.jpg" alt="HOT2" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>인기 아이템2 / 190000원</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
@@ -884,7 +884,7 @@ li{list-style:none}
 							<img src="resources/images/hot3.jpg" alt="HOT3" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>인기 아이템3 / 180000원</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
@@ -892,7 +892,7 @@ li{list-style:none}
 							<img src="resources/images/hot4.jpg" alt="HOT4" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>인기 아이템4 / 170000원</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
@@ -900,7 +900,7 @@ li{list-style:none}
 							<img src="resources/images/hot5.jpg" alt="HOT5" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>인기 아이템5 / 160000원</span>
 						</div>
 					</div>
 				</div>
@@ -910,7 +910,7 @@ li{list-style:none}
 							<img src="resources/images/hot6.jpg" alt="HOT6" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>인기 아이템6 / 150000원</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
@@ -918,7 +918,7 @@ li{list-style:none}
 							<img src="resources/images/hot7.jpg" alt="HOT7" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>인기 아이템7 / 140000원</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
@@ -926,7 +926,7 @@ li{list-style:none}
 							<img src="resources/images/hot8.jpg" alt="HOT8" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>인기 아이템8 / 130000원</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
@@ -934,7 +934,7 @@ li{list-style:none}
 							<img src="resources/images/hot9.jpg" alt="HOT9" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>인기 아이템9 / 120000원</span>
 						</div>
 					</div>
 					<div class="section2div2div2div1div">
@@ -942,7 +942,7 @@ li{list-style:none}
 							<img src="resources/images/hot10.jpg" alt="HOT10" width="100%" height="100%" />
 						</div>
 						<div class="section2div2div2div1divdiv2">
-							<span>이름 / 가격</span>
+							<span>인기 아이템10 / 110000원</span>
 						</div>
 						
 					</div>
