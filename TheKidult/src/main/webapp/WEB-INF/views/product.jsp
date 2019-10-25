@@ -59,12 +59,14 @@
 	</jsp:include>
 
 
-	<form action="paging.do" method="post">
-		<input type="hidden" /> <select name="searchFiled">
-			<option value="PRODUCT_NAME" selected="selected">제목</option>
+	<form action="paging.do">
+		<input type="hidden" /> 
+			<select name="searchFiled">
+				<option value="PRODUCT_NAME" selected="selected">제목</option>
 			<!-- <option value="ID">작성자</option>  -->
-		</select> <input type="text" name="searchValue" placeholder="내용을 입력하시오"
-			style="width: 200px;" /> <input type="submit" value="검색">
+			</select> 
+		<input type="text" name="searchValue" placeholder="내용을 입력하시오" style="width: 200px;" /> 
+		<input type="submit" value="검색">
 	</form>
 <br/><br/><br/>
 <%@ include file="/form/footer.jsp"%>
