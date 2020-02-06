@@ -2,6 +2,7 @@ package com.three.kidult;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class CalendarController {
 	@Autowired
 	private CalendarBizImpl biz;
 	
-	@RequestMapping(value="/full.go")
+	@RequestMapping(value="/full.go", produces = "application/text; charset=utf-8")
 	public void listFull(HttpServletResponse response) {
 		
 		try {
@@ -53,6 +54,7 @@ public class CalendarController {
 //		
 //		JsonParser parser = new JsonParser();
 //		JsonElement element = parser.parse(jobj.toString());
+		
 		
 		out.print(jArr.toString());
 		} catch (IOException e) {

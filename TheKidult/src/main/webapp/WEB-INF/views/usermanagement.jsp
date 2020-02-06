@@ -39,8 +39,8 @@ $(document).on("click", "a.aid", function(){
 });
 
 onload=function(){
-	lineGraph.data = [122,1299,124,20];
-	lineGraph.chartname = ['A제품','B제품','C제품','D제품'];
+	lineGraph.data = [122,1299,942,689];
+	lineGraph.chartname = ['드론','조커','건담','토르'];
 	lineGraph.width = 500;
 	lineGraph.height = 300;
 	lineGraph.display();

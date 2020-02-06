@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+	     <% request.setCharacterEncoding("UTF-8"); %>
+    <% response.setContentType("text/html; charset=UTF-8"); %>
+	
+
 <html>
 <head>
-
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 
 <style type="text/css">	
@@ -40,6 +45,7 @@ width: 250px;
 height: 300px;
 background-color: white;
 }
+
 	
 	#chat{
 	position: fixed;
@@ -142,19 +148,19 @@ background-color: white;
 		,
 		locale: 'ko'								
 		,
-		editable: false								
+		editable: true								
 		,
-		eventDurationEditable: false					
+		eventDurationEditable: true					
 		,
-		navLinks: false								
+		navLinks: true								
 		,
 		eventLimit: true							
 		,
-		allDaySlot: false							
+		allDaySlot: true							
 		,
 		contentHeight: 'auto'						
 		,
-/*		dayClick: function() {						
+		dayClick: function() {						
 			
 			window.open("uploadform.go","","left=600px,top=50px,width=600px,height=300px");
 			
@@ -170,8 +176,9 @@ background-color: white;
 			}
 			$.ajax({
 				url:"fullDropUpdate.go",
-				data:"id="+event.id+"&start="+event.start.format()+"&end="+event.end.format(),		
+				data:"id="+event.id+"&start="+event.start.format()+"&end="+event.end.format(),
 				dataType:"text",
+				contentType:"application/x-www-form-urlencoded; charset=UTF-8",  
 				success:function(dropDate){
 						alert(dropDate);
 				}
@@ -183,6 +190,7 @@ background-color: white;
 				url:"fullDropUpdate.go",
 				data:"id="+event.id+"&start="+event.start.format()+"&end="+event.end.format(),
 				dataType:"text",
+				contentType:"application/x-www-form-urlencoded; charset=UTF-8",
 				success:function(dropDate){
 						alert(dropDate);
 				}
@@ -192,13 +200,13 @@ background-color: white;
  		events: function(start, end, timezone, callback) {		
 		    $.ajax({
 		    	url: 'full.go',
-		    	dataType:'text',								
+		    	dataType:'text',	
+		    	//contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		    	success: function(data){						
 		    		var parse = JSON.parse(data);				
 		    		var events = [];							
 		    		
 		    		$(parse).each(function(){
-		    			
 		    			events.push({							
 		    				id: $(this).attr('id'),
 		    				title: $(this).attr('title'),		
@@ -212,37 +220,13 @@ background-color: white;
 		    });
 		  }
 		,
-		*/
-		events:  [									
-		    {
-		        title  : '타노스 손가락 프리오더',					
-		        start  : '2019-10-02',
-		        end : '2019-10-05'
-		    },
-		    {
-		        title  : '건담 BB 391 RX-0(SD ver) 기간 한정 판매',
-		        start  : '2019-10-04',
-		        end    : '2019-10-06'				
-		    },
-		    {
-		        title  : '조커(아서 플렉ver) 발매',
-		        start  : '2019-10-10T10:00:00',		
-		        allDay : false 						
-		    },
-		    {
-		    	title : '탈출',
-		    	start : '2019-10-25'
-		    }
-		]
-		,
 		loading: function(bool) {					
             $('#loading').toggle(bool);				
         }
 		,
-		eventColor:'chocolate'
+		eventColor:'red'
 		
 		});	//fullcalendar end
-		
 	});	//$(function) end
 	
 
@@ -250,7 +234,7 @@ background-color: white;
 	
 	</script>
 	
-<script type="text/javascript" src="resources/js/images.js"></script>
+<!-- <script type="text/javascript" src="resources/js/images.js"></script> -->
 
 
 <style type="text/css">
@@ -708,9 +692,6 @@ li{list-style:none}
 
 
 
-
-
-
 </style>
 </head>
 <body>
@@ -966,7 +947,7 @@ li{list-style:none}
 		
 	</section>
 
-	<%@ include file="/form/footer.jsp"%>
+	 <%@ include file="/form/footer.jsp"%>
 </body>
 </html>
 </body>

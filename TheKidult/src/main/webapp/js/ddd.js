@@ -13,8 +13,6 @@ const lineGraph = {
         const max = Math.max.apply(null, data);			//최대 값 찾음
         const svg = d3.select('#dddChart')			//svg 태그를 먼저 만들고
             .append('svg')
-            .style('float','right')
-            .style('text-align','right')
             .attr('width', width)
             .attr('height', height);
     
